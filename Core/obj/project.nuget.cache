@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "lkJbT8GHTapzEP3/ki/FuS73ELHjPBN0OEseXzYxsM2vo0/Sq14Q5Lc9ylYnY1AU92AcrbaQWP2axzCq4XKKBQ==",
+  "dgSpecHash": "l0Grh95J5mD7FcxbD2afqA29Gzw8uE76vuihZVpQ0sK3Njo56xEXDKkV8vDD40c04uewtmyL2po5nSSspQu1cg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\drrckmngllln\\Documents\\GitHub\\HrmsWeb\\Core\\Core.csproj",
+  "projectFilePath": "C:\\Users\\drrckmngllln\\Documents\\GitHub\\HRMS-Web\\Core\\Core.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\drrckmngllln\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\drrckmngllln\\.nuget\\packages\\microsoft.data.sqlite.core\\7.0.0\\microsoft.data.sqlite.core.7.0.0.nupkg.sha512",
