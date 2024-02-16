@@ -1,0 +1,31 @@
+<p>departments works!</p>
+
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card card-primary">
+            <div class="card-header">
+                <h3 class="card-title">Quick Example</h3>
+            </div>
+            <div class="card-body">
+                <div class="col-md-3 mb-3">
+                    <a routerLink="create" class="btn btn-success">Add Department</a>
+                </div>
+                <table class="table">
+                    <thead>
+                        <th>Name</th>
+                        <th>Actions</th>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let dep of departments">
+                            <td>{{ dep.name }}</td>
+                            <td>
+                                <a href="" class="btn btn-primary mx-1">Edit</a>
+                                <a href="" class="btn btn-danger">Delete</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
