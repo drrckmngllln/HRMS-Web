@@ -13,4 +13,14 @@ export class DepartmentsService {
   getDepartments() {
     return this.http.get<Departments[]>(this.baseUrl + 'departments/');
   }
+
+  createDepartments() {
+    
+  }
+
+  mapDepartment(items: Departments) {
+    return {
+      name: items.name
+    }
+  }
 }

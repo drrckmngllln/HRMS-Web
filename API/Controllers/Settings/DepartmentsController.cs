@@ -29,13 +29,27 @@ namespace API.Controllers.Settings
             return await _context.Departments.FindAsync(id);
         }
 
-        [HttpPost]
-        public async Task AddDepartmentAsync(Department entity)
+        [HttpPost("create")]
+        public async Task<List<Department>> AddDepartmentAsync(Department entity)
         {
             await _context.Departments.AddAsync(entity);
             await _context.SaveChangesAsync();
+            return await _context.Departments.ToListAsync();
         }
 
+        [HttpPut("update")]
+        public async Task UpdateDepartmentsAsync(Department entity)
+        {
+            _context.Departments.Update(entity);
+            await _context.SaveChangesAsync();
+        }
 
+        [HttpDelete("{id}")]
+        public async Task DeleteDepartmentsAsync(int id)
+        {
+            var department = await _context.Departments.FindAsync(id);
+            _context.Departments.Remove(department);
+            await _context.SaveChangesAsync();
+        }
     }
 }
