@@ -14,8 +14,8 @@ export class DepartmentsService {
     return this.http.get<Departments[]>(this.baseUrl + 'departments/');
   }
 
-  createDepartments() {
-    
+  createDepartments(department: Departments) {
+    return this.http.post<Departments>(this.baseUrl + 'create', department);
   }
 
   mapDepartment(items: Departments) {
