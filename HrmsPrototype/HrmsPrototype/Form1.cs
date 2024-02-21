@@ -37,6 +37,7 @@ namespace HrmsPrototype
 
         private async Task<IReadOnlyList<Departments>> getDepartments()
         {
+            
             var response = await http.GetAsync(baseUrl);
             if (response.IsSuccessStatusCode)
             {
