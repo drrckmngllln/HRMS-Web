@@ -29,6 +29,20 @@ namespace Infrastructure.Data.Migrations
 
                     b.ToTable("Departments");
                 });
+
+            modelBuilder.Entity("Core.Entities.Settings.Positions", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Positions");
+                });
 #pragma warning restore 612, 618
         }
     }

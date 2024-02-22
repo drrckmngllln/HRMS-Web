@@ -100,6 +100,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Core\Entities\Settings\Departments.cs" />
+    <Compile Include="Core\Entities\Settings\Positions.cs" />
+    <Compile Include="Core\Notifications\Toastr.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -118,11 +120,29 @@
     <Compile Include="Forms\frmMain.Designer.cs">
       <DependentUpon>frmMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Notifications\frmMessageBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Notifications\frmMessageBox.Designer.cs">
+      <DependentUpon>frmMessageBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Notifications\frmToastr.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Notifications\frmToastr.Designer.cs">
+      <DependentUpon>frmToastr.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Settings\frmDepartments.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\Settings\frmDepartments.Designer.cs">
       <DependentUpon>frmDepartments.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Settings\frmPositions.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Settings\frmPositions.Designer.cs">
+      <DependentUpon>frmPositions.cs</DependentUpon>
     </Compile>
     <Compile Include="Infrastructure\Interfaces\IGenericRepository.cs" />
     <Compile Include="Infrastructure\Repositories\GenericRepository.cs" />
@@ -137,8 +157,17 @@
     <EmbeddedResource Include="Forms\frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Notifications\frmMessageBox.resx">
+      <DependentUpon>frmMessageBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Notifications\frmToastr.resx">
+      <DependentUpon>frmToastr.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Settings\frmDepartments.resx">
       <DependentUpon>frmDepartments.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Settings\frmPositions.resx">
+      <DependentUpon>frmPositions.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -170,6 +199,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Untitled design.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\error.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\warning.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\information.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\check.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -10,10 +10,11 @@ namespace Infrastructure.Data
 {
     public class StoreContext : DbContext
     {
-        public StoreContext(DbContextOptions options) : base(options)
+        public StoreContext(DbContextOptions<StoreContext> options) : base(options)
         {
         }
 
         public DbSet<Department> Departments { get; set; }
+        public DbSet<Positions> Positions { get; set; }
     }
 }

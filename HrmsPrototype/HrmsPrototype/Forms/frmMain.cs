@@ -56,5 +56,14 @@ namespace HrmsPrototype.Forms
             panelTask.Controls.Add(frm);
             frm.Show();
         }
+
+        private void btnPositions_Click(object sender, EventArgs e)
+        {
+            var frm = new frmPositions();
+            frm.TopLevel = false;
+            panelTask.Controls.Clear();
+            panelTask.Controls.Add(frm);
+            frm.Show();
+        }
     }
 }

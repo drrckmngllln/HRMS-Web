@@ -1,4 +1,5 @@
-﻿using HrmsPrototype.Entities.Settings;
+﻿using HrmsPrototype.Core.Notifications;
+using HrmsPrototype.Entities.Settings;
 using HrmsPrototype.Infrastructure.Interfaces;
 using HrmsPrototype.Infrastructure.Repositories;
 using System;
@@ -43,6 +44,7 @@ namespace HrmsPrototype.Forms.Settings
                     Name = tName.Text
                 };
                 await _departmentRepo.AddAsync(department, "departments/create");
+                new Toastr("Success", "Department Added");
                 await loadRecords();
             }
             else if (btnSave.Text == "Update")
@@ -53,6 +55,7 @@ namespace HrmsPrototype.Forms.Settings
                     Name = tName.Text
                 };
                 await _departmentRepo.UpdateAsync(department, "departments/update");
+                new Toastr("Information", "Department updated");
                 await loadRecords();
             }
         }
@@ -61,6 +64,7 @@ namespace HrmsPrototype.Forms.Settings
         {
             var id = dgv.CurrentRow.Cells["Id"].Value.ToString();
             await _departmentRepo.DeleteAsync("departments/" + id);
+            new Toastr("Warning", "Department deleted");
             await loadRecords();
         }
 
