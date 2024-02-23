@@ -99,7 +99,9 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Core\Entities\Settings\Campus.cs" />
     <Compile Include="Core\Entities\Settings\Departments.cs" />
+    <Compile Include="Core\Entities\Settings\LeaveSetup.cs" />
     <Compile Include="Core\Entities\Settings\Positions.cs" />
     <Compile Include="Core\Notifications\Toastr.cs" />
     <Compile Include="Form1.cs">
@@ -132,11 +134,23 @@
     <Compile Include="Forms\Notifications\frmToastr.Designer.cs">
       <DependentUpon>frmToastr.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Settings\frmCampus.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Settings\frmCampus.Designer.cs">
+      <DependentUpon>frmCampus.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Settings\frmDepartments.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\Settings\frmDepartments.Designer.cs">
       <DependentUpon>frmDepartments.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Settings\frmLeaveSetup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Settings\frmLeaveSetup.Designer.cs">
+      <DependentUpon>frmLeaveSetup.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Settings\frmPositions.cs">
       <SubType>Form</SubType>
@@ -163,8 +177,14 @@
     <EmbeddedResource Include="Forms\Notifications\frmToastr.resx">
       <DependentUpon>frmToastr.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Settings\frmCampus.resx">
+      <DependentUpon>frmCampus.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Settings\frmDepartments.resx">
       <DependentUpon>frmDepartments.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Settings\frmLeaveSetup.resx">
+      <DependentUpon>frmLeaveSetup.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Settings\frmPositions.resx">
       <DependentUpon>frmPositions.cs</DependentUpon>

@@ -1,8 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Core.Entities;
 using Core.Entities.Settings;
 using Microsoft.EntityFrameworkCore;
 
@@ -16,5 +11,8 @@ namespace Infrastructure.Data
 
         public DbSet<Department> Departments { get; set; }
         public DbSet<Positions> Positions { get; set; }
+        public DbSet<Campus> Campuses { get; set; }
+        public DbSet<LeaveSetup> LeaveSetups { get; set; }
+        public DbSet<AttendanceSetup> AttendanceSetups { get; set; }
     }
 }

@@ -13,6 +13,7 @@ namespace API.Controllers.Settings
             _context = context;
 
         }
+        
         [HttpGet]
         public async Task<IReadOnlyList<Positions>> GetPositionsAsync()
         {
