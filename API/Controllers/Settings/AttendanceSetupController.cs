@@ -76,8 +76,21 @@ namespace API.Controllers.Settings
         public async Task<ActionResult<AttendanceSetup>> DeleteAsync(int id)
         {
             var attendance = await _context.AttendanceSetups.FindAsync(id);
-            _context.AttendanceSetups.Update(attendance);
-            await _context.SaveChangesAsync()
+            if (attendance != null)
+            {
+                _context.AttendanceSetups.Remove(attendance);
+                await _context.SaveChangesAsync();
+
+                return new AttendanceSetup
+                {
+                    Id = attendance.Id,
+                    TimeIn = attendance.TimeIn,
+                    TimeOut = attendance.TimeOut,
+                    GracePeriod = attendance.GracePeriod
+                };
+            }
+
+            return BadRequest();
         }
     }
 }

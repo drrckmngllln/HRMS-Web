@@ -83,5 +83,14 @@ namespace HrmsPrototype.Forms
             panelTask.Controls.Add(frm);
             frm.Show();
         }
+
+        private void btnAttendanceSetup_Click(object sender, EventArgs e)
+        {
+            var frm = new frmAttendanceSetup();
+            frm.TopLevel = false;
+            panelTask.Controls.Clear();
+            panelTask.Controls.Add(frm);
+            frm.Show();
+        }
     }
 }

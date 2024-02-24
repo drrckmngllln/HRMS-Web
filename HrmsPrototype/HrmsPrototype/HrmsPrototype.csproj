@@ -99,6 +99,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Core\Entities\Settings\AttendanceSetup.cs" />
     <Compile Include="Core\Entities\Settings\Campus.cs" />
     <Compile Include="Core\Entities\Settings\Departments.cs" />
     <Compile Include="Core\Entities\Settings\LeaveSetup.cs" />
@@ -133,6 +134,12 @@
     </Compile>
     <Compile Include="Forms\Notifications\frmToastr.Designer.cs">
       <DependentUpon>frmToastr.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Settings\frmAttendanceSetup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Settings\frmAttendanceSetup.Designer.cs">
+      <DependentUpon>frmAttendanceSetup.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Settings\frmCampus.cs">
       <SubType>Form</SubType>
@@ -176,6 +183,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Notifications\frmToastr.resx">
       <DependentUpon>frmToastr.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Settings\frmAttendanceSetup.resx">
+      <DependentUpon>frmAttendanceSetup.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Settings\frmCampus.resx">
       <DependentUpon>frmCampus.cs</DependentUpon>

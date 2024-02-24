@@ -34,6 +34,11 @@
             this.button1 = new System.Windows.Forms.Button();
             this.btnTransaction = new System.Windows.Forms.Button();
             this.panelLibrary = new System.Windows.Forms.Panel();
+            this.btnUserManagement = new System.Windows.Forms.Button();
+            this.btnAccessLevels = new System.Windows.Forms.Button();
+            this.btnAttendanceSetup = new System.Windows.Forms.Button();
+            this.btnLeaveSetup = new System.Windows.Forms.Button();
+            this.btnCampus = new System.Windows.Forms.Button();
             this.btnPositions = new System.Windows.Forms.Button();
             this.btnDepartments = new System.Windows.Forms.Button();
             this.btnLibrary = new System.Windows.Forms.Button();
@@ -41,11 +46,6 @@
             this.tLogout = new System.Windows.Forms.Label();
             this.tAccessLevel = new System.Windows.Forms.Label();
             this.tUsername = new System.Windows.Forms.Label();
-            this.btnCampus = new System.Windows.Forms.Button();
-            this.btnLeaveSetup = new System.Windows.Forms.Button();
-            this.btnAttendanceSetup = new System.Windows.Forms.Button();
-            this.btnAccessLevels = new System.Windows.Forms.Button();
-            this.btnUserManagement = new System.Windows.Forms.Button();
             this.panelTask = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panelSidebar.SuspendLayout();
@@ -138,6 +138,89 @@
             this.panelLibrary.Size = new System.Drawing.Size(246, 267);
             this.panelLibrary.TabIndex = 1;
             this.panelLibrary.Visible = false;
+            // 
+            // btnUserManagement
+            // 
+            this.btnUserManagement.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnUserManagement.FlatAppearance.BorderSize = 0;
+            this.btnUserManagement.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnUserManagement.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUserManagement.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnUserManagement.Location = new System.Drawing.Point(0, 210);
+            this.btnUserManagement.Name = "btnUserManagement";
+            this.btnUserManagement.Padding = new System.Windows.Forms.Padding(55, 0, 0, 0);
+            this.btnUserManagement.Size = new System.Drawing.Size(246, 35);
+            this.btnUserManagement.TabIndex = 7;
+            this.btnUserManagement.Text = "User Management";
+            this.btnUserManagement.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnUserManagement.UseVisualStyleBackColor = true;
+            // 
+            // btnAccessLevels
+            // 
+            this.btnAccessLevels.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnAccessLevels.FlatAppearance.BorderSize = 0;
+            this.btnAccessLevels.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAccessLevels.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAccessLevels.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnAccessLevels.Location = new System.Drawing.Point(0, 175);
+            this.btnAccessLevels.Name = "btnAccessLevels";
+            this.btnAccessLevels.Padding = new System.Windows.Forms.Padding(55, 0, 0, 0);
+            this.btnAccessLevels.Size = new System.Drawing.Size(246, 35);
+            this.btnAccessLevels.TabIndex = 6;
+            this.btnAccessLevels.Text = "Access Levels";
+            this.btnAccessLevels.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAccessLevels.UseVisualStyleBackColor = true;
+            // 
+            // btnAttendanceSetup
+            // 
+            this.btnAttendanceSetup.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnAttendanceSetup.FlatAppearance.BorderSize = 0;
+            this.btnAttendanceSetup.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAttendanceSetup.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAttendanceSetup.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnAttendanceSetup.Location = new System.Drawing.Point(0, 140);
+            this.btnAttendanceSetup.Name = "btnAttendanceSetup";
+            this.btnAttendanceSetup.Padding = new System.Windows.Forms.Padding(55, 0, 0, 0);
+            this.btnAttendanceSetup.Size = new System.Drawing.Size(246, 35);
+            this.btnAttendanceSetup.TabIndex = 5;
+            this.btnAttendanceSetup.Text = "Attendance Setup";
+            this.btnAttendanceSetup.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAttendanceSetup.UseVisualStyleBackColor = true;
+            this.btnAttendanceSetup.Click += new System.EventHandler(this.btnAttendanceSetup_Click);
+            // 
+            // btnLeaveSetup
+            // 
+            this.btnLeaveSetup.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnLeaveSetup.FlatAppearance.BorderSize = 0;
+            this.btnLeaveSetup.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLeaveSetup.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLeaveSetup.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnLeaveSetup.Location = new System.Drawing.Point(0, 105);
+            this.btnLeaveSetup.Name = "btnLeaveSetup";
+            this.btnLeaveSetup.Padding = new System.Windows.Forms.Padding(55, 0, 0, 0);
+            this.btnLeaveSetup.Size = new System.Drawing.Size(246, 35);
+            this.btnLeaveSetup.TabIndex = 4;
+            this.btnLeaveSetup.Text = "Leave Setup";
+            this.btnLeaveSetup.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnLeaveSetup.UseVisualStyleBackColor = true;
+            this.btnLeaveSetup.Click += new System.EventHandler(this.btnLeaveSetup_Click);
+            // 
+            // btnCampus
+            // 
+            this.btnCampus.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnCampus.FlatAppearance.BorderSize = 0;
+            this.btnCampus.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCampus.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCampus.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnCampus.Location = new System.Drawing.Point(0, 70);
+            this.btnCampus.Name = "btnCampus";
+            this.btnCampus.Padding = new System.Windows.Forms.Padding(55, 0, 0, 0);
+            this.btnCampus.Size = new System.Drawing.Size(246, 35);
+            this.btnCampus.TabIndex = 3;
+            this.btnCampus.Text = "Campus";
+            this.btnCampus.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnCampus.UseVisualStyleBackColor = true;
+            this.btnCampus.Click += new System.EventHandler(this.button2_Click);
             // 
             // btnPositions
             // 
@@ -235,88 +318,6 @@
             this.tUsername.TabIndex = 1;
             this.tUsername.Text = "Username";
             this.tUsername.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // btnCampus
-            // 
-            this.btnCampus.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnCampus.FlatAppearance.BorderSize = 0;
-            this.btnCampus.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCampus.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCampus.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnCampus.Location = new System.Drawing.Point(0, 70);
-            this.btnCampus.Name = "btnCampus";
-            this.btnCampus.Padding = new System.Windows.Forms.Padding(55, 0, 0, 0);
-            this.btnCampus.Size = new System.Drawing.Size(246, 35);
-            this.btnCampus.TabIndex = 3;
-            this.btnCampus.Text = "Campus";
-            this.btnCampus.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCampus.UseVisualStyleBackColor = true;
-            this.btnCampus.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // btnLeaveSetup
-            // 
-            this.btnLeaveSetup.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnLeaveSetup.FlatAppearance.BorderSize = 0;
-            this.btnLeaveSetup.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLeaveSetup.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLeaveSetup.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnLeaveSetup.Location = new System.Drawing.Point(0, 105);
-            this.btnLeaveSetup.Name = "btnLeaveSetup";
-            this.btnLeaveSetup.Padding = new System.Windows.Forms.Padding(55, 0, 0, 0);
-            this.btnLeaveSetup.Size = new System.Drawing.Size(246, 35);
-            this.btnLeaveSetup.TabIndex = 4;
-            this.btnLeaveSetup.Text = "Leave Setup";
-            this.btnLeaveSetup.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnLeaveSetup.UseVisualStyleBackColor = true;
-            this.btnLeaveSetup.Click += new System.EventHandler(this.btnLeaveSetup_Click);
-            // 
-            // btnAttendanceSetup
-            // 
-            this.btnAttendanceSetup.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnAttendanceSetup.FlatAppearance.BorderSize = 0;
-            this.btnAttendanceSetup.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAttendanceSetup.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAttendanceSetup.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnAttendanceSetup.Location = new System.Drawing.Point(0, 140);
-            this.btnAttendanceSetup.Name = "btnAttendanceSetup";
-            this.btnAttendanceSetup.Padding = new System.Windows.Forms.Padding(55, 0, 0, 0);
-            this.btnAttendanceSetup.Size = new System.Drawing.Size(246, 35);
-            this.btnAttendanceSetup.TabIndex = 5;
-            this.btnAttendanceSetup.Text = "Attendance Setup";
-            this.btnAttendanceSetup.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAttendanceSetup.UseVisualStyleBackColor = true;
-            // 
-            // btnAccessLevels
-            // 
-            this.btnAccessLevels.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnAccessLevels.FlatAppearance.BorderSize = 0;
-            this.btnAccessLevels.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAccessLevels.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAccessLevels.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnAccessLevels.Location = new System.Drawing.Point(0, 175);
-            this.btnAccessLevels.Name = "btnAccessLevels";
-            this.btnAccessLevels.Padding = new System.Windows.Forms.Padding(55, 0, 0, 0);
-            this.btnAccessLevels.Size = new System.Drawing.Size(246, 35);
-            this.btnAccessLevels.TabIndex = 6;
-            this.btnAccessLevels.Text = "Access Levels";
-            this.btnAccessLevels.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAccessLevels.UseVisualStyleBackColor = true;
-            // 
-            // btnUserManagement
-            // 
-            this.btnUserManagement.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnUserManagement.FlatAppearance.BorderSize = 0;
-            this.btnUserManagement.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnUserManagement.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUserManagement.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnUserManagement.Location = new System.Drawing.Point(0, 210);
-            this.btnUserManagement.Name = "btnUserManagement";
-            this.btnUserManagement.Padding = new System.Windows.Forms.Padding(55, 0, 0, 0);
-            this.btnUserManagement.Size = new System.Drawing.Size(246, 35);
-            this.btnUserManagement.TabIndex = 7;
-            this.btnUserManagement.Text = "User Management";
-            this.btnUserManagement.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnUserManagement.UseVisualStyleBackColor = true;
             // 
             // panelTask
             // 
