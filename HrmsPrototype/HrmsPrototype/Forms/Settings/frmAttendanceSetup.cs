@@ -7,6 +7,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -29,16 +30,37 @@ namespace HrmsPrototype.Forms.Settings
         private async Task loadRecords()
         {
             var setups = await _attendanceSetupRepo.GetAllAsync("attendancesetup");
-            dgv.DataSource = setups;
-            dgv.Columns["Id"].Visible = false;
-            dgv.Columns["TimeIn"].HeaderText = "Time In";
-            dgv.Columns["TimeOut"].HeaderText = "Time Out";
-            dgv.Columns["GracePeriod"].HeaderText = "Grace Period";
+            //dgv.DataSource = setups;
+            //dgv.Columns["Id"].Visible = false;
+            //dgv.Columns["TimeIn"].HeaderText = "Time In";
+            //dgv.Columns["TimeOut"].HeaderText = "Time Out";
+            //dgv.Columns["GracePeriod"].HeaderText = "Grace Period";
 
+            dgv.Columns.Add("TimeIn", "Time In");
+            dgv.Columns.Add("TimeOut", "Time Out");
+            dgv.Columns.Add("GracePeriod", "Grace Period");
+            dgv.Columns.Add("Actions", "Actions");
+
+
+
+            foreach (var setup in setups)
+            {
+                dgv.Rows.Add(setup.TimeIn, setup.TimeOut, setup.GracePeriod);
+                AddRow(1, setup.TimeIn);
+            }
             if (dgv.Rows.Count > 0)
             {
                 btnSave.Enabled = false;
             }
+        }
+
+        private void AddRow(int id, string name)
+        {
+            int rowIndex = dgv.Rows.Add(id, name, "Actions");
+
+            var editCell = new DataGridViewButtonCell();
+            dgv.Rows[rowIndex].Cells["Actions"] = editCell;
+            dgv.Rows[rowIndex].Cells["Actions"].Value = "Edit";
         }
 
         private async Task addEdit()
