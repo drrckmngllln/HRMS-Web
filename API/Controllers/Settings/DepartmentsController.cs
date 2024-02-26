@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Core.Entities.Settings;
+using Core.Interfaces;
 using Infrastructure.Data;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -11,45 +13,62 @@ namespace API.Controllers.Settings
 {
     public class DepartmentsController : BaseApiController
     {
-        private readonly StoreContext _context;
-        public DepartmentsController(StoreContext context)
+        private readonly ISettingsService<Department> _departmentRepo;
+
+        public DepartmentsController(ISettingsService<Department> departmentRepo)
         {
-            _context = context;
+            _departmentRepo = departmentRepo;
+
         }
 
         [HttpGet]
-        public async Task<List<Department>> GetDepartmentsAsync()
+        public async Task<IReadOnlyList<Department>> GetDepartmentsAsync()
         {
-            return await _context.Departments.ToListAsync();
+            return await _departmentRepo.GetAllAsync();
         }
 
-        [HttpGet("{id}")]
-        public async Task<Department> GetDepartmentAsync(int id)
+        [HttpGet("search")]
+        public async Task<ActionResult<IReadOnlyList<Department>>> SearchDepartmentsAsync([FromQuery] string value)
         {
-            return await _context.Departments.FindAsync(id);
+            var searchItem = await _departmentRepo.GetAllAsync();
+            var item = searchItem.Where(x => x.Name.ToLower().Contains(value)).ToList();
+            return Ok(item);
         }
 
         [HttpPost("create")]
-        public async Task<List<Department>> AddDepartmentAsync(Department entity)
+        public async Task<ActionResult<Department>> CreateDepartmentsAsync(Department department)
         {
-            await _context.Departments.AddAsync(entity);
-            await _context.SaveChangesAsync();
-            return await _context.Departments.ToListAsync();
+            var departments = await _departmentRepo.GetAllAsync();
+            var dep = new Department
+            {
+                Name = department.Name
+            };
+            if (dep != null)
+            {
+                await _departmentRepo.AddAsync(dep);
+                return Ok(dep);
+            }
+
+            return BadRequest();
         }
 
-        [HttpPut("update")]
-        public async Task UpdateDepartmentsAsync(Department entity)
+        [HttpPut("update/{id}")]
+        public async Task<ActionResult<Department>> UpdateAsync(Department department)
         {
-            _context.Departments.Update(entity);
-            await _context.SaveChangesAsync();
+            var dep = new Department
+            {
+                Id = department.Id,
+                Name = department.Name
+            };
+            await _departmentRepo.UpdateAsync(dep);
+            return Ok(dep);
         }
 
         [HttpDelete("{id}")]
-        public async Task DeleteDepartmentsAsync(int id)
+        public async Task<ActionResult<Department>> DeleteAsync(int id)
         {
-            var department = await _context.Departments.FindAsync(id);
-            _context.Departments.Remove(department);
-            await _context.SaveChangesAsync();
+            await _departmentRepo.DeleteAsync(id);
+            return Ok(id);
         }
     }
 }
