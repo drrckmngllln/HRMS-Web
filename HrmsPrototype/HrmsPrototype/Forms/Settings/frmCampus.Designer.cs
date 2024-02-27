@@ -39,6 +39,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.tDescription = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.tSearch = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
             this.SuspendLayout();
             // 
@@ -98,7 +100,7 @@
             this.btnSave.StateCommon.Border.Rounding = 10F;
             this.btnSave.StateCommon.Content.ShortText.Color1 = System.Drawing.SystemColors.Control;
             this.btnSave.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSave.TabIndex = 22;
+            this.btnSave.TabIndex = 3;
             this.btnSave.Values.Text = "Create";
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
@@ -108,7 +110,8 @@
             this.tName.Location = new System.Drawing.Point(93, 89);
             this.tName.Name = "tName";
             this.tName.Size = new System.Drawing.Size(208, 21);
-            this.tName.TabIndex = 21;
+            this.tName.TabIndex = 1;
+            this.tName.TextChanged += new System.EventHandler(this.tName_TextChanged);
             // 
             // label2
             // 
@@ -176,7 +179,8 @@
             this.tDescription.Multiline = true;
             this.tDescription.Name = "tDescription";
             this.tDescription.Size = new System.Drawing.Size(208, 84);
-            this.tDescription.TabIndex = 26;
+            this.tDescription.TabIndex = 2;
+            this.tDescription.TextChanged += new System.EventHandler(this.tDescription_TextChanged);
             // 
             // label3
             // 
@@ -188,11 +192,34 @@
             this.label3.TabIndex = 25;
             this.label3.Text = "Description:";
             // 
+            // tSearch
+            // 
+            this.tSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.tSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tSearch.Location = new System.Drawing.Point(788, 62);
+            this.tSearch.Name = "tSearch";
+            this.tSearch.Size = new System.Drawing.Size(208, 21);
+            this.tSearch.TabIndex = 28;
+            this.tSearch.TextChanged += new System.EventHandler(this.tSearch_TextChanged);
+            // 
+            // label4
+            // 
+            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(733, 65);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(49, 15);
+            this.label4.TabIndex = 27;
+            this.label4.Text = "Search:";
+            // 
             // frmCampus
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1008, 605);
+            this.Controls.Add(this.tSearch);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.tDescription);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.btnDelete);
@@ -224,5 +251,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox tDescription;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox tSearch;
+        private System.Windows.Forms.Label label4;
     }
 }

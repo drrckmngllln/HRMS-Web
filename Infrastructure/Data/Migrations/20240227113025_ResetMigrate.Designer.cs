@@ -10,14 +10,37 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Infrastructure.Data.Migrations
 {
     [DbContext(typeof(StoreContext))]
-    [Migration("20240223142042_LeaveSetupCreate")]
-    partial class LeaveSetupCreate
+    [Migration("20240227113025_ResetMigrate")]
+    partial class ResetMigrate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "7.0.0");
+
+            modelBuilder.Entity("Core.Entities.Settings.AttendanceSetup", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("Category")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("GracePeriod")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("TimeIn")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("TimeOut")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("AttendanceSetups");
+                });
 
             modelBuilder.Entity("Core.Entities.Settings.Campus", b =>
                 {

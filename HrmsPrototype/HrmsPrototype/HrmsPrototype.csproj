@@ -100,6 +100,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Core\Entities\Settings\AttendanceSetup.cs" />
+    <Compile Include="Core\Entities\Settings\AttendanceSetupCategory.cs" />
     <Compile Include="Core\Entities\Settings\Campus.cs" />
     <Compile Include="Core\Entities\Settings\Departments.cs" />
     <Compile Include="Core\Entities\Settings\LeaveSetup.cs" />

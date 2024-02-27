@@ -9,6 +9,7 @@ namespace HrmsPrototype.Core.Entities.Settings
     internal class AttendanceSetup
     {
         public int Id { get; set; }
+        public AttendanceSetupCategory Category { get; set; } = AttendanceSetupCategory.NonTeaching;
         public string TimeIn { get; set; }
         public string TimeOut { get; set; }
         public string GracePeriod { get; set; }

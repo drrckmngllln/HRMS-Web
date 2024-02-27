@@ -78,6 +78,12 @@ namespace HrmsPrototype.Forms.Settings
             await loadRecords();
         }
 
+        private async Task searchRecords(string value)
+        {
+            var search = await _campusRepo.SearchAsync("campus/search?value=" + value);
+            dgv.DataSource = search;
+        }
+
         private void dgv_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             tName.Text = dgv.CurrentRow.Cells["Name"].Value.ToString();
@@ -98,6 +104,30 @@ namespace HrmsPrototype.Forms.Settings
         private async void btnDelete_Click(object sender, EventArgs e)
         {
             await Delete();
+        }
+
+        private void tName_TextChanged(object sender, EventArgs e)
+        {
+            tName.Text = tName.Text.ToUpper();
+            tName.SelectionStart = tName.Text.Length;
+        }
+
+        private void tDescription_TextChanged(object sender, EventArgs e)
+        {
+            tDescription.Text = tDescription.Text.ToUpper();
+            tDescription.SelectionStart = tDescription.Text.Length;
+        }
+
+        private async void tSearch_TextChanged(object sender, EventArgs e)
+        {
+            if (tSearch.Text.Length > 3)
+            {
+                await searchRecords(tSearch.Text);
+            }
+            else if (tSearch.Text.Length == 0)
+            {
+                await loadRecords();
+            }
         }
     }
 }

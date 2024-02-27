@@ -41,22 +41,26 @@
             this.label1 = new System.Windows.Forms.Label();
             this.tGracePeriod = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
+            this.tSearch = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.tCategory = new System.Windows.Forms.ComboBox();
+            this.label6 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
             this.SuspendLayout();
             // 
             // tTimeOut
             // 
             this.tTimeOut.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tTimeOut.Location = new System.Drawing.Point(101, 116);
+            this.tTimeOut.Location = new System.Drawing.Point(101, 143);
             this.tTimeOut.Name = "tTimeOut";
             this.tTimeOut.Size = new System.Drawing.Size(208, 21);
-            this.tTimeOut.TabIndex = 44;
+            this.tTimeOut.TabIndex = 2;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(13, 119);
+            this.label3.Location = new System.Drawing.Point(13, 146);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(60, 15);
             this.label3.TabIndex = 43;
@@ -65,7 +69,7 @@
             // btnDelete
             // 
             this.btnDelete.CornerRoundingRadius = 10F;
-            this.btnDelete.Location = new System.Drawing.Point(110, 240);
+            this.btnDelete.Location = new System.Drawing.Point(110, 267);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(99, 32);
             this.btnDelete.StateCommon.Back.Color1 = System.Drawing.Color.Maroon;
@@ -85,7 +89,7 @@
             // btnClear
             // 
             this.btnClear.CornerRoundingRadius = 10F;
-            this.btnClear.Location = new System.Drawing.Point(161, 202);
+            this.btnClear.Location = new System.Drawing.Point(161, 229);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(99, 32);
             this.btnClear.StateCommon.Back.Color1 = System.Drawing.Color.DarkGreen;
@@ -105,7 +109,7 @@
             // btnSave
             // 
             this.btnSave.CornerRoundingRadius = 10F;
-            this.btnSave.Location = new System.Drawing.Point(56, 202);
+            this.btnSave.Location = new System.Drawing.Point(56, 229);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(99, 32);
             this.btnSave.StateCommon.Back.Color1 = System.Drawing.Color.DarkBlue;
@@ -118,23 +122,23 @@
             this.btnSave.StateCommon.Border.Rounding = 10F;
             this.btnSave.StateCommon.Content.ShortText.Color1 = System.Drawing.SystemColors.Control;
             this.btnSave.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSave.TabIndex = 40;
+            this.btnSave.TabIndex = 4;
             this.btnSave.Values.Text = "Create";
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // tTimeIn
             // 
             this.tTimeIn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tTimeIn.Location = new System.Drawing.Point(101, 89);
+            this.tTimeIn.Location = new System.Drawing.Point(101, 116);
             this.tTimeIn.Name = "tTimeIn";
             this.tTimeIn.Size = new System.Drawing.Size(208, 21);
-            this.tTimeIn.TabIndex = 39;
+            this.tTimeIn.TabIndex = 1;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(13, 92);
+            this.label2.Location = new System.Drawing.Point(13, 119);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(51, 15);
             this.label2.TabIndex = 38;
@@ -192,26 +196,68 @@
             // tGracePeriod
             // 
             this.tGracePeriod.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tGracePeriod.Location = new System.Drawing.Point(101, 143);
+            this.tGracePeriod.Location = new System.Drawing.Point(101, 170);
             this.tGracePeriod.Name = "tGracePeriod";
             this.tGracePeriod.Size = new System.Drawing.Size(208, 21);
-            this.tGracePeriod.TabIndex = 46;
+            this.tGracePeriod.TabIndex = 33;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(13, 146);
+            this.label4.Location = new System.Drawing.Point(13, 173);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(82, 15);
             this.label4.TabIndex = 45;
             this.label4.Text = "Grace Period:";
+            // 
+            // tSearch
+            // 
+            this.tSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.tSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tSearch.Location = new System.Drawing.Point(762, 62);
+            this.tSearch.Name = "tSearch";
+            this.tSearch.Size = new System.Drawing.Size(208, 21);
+            this.tSearch.TabIndex = 46;
+            // 
+            // label5
+            // 
+            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(705, 65);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(49, 15);
+            this.label5.TabIndex = 47;
+            this.label5.Text = "Search:";
+            // 
+            // tCategory
+            // 
+            this.tCategory.FormattingEnabled = true;
+            this.tCategory.Location = new System.Drawing.Point(101, 89);
+            this.tCategory.Name = "tCategory";
+            this.tCategory.Size = new System.Drawing.Size(208, 21);
+            this.tCategory.TabIndex = 48;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(13, 90);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(58, 15);
+            this.label6.TabIndex = 49;
+            this.label6.Text = "Category:";
             // 
             // frmAttendanceSetup
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(982, 536);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.tCategory);
+            this.Controls.Add(this.tSearch);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.tGracePeriod);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.tTimeOut);
@@ -247,5 +293,9 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox tGracePeriod;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox tSearch;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.ComboBox tCategory;
+        private System.Windows.Forms.Label label6;
     }
 }

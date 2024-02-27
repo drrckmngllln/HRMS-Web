@@ -35,7 +35,6 @@
             this.btnTransaction = new System.Windows.Forms.Button();
             this.panelLibrary = new System.Windows.Forms.Panel();
             this.btnUserManagement = new System.Windows.Forms.Button();
-            this.btnAccessLevels = new System.Windows.Forms.Button();
             this.btnAttendanceSetup = new System.Windows.Forms.Button();
             this.btnLeaveSetup = new System.Windows.Forms.Button();
             this.btnCampus = new System.Windows.Forms.Button();
@@ -46,8 +45,8 @@
             this.tLogout = new System.Windows.Forms.Label();
             this.tAccessLevel = new System.Windows.Forms.Label();
             this.tUsername = new System.Windows.Forms.Label();
-            this.panelTask = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.panelTask = new System.Windows.Forms.Panel();
             this.panelSidebar.SuspendLayout();
             this.panelMenu.SuspendLayout();
             this.panelTransaction.SuspendLayout();
@@ -84,7 +83,7 @@
             // 
             this.panelTransaction.Controls.Add(this.button1);
             this.panelTransaction.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelTransaction.Location = new System.Drawing.Point(0, 361);
+            this.panelTransaction.Location = new System.Drawing.Point(0, 325);
             this.panelTransaction.Name = "panelTransaction";
             this.panelTransaction.Size = new System.Drawing.Size(246, 117);
             this.panelTransaction.TabIndex = 3;
@@ -102,7 +101,7 @@
             this.button1.Padding = new System.Windows.Forms.Padding(55, 0, 0, 0);
             this.button1.Size = new System.Drawing.Size(246, 35);
             this.button1.TabIndex = 1;
-            this.button1.Text = "Transaction 1";
+            this.button1.Text = "Employees";
             this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button1.UseVisualStyleBackColor = true;
             // 
@@ -113,7 +112,7 @@
             this.btnTransaction.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnTransaction.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnTransaction.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnTransaction.Location = new System.Drawing.Point(0, 314);
+            this.btnTransaction.Location = new System.Drawing.Point(0, 278);
             this.btnTransaction.Name = "btnTransaction";
             this.btnTransaction.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
             this.btnTransaction.Size = new System.Drawing.Size(246, 47);
@@ -126,7 +125,6 @@
             // panelLibrary
             // 
             this.panelLibrary.Controls.Add(this.btnUserManagement);
-            this.panelLibrary.Controls.Add(this.btnAccessLevels);
             this.panelLibrary.Controls.Add(this.btnAttendanceSetup);
             this.panelLibrary.Controls.Add(this.btnLeaveSetup);
             this.panelLibrary.Controls.Add(this.btnCampus);
@@ -135,7 +133,7 @@
             this.panelLibrary.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelLibrary.Location = new System.Drawing.Point(0, 47);
             this.panelLibrary.Name = "panelLibrary";
-            this.panelLibrary.Size = new System.Drawing.Size(246, 267);
+            this.panelLibrary.Size = new System.Drawing.Size(246, 231);
             this.panelLibrary.TabIndex = 1;
             this.panelLibrary.Visible = false;
             // 
@@ -146,7 +144,7 @@
             this.btnUserManagement.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnUserManagement.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnUserManagement.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnUserManagement.Location = new System.Drawing.Point(0, 210);
+            this.btnUserManagement.Location = new System.Drawing.Point(0, 175);
             this.btnUserManagement.Name = "btnUserManagement";
             this.btnUserManagement.Padding = new System.Windows.Forms.Padding(55, 0, 0, 0);
             this.btnUserManagement.Size = new System.Drawing.Size(246, 35);
@@ -154,22 +152,6 @@
             this.btnUserManagement.Text = "User Management";
             this.btnUserManagement.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnUserManagement.UseVisualStyleBackColor = true;
-            // 
-            // btnAccessLevels
-            // 
-            this.btnAccessLevels.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnAccessLevels.FlatAppearance.BorderSize = 0;
-            this.btnAccessLevels.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAccessLevels.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAccessLevels.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnAccessLevels.Location = new System.Drawing.Point(0, 175);
-            this.btnAccessLevels.Name = "btnAccessLevels";
-            this.btnAccessLevels.Padding = new System.Windows.Forms.Padding(55, 0, 0, 0);
-            this.btnAccessLevels.Size = new System.Drawing.Size(246, 35);
-            this.btnAccessLevels.TabIndex = 6;
-            this.btnAccessLevels.Text = "Access Levels";
-            this.btnAccessLevels.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAccessLevels.UseVisualStyleBackColor = true;
             // 
             // btnAttendanceSetup
             // 
@@ -319,16 +301,6 @@
             this.tUsername.Text = "Username";
             this.tUsername.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // panelTask
-            // 
-            this.panelTask.BackgroundImage = global::HrmsPrototype.Properties.Resources.Untitled_design;
-            this.panelTask.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.panelTask.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelTask.Location = new System.Drawing.Point(246, 0);
-            this.panelTask.Name = "panelTask";
-            this.panelTask.Size = new System.Drawing.Size(1041, 767);
-            this.panelTask.TabIndex = 1;
-            // 
             // pictureBox1
             // 
             this.pictureBox1.Image = global::HrmsPrototype.Properties.Resources.Untitled_design;
@@ -338,6 +310,16 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
+            // 
+            // panelTask
+            // 
+            this.panelTask.BackgroundImage = global::HrmsPrototype.Properties.Resources.Untitled_design;
+            this.panelTask.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.panelTask.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelTask.Location = new System.Drawing.Point(246, 0);
+            this.panelTask.Name = "panelTask";
+            this.panelTask.Size = new System.Drawing.Size(1041, 767);
+            this.panelTask.TabIndex = 1;
             // 
             // frmMain
             // 
@@ -418,6 +400,5 @@
         private System.Windows.Forms.Button btnLeaveSetup;
         private System.Windows.Forms.Button btnAttendanceSetup;
         private System.Windows.Forms.Button btnUserManagement;
-        private System.Windows.Forms.Button btnAccessLevels;
     }
 }

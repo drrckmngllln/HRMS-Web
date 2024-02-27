@@ -43,31 +43,48 @@ namespace HrmsPrototype.Forms.Settings
 
         private async Task AddEdit()
         {
-            if (btnSave.Text == "Create")
+            try
             {
-                var leave = new LeaveSetup
+                if (btnSave.Text == "Create")
                 {
-                    Type = tType.Text,
-                    Credits = Convert.ToInt32(tCredit.Text)
-                };
-                await _leaveRepo.AddAsync(leave, "leavesetup/create");
-                new Toastr("Success", "Leave add success");
-                await loadRecords();
-                txtClear();
+                    var leave = new LeaveSetup
+                    {
+                        Type = tType.Text,
+                        Credits = Convert.ToInt32(tCredit.Text)
+                    };
+                    await _leaveRepo.AddAsync(leave, "leavesetup/create");
+                    new Toastr("Success", "Leave add success");
+                    await loadRecords();
+                    txtClear();
+                }
+                else if (btnSave.Text == "Update")
+                {
+                    var leave = new LeaveSetup
+                    {
+                        Id = Convert.ToInt32(dgv.CurrentRow.Cells["Id"].Value),
+                        Type = tType.Text,
+                        Credits = Convert.ToInt32(tCredit.Text)
+                    };
+                    await _leaveRepo.UpdateAsync(leave, "leavesetup/update");
+                    new Toastr("Information", "Leave update success");
+                    await loadRecords();
+                    txtClear();
+                }
             }
-            else if (btnSave.Text == "Update")
+            catch (Exception ex)
             {
-                var leave = new LeaveSetup
-                {
-                    Id = Convert.ToInt32(dgv.CurrentRow.Cells["Id"].Value),
-                    Type = tType.Text,
-                    Credits = Convert.ToInt32(tCredit.Text)
-                };
-                await _leaveRepo.UpdateAsync(leave, "leavesetup/update");
-                new Toastr("Information", "Leave update success");
-                await loadRecords();
-                txtClear();
+                new Toastr("Warning", ex.Message);
+                tType.Clear();
+                tCredit.Clear();
+                tType.Select();
             }
+            
+        }
+
+        private async Task searchRecords(string value)
+        {
+            var search = await _leaveRepo.SearchAsync("leavesetup/search?value=" +  value);
+            dgv.DataSource = search;
         }
 
         private async Task Delete()
@@ -102,6 +119,30 @@ namespace HrmsPrototype.Forms.Settings
             tType.Text = dgv.CurrentRow.Cells["Type"].Value.ToString();
             tCredit.Text = dgv.CurrentRow.Cells["Credits"].Value.ToString();
             btnSave.Text = "Update";
+        }
+
+        private void tType_TextChanged(object sender, EventArgs e)
+        {
+            tType.Text = tType.Text.ToUpper();
+            tType.SelectionStart = tType.Text.Length;
+        }
+
+        private void tCredit_TextChanged(object sender, EventArgs e)
+        {
+            tType.Text = tType.Text.ToUpper();
+            tType.SelectionStart = tType.Text.Length;
+        }
+
+        private async void tSearch_TextChanged(object sender, EventArgs e)
+        {
+            if (tSearch.Text.Length > 3)
+            {
+                await searchRecords(tSearch.Text);
+            }
+            else if (tSearch.Text.Length == 0)
+            {
+                await loadRecords();
+            }
         }
     }
 }

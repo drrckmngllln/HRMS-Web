@@ -1,12 +1,14 @@
 ﻿using HrmsPrototype.Core.Entities.Settings;
 using HrmsPrototype.Core.Notifications;
 using HrmsPrototype.Infrastructure.Repositories;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net.Http;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,6 +19,8 @@ namespace HrmsPrototype.Forms.Settings
     public partial class frmAttendanceSetup : Form
     {
         GenericRepository<AttendanceSetup> _attendanceSetupRepo = new GenericRepository<AttendanceSetup>();
+
+        
         public frmAttendanceSetup()
         {
             InitializeComponent();
@@ -25,50 +29,33 @@ namespace HrmsPrototype.Forms.Settings
         private async void frmAttendanceSetup_Load(object sender, EventArgs e)
         {
             await loadRecords();
+            loadCategory();
         }
 
         private async Task loadRecords()
         {
-            var setups = await _attendanceSetupRepo.GetAllAsync("attendancesetup");
-            //dgv.DataSource = setups;
-            //dgv.Columns["Id"].Visible = false;
-            //dgv.Columns["TimeIn"].HeaderText = "Time In";
-            //dgv.Columns["TimeOut"].HeaderText = "Time Out";
-            //dgv.Columns["GracePeriod"].HeaderText = "Grace Period";
-
-            dgv.Columns.Add("TimeIn", "Time In");
-            dgv.Columns.Add("TimeOut", "Time Out");
-            dgv.Columns.Add("GracePeriod", "Grace Period");
-            dgv.Columns.Add("Actions", "Actions");
-
-
-
-            foreach (var setup in setups)
-            {
-                dgv.Rows.Add(setup.TimeIn, setup.TimeOut, setup.GracePeriod);
-                AddRow(1, setup.TimeIn);
-            }
-            if (dgv.Rows.Count > 0)
-            {
-                btnSave.Enabled = false;
-            }
+            var attendance = await _attendanceSetupRepo.GetAllAsync("attendancesetup");
+            dgv.DataSource = attendance;
+            dgv.Columns["Id"].Visible = false;
+            dgv.Columns["Category"].HeaderText = "Category";
+            dgv.Columns["TimeIn"].HeaderText = "Time In";
+            dgv.Columns["TimeOut"].HeaderText = "Time Out";
         }
 
-        private void AddRow(int id, string name)
+        private void loadCategory()
         {
-            int rowIndex = dgv.Rows.Add(id, name, "Actions");
-
-            var editCell = new DataGridViewButtonCell();
-            dgv.Rows[rowIndex].Cells["Actions"] = editCell;
-            dgv.Rows[rowIndex].Cells["Actions"].Value = "Edit";
+            tCategory.DataSource = Enum.GetValues(typeof(AttendanceSetupCategory));
+            //tCategory.ValueMember = "Text";
+            //tCategory.DisplayMember = "Value";
         }
-
+        
         private async Task addEdit()
         {
             if (btnSave.Text == "Create")
             {
                 var setup = new AttendanceSetup
                 {
+                    Category = (AttendanceSetupCategory)tCategory.SelectedItem,
                     TimeIn = tTimeIn.Text,
                     TimeOut = tTimeOut.Text,
                     GracePeriod = tGracePeriod.Text
@@ -83,6 +70,7 @@ namespace HrmsPrototype.Forms.Settings
                 var setup = new AttendanceSetup
                 {
                     Id = Convert.ToInt32(dgv.CurrentRow.Cells["Id"].Value),
+                    Category = (AttendanceSetupCategory)tCategory.SelectedItem,
                     TimeIn = tTimeIn.Text,
                     TimeOut = tTimeOut.Text,
                     GracePeriod = tGracePeriod.Text

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Core.Entities.Settings;
+using Core.Interfaces;
 using Infrastructure.Data;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -11,16 +12,25 @@ namespace API.Controllers.Settings
 {
     public class CampusController : BaseApiController
     {
-        private readonly StoreContext _context;
-        public CampusController(StoreContext context)
+        private readonly ISettingsService<Campus> _campusRepo;
+        public CampusController(ISettingsService<Campus> campusRepo)
         {
-            _context = context;
+            _campusRepo = campusRepo;
+            
         }
 
         [HttpGet]
         public async Task<IReadOnlyList<Campus>> GetCampusesAsync()
         {
-            return await _context.Campuses.ToListAsync();
+            return await _campusRepo.GetAllAsync();
+        }
+
+        [HttpGet("search")]
+        public async Task<IReadOnlyList<Campus>> GetCampusesBySearchAsync([FromQuery]string value)
+        {
+            var entities = await _campusRepo.GetAllAsync();
+            var search = entities.Where(x => x.Name.ToLower().Contains(value) || x.Description.ToLower().Contains(value)).ToList();
+            return search;
         }
 
         [HttpPost("create")]
@@ -31,14 +41,9 @@ namespace API.Controllers.Settings
                 Name = entity.Name,
                 Description = entity.Description
             };
-            await _context.Campuses.AddAsync(campus);
-            await _context.SaveChangesAsync();
+            await _campusRepo.AddAsync(campus);
 
-            return new Campus
-            {
-                Name = campus.Name,
-                Description = campus.Description
-            };
+            return Ok(campus);
         }
 
         [HttpPut("update")]
@@ -53,29 +58,24 @@ namespace API.Controllers.Settings
 
             if (campus != null)
             {
-                _context.Campuses.Update(campus);
-                await _context.SaveChangesAsync();
-
-                return NoContent();
+                await _campusRepo.UpdateAsync(campus);
+                return Ok(campus);
             }
 
             return BadRequest();
         }
 
         [HttpDelete("{id}")]
-        public async Task<ActionResult<Campus>> DeleteCampusAsync(int id)
+        public async Task<ActionResult<Campus>> DeleteCampusAsync(Campus campus)
         {
-            var campus = await _context.Campuses.FindAsync(id);
-            if (campus != null)
+            var item = new Campus
             {
-                _context.Campuses.Remove(campus);
-                await _context.SaveChangesAsync();
-
-                return new Campus
-                {
-                    Name = campus.Name,
-                    Description = campus.Description
-                };
+                Id = campus.Id
+            };
+            if (item != null)
+            {
+                await _campusRepo.DeleteAsync(item.Id);
+                return Ok(item);
             }
 
             return BadRequest();

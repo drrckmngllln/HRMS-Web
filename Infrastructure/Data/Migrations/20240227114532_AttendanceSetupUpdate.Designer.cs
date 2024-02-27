@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Infrastructure.Data.Migrations
 {
     [DbContext(typeof(StoreContext))]
-    [Migration("20240223154220_AttendanceSetupCreate")]
-    partial class AttendanceSetupCreate
+    [Migration("20240227114532_AttendanceSetupUpdate")]
+    partial class AttendanceSetupUpdate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -23,6 +23,9 @@ namespace Infrastructure.Data.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("Category")
                         .HasColumnType("INTEGER");
 
                     b.Property<int>("GracePeriod")

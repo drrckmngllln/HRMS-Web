@@ -28,6 +28,8 @@ namespace API.Controllers.Settings
         {
             var attendance = new AttendanceSetup
             {
+                
+                Category = entity.Category,
                 TimeIn = entity.TimeIn,
                 TimeOut = entity.TimeOut,
                 GracePeriod = entity.GracePeriod
@@ -35,13 +37,7 @@ namespace API.Controllers.Settings
             await _context.AttendanceSetups.AddAsync(attendance);
             await _context.SaveChangesAsync();
 
-            return new AttendanceSetup
-            {
-                Id = attendance.Id,
-                TimeIn = attendance.TimeIn,
-                TimeOut = attendance.TimeOut,
-                GracePeriod = attendance.GracePeriod
-            };
+            return Ok(attendance);
         }
 
         [HttpPut("update")]
@@ -60,13 +56,7 @@ namespace API.Controllers.Settings
                 _context.AttendanceSetups.Update(attendance);
                 await _context.SaveChangesAsync();
 
-                return new AttendanceSetup
-                {
-                    Id = attendance.Id,
-                    TimeIn = attendance.TimeIn,
-                    TimeOut = attendance.TimeOut,
-                    GracePeriod = attendance.GracePeriod
-                };
+                return Ok(attendance);
             }
 
             return BadRequest();
