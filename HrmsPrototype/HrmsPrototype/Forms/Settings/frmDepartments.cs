@@ -68,6 +68,12 @@ namespace HrmsPrototype.Forms.Settings
             await loadRecords();
         }
 
+        private async Task SearchRecords(string search)
+        {
+            var items = await _departmentRepo.SearchAsync("departments/search?value=" + search);
+            dgv.DataSource = items;
+        }
+
         private void txtClear()
         {
             tName.Clear();
@@ -94,6 +100,25 @@ namespace HrmsPrototype.Forms.Settings
         private async void btnDelete_Click(object sender, EventArgs e)
         {
             await Delete();
+        }
+
+        private async void tSearch_TextChanged(object sender, EventArgs e)
+        {
+            if (tSearch.Text.Length > 2)
+            {
+                await SearchRecords(tSearch.Text);
+            }
+            else if (tSearch.Text.Length == 0)
+            {
+                await loadRecords();
+            }
+        }
+
+        private void tName_TextChanged(object sender, EventArgs e)
+        {
+            tName.Text = tName.Text.ToUpper();
+            tName.SelectionStart = tName.Text.Length;
+            tName.SelectionLength = 0;
         }
     }
 }

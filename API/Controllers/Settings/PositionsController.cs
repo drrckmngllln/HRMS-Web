@@ -1,4 +1,5 @@
 using Core.Entities.Settings;
+using Core.Interfaces;
 using Infrastructure.Data;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -7,33 +8,41 @@ namespace API.Controllers.Settings
 {
     public class PositionsController : BaseApiController
     {
-        private readonly StoreContext _context;
-        public PositionsController(StoreContext context)
+        private readonly ISettingsService<Positions> _positionRepo;
+        public PositionsController(ISettingsService<Positions> positionRepo)
         {
-            _context = context;
-
+            _positionRepo = positionRepo;
+            
         }
         
         [HttpGet]
         public async Task<IReadOnlyList<Positions>> GetPositionsAsync()
         {
-            return await _context.Positions.ToListAsync();
+            return await _positionRepo.GetAllAsync();
         }
 
+        [HttpGet("search")]
+        public async Task<IReadOnlyList<Positions>> GetPositionsBySearch([FromQuery]string value)
+        {
+            var positions = await _positionRepo.GetAllAsync();
+            var item = positions.Where(x => x.Name.ToLower().Contains(value)).ToList();
+            return item;
+        }
+
+
         [HttpPost("create")]
-        public async Task<List<Positions>> AddPositionAsync(Positions positions)
+        public async Task<ActionResult<Positions>> AddPositionAsync(Positions positions)
         {
             var position = new Positions
             {
                 Name = positions.Name
             };
-            await _context.Positions.AddAsync(position);
-            await _context.SaveChangesAsync();
-            return await _context.Positions.ToListAsync();
+            await _positionRepo.AddAsync(position);
+            return Ok(position);
         }
 
         [HttpPut("update")]
-        public async Task<List<Positions>> UpdatePositionsAsync(Positions positions)
+        public async Task<ActionResult<Positions>> UpdatePositionsAsync(Positions positions)
         {
             var position = new Positions
             {
@@ -42,21 +51,28 @@ namespace API.Controllers.Settings
             };
             if (position != null)
             {
-                _context.Positions.Update(position);
-                await _context.SaveChangesAsync();
-                return await _context.Positions.ToListAsync();
+                await _positionRepo.UpdateAsync(position);
+
+                return Ok(position);
             }
-            return null;
+
+            return BadRequest();
         }
 
         [HttpDelete("{id}")]
-        public async Task<List<Positions>> DeletePositionAsync(int id)
+        public async Task<ActionResult<Positions>> DeletePositionAsync(int id, Positions position)
         {
-            var positionId = await _context.Positions.FindAsync(id);
-            _context.Positions.Remove(positionId);
-            await _context.SaveChangesAsync();
+            var item = new Positions
+            {
+                Id = position.Id
+            };
+            if (item != null)
+            {
+                await _positionRepo.DeleteAsync(id);
+                return NoContent();
+            }
 
-            return await _context.Positions.ToListAsync();
+            return BadRequest();
         }
     }
 }

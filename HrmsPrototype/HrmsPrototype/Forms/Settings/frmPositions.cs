@@ -33,6 +33,12 @@ namespace HrmsPrototype.Forms.Settings
             dgv.Columns["Id"].Visible = false;
         }
 
+        private async Task searchRecords(string value)
+        {
+            var search = await _positionRepo.SearchAsync("positions/search?value=" + value);
+            dgv.DataSource = search;
+        }
+
         private async Task AddEdit()
         {
             if (btnSave.Text == "Create")
@@ -97,6 +103,24 @@ namespace HrmsPrototype.Forms.Settings
         private void btnClear_Click(object sender, EventArgs e)
         {
             txtClear();
+        }
+
+        private async void tSearch_TextChanged(object sender, EventArgs e)
+        {
+            if (tSearch.Text.Length > 2)
+            {
+                await searchRecords(tSearch.Text);
+            }
+            else if (tSearch.Text.Length == 0)
+            {
+                await loadRecords();
+            }
+        }
+
+        private void tName_TextChanged(object sender, EventArgs e)
+        {
+            tName.Text = tName.Text.ToUpper();
+            tName.SelectionStart = tName.Text.Length;
         }
     }
 }

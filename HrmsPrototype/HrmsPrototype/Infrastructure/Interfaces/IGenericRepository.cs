@@ -12,5 +12,6 @@ namespace HrmsPrototype.Infrastructure.Interfaces
         Task AddAsync(T entity, string url);
         Task UpdateAsync(T entity, string url);
         Task DeleteAsync(string url);
+        Task<IReadOnlyList<T>> SearchAsync(string value);
     }
 }
