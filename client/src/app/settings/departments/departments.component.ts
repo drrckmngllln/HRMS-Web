@@ -1,27 +1,24 @@
-import { Component, OnInit } from '@angular/core';
-import { DepartmentsService } from './departments.service';
-import { Departments } from 'src/app/core/models/departments';
+import {Component, OnInit} from '@angular/core';
+import {Departments} from "../../core/models/departments";
+import {DepartmentsService} from "./departments.service";
 
 @Component({
   selector: 'app-departments',
   templateUrl: './departments.component.html',
   styleUrls: ['./departments.component.scss']
 })
-export class DepartmentsComponent implements OnInit {
-
+export class DepartmentsComponent implements OnInit{
   departments: Departments[] = [];
 
-  constructor(private departmentService: DepartmentsService) { }
-
+  constructor(private departmentService: DepartmentsService) {
+  }
   ngOnInit(): void {
     this.getDepartments();
   }
 
-  getDepartments() {
-    this.departmentService.getDepartments().subscribe({
-      next: response => this.departments = response
-      // next: response => console.log(response)
-      
+  getDepartments(){
+    this.departmentService.loadRecords().subscribe({
+      next: result => this.departments = result
     })
   }
 

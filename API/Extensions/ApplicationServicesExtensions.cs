@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Core.Interfaces;
 using Infrastructure.Data;
+using Infrastructure.Data.Repositories;
 using Infrastructure.Data.Services;
 using Microsoft.EntityFrameworkCore;
 
@@ -17,6 +18,10 @@ namespace API.Extensions
             services.AddSwaggerGen();
 
             services.AddScoped(typeof(ISettingsService<>), typeof(SettingsService<>));
+
+            services.AddScoped<IEmployeeRepository, EmployeeRepository>();
+
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
             services.AddDbContext<StoreContext>(opt =>
             {

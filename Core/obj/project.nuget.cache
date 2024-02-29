@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "l0Grh95J5mD7FcxbD2afqA29Gzw8uE76vuihZVpQ0sK3Njo56xEXDKkV8vDD40c04uewtmyL2po5nSSspQu1cg==",
+  "dgSpecHash": "OQmId5nV0LHiH5XTlAbMiVYq/jHXHaaGY9uUMhNnLLZVF4f/ztMvUMSnaMM1inaggi7dTxR+mkBRpHlmWiUEqw==",
   "success": true,
   "projectFilePath": "C:\\Users\\drrckmngllln\\Documents\\GitHub\\HRMS-Web\\Core\\Core.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\drrckmngllln\\.nuget\\packages\\automapper\\13.0.1\\automapper.13.0.1.nupkg.sha512",
     "C:\\Users\\drrckmngllln\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\drrckmngllln\\.nuget\\packages\\microsoft.data.sqlite.core\\7.0.0\\microsoft.data.sqlite.core.7.0.0.nupkg.sha512",
     "C:\\Users\\drrckmngllln\\.nuget\\packages\\microsoft.entityframeworkcore\\7.0.0\\microsoft.entityframeworkcore.7.0.0.nupkg.sha512",

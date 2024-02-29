@@ -1,26 +1,15 @@
-import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { Departments } from 'src/app/core/models/departments';
+import {Injectable, OnInit} from '@angular/core';
+import {HttpClient} from "@angular/common/http";
+import {Departments} from "../../core/models/departments";
+import {environment} from "../../../environments/environment";
 
 @Injectable({
   providedIn: 'root'
 })
-export class DepartmentsService {
-  baseUrl = 'https://localhost:5001/api/'
-
-  constructor(private http: HttpClient) { }
-
-  getDepartments() {
-    return this.http.get<Departments[]>(this.baseUrl + 'departments/');
-  }
-
-  createDepartments(department: Departments) {
-    return this.http.post<Departments>(this.baseUrl + 'create', department);
-  }
-
-  mapDepartment(items: Departments) {
-    return {
-      name: items.name
-    }
+export class DepartmentsService{
+  baseApi = environment.apiUrl;
+  constructor(private http:HttpClient) { }
+  loadRecords(){
+    return this.http.get<Departments[]>(this.baseApi + 'departments')
   }
 }
