@@ -1,5 +1,6 @@
 using API.Dtos;
 using AutoMapper;
+using Core.Entities.Transactions.AttendanceEntity;
 using Core.Entities.Transactions.EmployeeEntity;
 
 namespace API.Helpers
@@ -10,8 +11,12 @@ namespace API.Helpers
         {
             CreateMap<Employee, EmployeeDto>()
                 .ForMember(m => m.Department, o => o.MapFrom(d => d.Department.Name))
-                .ForMember(m => m.Position, o => o.MapFrom(p => p.Position.Name))
-                .ReverseMap();
+                .ForMember(m => m.Position, o => o.MapFrom(p => p.Position.Name));
+
+            //Attendances
+            CreateMap<Attendance, AttendanceDto>()
+                .ForPath(m => m.Employee, o => o.MapFrom(d => d.Employee.FullName))
+                .ForMember(m => m.Position, o => o.MapFrom(d => d.Employee.Position));
         }
     }
 }

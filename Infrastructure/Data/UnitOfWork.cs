@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Formats.Tar;
 using System.Linq;
 using System.Threading.Tasks;
 using Core.Entities;
@@ -28,22 +29,22 @@ namespace Infrastructure.Data
             _context.Dispose();
         }
 
-        public IGenericRepository<T> Repository<T>() where T : BaseEntity
+        public IGenericRepository<TEntity> Repository<TEntity>() where TEntity : BaseEntity
         {
             if (_repositories == null) _repositories = new Hashtable();
 
-            var type = typeof(T).Name;
+            var type = typeof(TEntity).Name;
 
             if (!_repositories.ContainsKey(type))
             {
                 var repositoryType = typeof(GenericRepository<>);
 
-                var repositoryInstance = Activator.CreateInstance(repositoryType.MakeGenericType(typeof(T)), _context);
+                var repositoryInstance = Activator.CreateInstance(repositoryType.MakeGenericType(typeof(TEntity)), _context);
 
                 _repositories.Add(type, repositoryInstance);
             }
 
-            return (IGenericRepository<T>) _repositories[type];
+            return (IGenericRepository<TEntity>) _repositories[type];
         }
     }
 }
