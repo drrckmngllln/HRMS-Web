@@ -1,7 +1,4 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using Core.Entities.Transactions.EmployeeEntity;
 
 namespace API.Dtos
 {
@@ -17,6 +14,6 @@ namespace API.Dtos
         public string Position { get; set; }
         public string ContractStart { get; set; }
         public string ContractEnd { get; set; }
-        public string Status { get; set; }
+        public EmployeeStatus Status { get; set; }
     }
 }

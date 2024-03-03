@@ -1,3 +1,4 @@
+using AutoMapper;
 using Core.Entities.Settings;
 using Core.Interfaces;
 using Core.Specifications;
@@ -8,17 +9,20 @@ namespace API.Controllers.Settings
     public class DepartmentsController : BaseApiController
     {
         private readonly IUnitOfWork _unitOfWork;
+        private readonly IMapper _mapper;
 
-        public DepartmentsController(IUnitOfWork unitOfWork)
+        public DepartmentsController(IUnitOfWork unitOfWork, IMapper mapper)
         {
             _unitOfWork = unitOfWork;
+            _mapper = mapper;
         }
 
         [HttpGet]
         public async Task<IReadOnlyList<Department>> GetDepartmentsAsync([FromQuery] string search)
         {
             var spec = new DepartmentsSpecifications(search);
-            return await _unitOfWork.Repository<Department>().ListAsync(spec);
+            var data = await _unitOfWork.Repository<Department>().ListAsync(spec);
+            return data;
         }
 
         [HttpPost("create")]

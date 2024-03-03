@@ -1,72 +1,47 @@
 using Core.Entities.Settings;
 using Core.Interfaces;
+using Core.Specifications;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers.Settings
 {
     public class LeaveSetupController : BaseApiController
     {
-        private readonly ISettingsService<LeaveSetup> _leaveSetupRepo;
-        public LeaveSetupController(ISettingsService<LeaveSetup> leaveSetupRepo)
+        private readonly IUnitOfWork _unitOfWork;
+        public LeaveSetupController(IUnitOfWork unitOfWork)
         {
-            _leaveSetupRepo = leaveSetupRepo;
+            _unitOfWork = unitOfWork;
         }
         [HttpGet]
-        public async Task<IReadOnlyList<LeaveSetup>> GetLeaveSetupsAsync()
+        public async Task<ActionResult<IReadOnlyList<LeaveSetup>>> GetLeaveSetupsAsync([FromQuery] string search)
         {
-            return await _leaveSetupRepo.GetAllAsync();
-        }
-
-        [HttpGet("search")]
-        public async Task<IReadOnlyList<LeaveSetup>> GetLeaveSetupsBySearchAsync([FromQuery] string value)
-        {
-            var entities = await _leaveSetupRepo.GetAllAsync();
-            var search = entities.Where(x => x.Type.ToLower().Contains(value)).ToList();
-
-            return search;
+            var spec = new LeaveSetupSpecifications(search);
+            var leaveSetup = await _unitOfWork.Repository<LeaveSetup>().ListAsync(spec);
+            return Ok(leaveSetup);
         }
 
         [HttpPost("create")]
         public async Task<ActionResult<LeaveSetup>> AddLeaveAsync(LeaveSetup leaveSetup)
         {
-            var leave = new LeaveSetup
-            {
-                Type = leaveSetup.Type,
-                Credits = leaveSetup.Credits
-            };
-            await _leaveSetupRepo.AddAsync(leave);
-
-            return Ok(leave);
+            _unitOfWork.Repository<LeaveSetup>().Add(leaveSetup);
+            await _unitOfWork.Complete();
+            return Ok();
         }
 
         [HttpPut("update")]
         public async Task<ActionResult<LeaveSetup>> UpdateLeaveAsync(LeaveSetup entity)
         {
-            var leave = new LeaveSetup
-            {
-                Id = entity.Id,
-                Type = entity.Type,
-                Credits = entity.Credits
-            };
-            if (leave != null)
-            {
-                await _leaveSetupRepo.UpdateAsync(leave);
-                return Ok(leave);
-            }
-            return BadRequest();
+            _unitOfWork.Repository<LeaveSetup>().Update(entity);
+            await _unitOfWork.Complete();
+            return Ok();
         }
 
         [HttpDelete("{id}")]
         public async Task<ActionResult<LeaveSetup>> DeleteAsync(LeaveSetup leaveSetup)
         {
-            var leave = new LeaveSetup{ Id = leaveSetup.Id };        
-            if (leave != null)
-            {
-                await _leaveSetupRepo.DeleteAsync(leave.Id);
-                return Ok(leave);
-            }
-
-            return BadRequest();
+            _unitOfWork.Repository<LeaveSetup>().Delete(leaveSetup);
+            await _unitOfWork.Complete();
+            return Ok();
         }
     }
 }

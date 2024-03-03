@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Core.Entities.Settings;
+using Core.Interfaces;
 using Infrastructure.Data;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -11,76 +12,41 @@ namespace API.Controllers.Settings
 {
     public class AttendanceSetupController : BaseApiController
     {
-        private readonly StoreContext _context;
-        public AttendanceSetupController(StoreContext context)
+        private readonly IUnitOfWork _unitOfWork;
+
+        public AttendanceSetupController(IUnitOfWork unitOfWork)
         {
-            _context = context;
+            _unitOfWork = unitOfWork;
         }
 
         [HttpGet]
         public async Task<IReadOnlyList<AttendanceSetup>> GetAttendanceSetupsAsync()
         {
-            return await _context.AttendanceSetups.ToListAsync();
+            return await _unitOfWork.Repository<AttendanceSetup>().ListAllAsync();
         }
 
         [HttpPost("create")]
         public async Task<ActionResult<AttendanceSetup>> AddAsync(AttendanceSetup entity)
         {
-            var attendance = new AttendanceSetup
-            {
-                
-                Category = entity.Category,
-                TimeIn = entity.TimeIn,
-                TimeOut = entity.TimeOut,
-                GracePeriod = entity.GracePeriod
-            };
-            await _context.AttendanceSetups.AddAsync(attendance);
-            await _context.SaveChangesAsync();
-
-            return Ok(attendance);
+            _unitOfWork.Repository<AttendanceSetup>().Add(entity);
+            await _unitOfWork.Complete();
+            return NoContent();
         }
 
         [HttpPut("update")]
         public async Task<ActionResult<AttendanceSetup>> UpdateAsync(AttendanceSetup entity)
         {
-            var attendance = new AttendanceSetup
-            {
-                Id = entity.Id,
-                TimeIn = entity.TimeIn,
-                TimeOut = entity.TimeOut,
-                GracePeriod = entity.GracePeriod
-            };
-            
-            if (attendance != null)
-            {
-                _context.AttendanceSetups.Update(attendance);
-                await _context.SaveChangesAsync();
-
-                return Ok(attendance);
-            }
-
-            return BadRequest();
+            _unitOfWork.Repository<AttendanceSetup>().Add(entity);
+            await _unitOfWork.Complete();
+            return NoContent();
         }
 
         [HttpDelete("{id}")]
-        public async Task<ActionResult<AttendanceSetup>> DeleteAsync(int id)
+        public async Task<ActionResult<AttendanceSetup>> DeleteAsync(AttendanceSetup entity)
         {
-            var attendance = await _context.AttendanceSetups.FindAsync(id);
-            if (attendance != null)
-            {
-                _context.AttendanceSetups.Remove(attendance);
-                await _context.SaveChangesAsync();
-
-                return new AttendanceSetup
-                {
-                    Id = attendance.Id,
-                    TimeIn = attendance.TimeIn,
-                    TimeOut = attendance.TimeOut,
-                    GracePeriod = attendance.GracePeriod
-                };
-            }
-
-            return BadRequest();
+            _unitOfWork.Repository<AttendanceSetup>().Delete(entity);
+            await _unitOfWork.Complete();
+            return NoContent();
         }
     }
 }
