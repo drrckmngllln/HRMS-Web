@@ -30,7 +30,7 @@ namespace API.Controllers.Transactions
 
             var data = _mapper.Map<IReadOnlyList<AttendanceDto>>(attendances);
 
-            return Ok(lists);
+            return Ok(data);
         }
 
         [HttpGet("{id}")]
@@ -41,26 +41,6 @@ namespace API.Controllers.Transactions
             return Ok(attendances);
         }
 
-        [HttpPost("create")]
-        public async Task<ActionResult<AttendanceDto>> CreateAsync(Attendance attendance, int empId)
-        {
-            var empSpec = new EmployeesWithRelationshipSpecifications(empId);
-            var employee = await _unitOfWork.Repository<Employee>().GetEntityWithSpec(empSpec);
-
-            var attendanceNew = new Attendance
-            {
-                TimeIn = attendance.TimeIn,
-                TimeInRemarks = attendance.TimeInRemarks,
-                TimeOut = attendance.TimeOut,
-                TimeOutRemarks = attendance.TimeOutRemarks,
-                EmployeeId = employee.Id
-            };
-
-            _unitOfWork.Repository<Attendance>().Add(attendanceNew);
-            await _unitOfWork.Complete();
-
-            return Ok(attendanceNew);
-
-        }
+        
     }
 }

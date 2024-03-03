@@ -11,8 +11,5 @@ namespace API.Dtos
         public DateTime TimeOut { get; set; }
         public string TimeOutRemarks { get; set; }
         public string Employee { get; set; }
-        public string Position { get; set; }
-        public string Department { get; set; }
-        
     }
 }

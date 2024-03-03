@@ -1,84 +1,59 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Core.Entities.Settings;
 using Core.Interfaces;
-using Infrastructure.Data;
+using Core.Specifications;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Http.HttpResults;
 
 namespace API.Controllers.Settings
 {
     public class CampusController : BaseApiController
     {
         private readonly ISettingsService<Campus> _campusRepo;
-        public CampusController(ISettingsService<Campus> campusRepo)
+        private readonly IUnitOfWork _unitOfWork;
+
+        public CampusController(ISettingsService<Campus> campusRepo, IUnitOfWork unitOfWork)
         {
             _campusRepo = campusRepo;
-            
+            _unitOfWork = unitOfWork;
         }
 
         [HttpGet]
-        public async Task<IReadOnlyList<Campus>> GetCampusesAsync()
+        public async Task<ActionResult<IReadOnlyList<Campus>>> GetCampusesAsync([FromQuery] string search)
         {
-            return await _campusRepo.GetAllAsync();
+            var spec = new CampusesSpecifications(search);
+            return Ok(await _unitOfWork.Repository<Campus>().ListAsync(spec));
         }
 
-        [HttpGet("search")]
-        public async Task<IReadOnlyList<Campus>> GetCampusesBySearchAsync([FromQuery]string value)
+        [HttpGet("{id}")]
+        public async Task<ActionResult<Campus>> GetByIdAsync(int id)
         {
-            var entities = await _campusRepo.GetAllAsync();
-            var search = entities.Where(x => x.Name.ToLower().Contains(value) || x.Description.ToLower().Contains(value)).ToList();
-            return search;
+            var spec = new CampusesSpecifications(id);
+            return Ok(await _unitOfWork.Repository<Campus>().ListAsync(spec));
         }
+
 
         [HttpPost("create")]
         public async Task<ActionResult<Campus>> CreateCampusAsync(Campus entity)
         {
-            var campus = new Campus
-            {
-                Name = entity.Name,
-                Description = entity.Description
-            };
-            await _campusRepo.AddAsync(campus);
-
-            return Ok(campus);
+            _unitOfWork.Repository<Campus>().Add(entity);
+            await _unitOfWork.Complete();
+            return NoContent();
         }
 
         [HttpPut("update")]
         public async Task<ActionResult<Campus>> UpdateCampusAsync(Campus entity)
         {
-            var campus = new Campus
-            {
-                Id = entity.Id,
-                Name = entity.Name,
-                Description = entity.Description
-            };
-
-            if (campus != null)
-            {
-                await _campusRepo.UpdateAsync(campus);
-                return Ok(campus);
-            }
-
-            return BadRequest();
+            _unitOfWork.Repository<Campus>().Update(entity);
+            await _unitOfWork.Complete();
+            return NoContent();
         }
 
         [HttpDelete("{id}")]
         public async Task<ActionResult<Campus>> DeleteCampusAsync(Campus campus)
         {
-            var item = new Campus
-            {
-                Id = campus.Id
-            };
-            if (item != null)
-            {
-                await _campusRepo.DeleteAsync(item.Id);
-                return Ok(item);
-            }
-
-            return BadRequest();
+            _unitOfWork.Repository<Campus>().Delete(campus);
+            await _unitOfWork.Complete();
+            return NoContent();
         }
     }
 }

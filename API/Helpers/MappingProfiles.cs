@@ -15,8 +15,10 @@ namespace API.Helpers
 
             //Attendances
             CreateMap<Attendance, AttendanceDto>()
-                .ForPath(m => m.Employee, o => o.MapFrom(d => d.Employee.FullName))
-                .ForMember(m => m.Position, o => o.MapFrom(d => d.Employee.Position));
+                .ForMember(m => m.Employee, o => o.MapFrom(d => d.Employee.FullName));
+                
+            // CreateMap<AttendanceDto, Attendance>()
+            //     .ForMember(m => m.EmployeeId, o => o.MapFrom(d => d.Employee));
         }
     }
 }
