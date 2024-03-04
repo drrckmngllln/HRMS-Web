@@ -45,8 +45,6 @@ namespace HrmsPrototype.Forms.Settings
         private void loadCategory()
         {
             tCategory.DataSource = Enum.GetValues(typeof(AttendanceSetupCategory));
-            //tCategory.ValueMember = "Text";
-            //tCategory.DisplayMember = "Value";
         }
         
         private async Task addEdit()

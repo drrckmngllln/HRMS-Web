@@ -26,7 +26,7 @@ namespace API.Controllers.Transactions
             var employees = await _unitOfWork.Repository<Employee>().ListAsync(spec);
             var data = _mapper.Map<IReadOnlyList<Employee>, IReadOnlyList<EmployeeDto>>(employees);
 
-            return Ok(employees);
+            return Ok(data);
         }
 
         [HttpGet("{id}")]

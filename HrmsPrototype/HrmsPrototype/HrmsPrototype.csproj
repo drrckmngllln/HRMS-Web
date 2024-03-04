@@ -169,15 +169,28 @@
     <Compile Include="Forms\Settings\frmPositions.Designer.cs">
       <DependentUpon>frmPositions.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Transaction\frmEmployees.cs">
+    <Compile Include="Forms\Transaction\Employee\frmAddEditEmployees.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Transaction\frmEmployees.Designer.cs">
+    <Compile Include="Forms\Transaction\Employee\frmAddEditEmployees.Designer.cs">
+      <DependentUpon>frmAddEditEmployees.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Transaction\Employee\frmEmployeeList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Transaction\Employee\frmEmployeeList.Designer.cs">
+      <DependentUpon>frmEmployeeList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Transaction\Employee\frmEmployees.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Transaction\Employee\frmEmployees.Designer.cs">
       <DependentUpon>frmEmployees.cs</DependentUpon>
     </Compile>
     <Compile Include="Infrastructure\Interfaces\IGenericRepository.cs" />
     <Compile Include="Infrastructure\Interfaces\IUnitOfWork.cs" />
     <Compile Include="Infrastructure\Repositories\GenericRepository.cs" />
+    <Compile Include="Infrastructure\Services\UnitOfWork.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
@@ -210,7 +223,13 @@
     <EmbeddedResource Include="Forms\Settings\frmPositions.resx">
       <DependentUpon>frmPositions.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Transaction\frmEmployees.resx">
+    <EmbeddedResource Include="Forms\Transaction\Employee\frmAddEditEmployees.resx">
+      <DependentUpon>frmAddEditEmployees.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Transaction\Employee\frmEmployeeList.resx">
+      <DependentUpon>frmEmployeeList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Transaction\Employee\frmEmployees.resx">
       <DependentUpon>frmEmployees.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -254,6 +273,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\check.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\user%281%29.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
