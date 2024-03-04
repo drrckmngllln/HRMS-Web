@@ -1,6 +1,7 @@
 ﻿using HrmsPrototype.Core.Entities.Transactions;
 using HrmsPrototype.Core.Notifications;
 using HrmsPrototype.Forms.Transaction.Employee;
+using HrmsPrototype.Forms.Transaction.Employee.PersonalDataSheet;
 using HrmsPrototype.Infrastructure.Repositories;
 using System;
 using System.Threading.Tasks;
@@ -29,6 +30,17 @@ namespace HrmsPrototype.Forms.Transaction
         public void loadEmployeeRecords()
         {
             var frm = new frmEmployeeList();
+            frm.TopLevel = false;
+            panelTask.Controls.Clear();
+            panelTask.Controls.Add(frm);
+            frm.Show();
+        }
+
+        
+        private void loadPersonalDataSheet()
+        {
+            var frm = new frmPdsMain();
+            frmPdsMain.instance.ID = ID;
             frm.TopLevel = false;
             panelTask.Controls.Clear();
             panelTask.Controls.Add(frm);
@@ -98,6 +110,18 @@ namespace HrmsPrototype.Forms.Transaction
                 {
                     await deleteRecord();
                 }
+            }
+        }
+
+        private void btnPds_Click(object sender, EventArgs e)
+        {
+            if (ID == 0)
+            {
+                new Toastr("Warning", "Please select employee");
+            }
+            else
+            {
+                loadPersonalDataSheet();
             }
         }
     }

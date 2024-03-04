@@ -187,6 +187,18 @@
     <Compile Include="Forms\Transaction\Employee\frmEmployees.Designer.cs">
       <DependentUpon>frmEmployees.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Transaction\Employee\PersonalDataSheet\frmPdsMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Transaction\Employee\PersonalDataSheet\frmPdsMain.Designer.cs">
+      <DependentUpon>frmPdsMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Transaction\Employee\PersonalDataSheet\frmPersonalInformationChild.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Transaction\Employee\PersonalDataSheet\frmPersonalInformationChild.Designer.cs">
+      <DependentUpon>frmPersonalInformationChild.cs</DependentUpon>
+    </Compile>
     <Compile Include="Infrastructure\Interfaces\IGenericRepository.cs" />
     <Compile Include="Infrastructure\Interfaces\IUnitOfWork.cs" />
     <Compile Include="Infrastructure\Repositories\GenericRepository.cs" />
@@ -231,6 +243,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Transaction\Employee\frmEmployees.resx">
       <DependentUpon>frmEmployees.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Transaction\Employee\PersonalDataSheet\frmPdsMain.resx">
+      <DependentUpon>frmPdsMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Transaction\Employee\PersonalDataSheet\frmPersonalInformationChild.resx">
+      <DependentUpon>frmPersonalInformationChild.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

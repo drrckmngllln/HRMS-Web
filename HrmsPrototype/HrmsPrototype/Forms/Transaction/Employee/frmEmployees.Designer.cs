@@ -125,6 +125,7 @@
             this.btnPds.TabIndex = 3;
             this.btnPds.Text = "Personal Data Sheet";
             this.btnPds.UseVisualStyleBackColor = false;
+            this.btnPds.Click += new System.EventHandler(this.btnPds_Click);
             // 
             // btnDelete
             // 
