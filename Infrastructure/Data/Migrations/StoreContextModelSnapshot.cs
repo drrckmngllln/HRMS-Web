@@ -111,7 +111,7 @@ namespace Infrastructure.Data.Migrations
                     b.Property<DateTime>("Date")
                         .HasColumnType("TEXT");
 
-                    b.Property<int?>("EmployeeId")
+                    b.Property<int>("EmployeeId")
                         .HasColumnType("INTEGER");
 
                     b.Property<DateTime>("TimeIn")
@@ -350,6 +350,9 @@ namespace Infrastructure.Data.Migrations
                     b.Property<string>("DateOfBirth")
                         .HasColumnType("TEXT");
 
+                    b.Property<int>("EmployeeNumberId")
+                        .HasColumnType("INTEGER");
+
                     b.Property<int?>("FamilyBackgroundId")
                         .HasColumnType("INTEGER");
 
@@ -357,6 +360,8 @@ namespace Infrastructure.Data.Migrations
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("EmployeeNumberId");
 
                     b.HasIndex("FamilyBackgroundId");
 
@@ -521,7 +526,9 @@ namespace Infrastructure.Data.Migrations
                 {
                     b.HasOne("Core.Entities.Transactions.EmployeeEntity.Employee", "Employee")
                         .WithMany()
-                        .HasForeignKey("EmployeeId");
+                        .HasForeignKey("EmployeeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Employee");
                 });
@@ -591,9 +598,17 @@ namespace Infrastructure.Data.Migrations
 
             modelBuilder.Entity("Core.Entities.Transactions.EmployeeEntity.NameOfChildren", b =>
                 {
+                    b.HasOne("Core.Entities.Transactions.EmployeeEntity.Employee", "EmployeeNumber")
+                        .WithMany()
+                        .HasForeignKey("EmployeeNumberId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("Core.Entities.Transactions.EmployeeEntity.FamilyBackground", null)
                         .WithMany("NameOfChildrens")
                         .HasForeignKey("FamilyBackgroundId");
+
+                    b.Navigation("EmployeeNumber");
                 });
 
             modelBuilder.Entity("Core.Entities.Transactions.EmployeeEntity.OtherInformation", b =>

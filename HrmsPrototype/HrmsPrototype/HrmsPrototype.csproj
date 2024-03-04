@@ -105,6 +105,9 @@
     <Compile Include="Core\Entities\Settings\Departments.cs" />
     <Compile Include="Core\Entities\Settings\LeaveSetup.cs" />
     <Compile Include="Core\Entities\Settings\Positions.cs" />
+    <Compile Include="Core\Entities\Transactions\Employees.cs" />
+    <Compile Include="Core\Entities\Transactions\EmployeeStatus.cs" />
+    <Compile Include="Core\Helpers\Pagination.cs" />
     <Compile Include="Core\Notifications\Toastr.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
@@ -166,7 +169,14 @@
     <Compile Include="Forms\Settings\frmPositions.Designer.cs">
       <DependentUpon>frmPositions.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Transaction\frmEmployees.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Transaction\frmEmployees.Designer.cs">
+      <DependentUpon>frmEmployees.cs</DependentUpon>
+    </Compile>
     <Compile Include="Infrastructure\Interfaces\IGenericRepository.cs" />
+    <Compile Include="Infrastructure\Interfaces\IUnitOfWork.cs" />
     <Compile Include="Infrastructure\Repositories\GenericRepository.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -200,6 +210,9 @@
     <EmbeddedResource Include="Forms\Settings\frmPositions.resx">
       <DependentUpon>frmPositions.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Transaction\frmEmployees.resx">
+      <DependentUpon>frmEmployees.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -225,7 +238,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Forms\Transaction\" />
     <Folder Include="Services\" />
   </ItemGroup>
   <ItemGroup>

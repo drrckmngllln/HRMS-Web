@@ -91,4 +91,13 @@ public class PersonalDataSheetsController : BaseApiController
         var data = _mapper.Map<IReadOnlyList<LearningAndDevelopment>, IReadOnlyList<LearningAndDevelopmentDto>>(learningAndDevelopment);
         return Ok(data);
     }
+
+    [HttpGet("OtherInformation/{id}")]
+    public async Task<ActionResult<IReadOnlyList<OtherInformationDto>>> GetOtherInformationAsync(int id)
+    {
+        var spec = new OtherInformationSpecifications(id);
+        var otherInformation = await _unitOfWork.Repository<OtherInformation>().ListAsync(spec);
+        var data = _mapper.Map<IReadOnlyList<OtherInformation>, IReadOnlyList<OtherInformationDto>>(otherInformation);
+        return Ok(data);
+    }
 }

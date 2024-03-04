@@ -15,7 +15,7 @@ namespace Core.Specifications
             AddInclude(x => x.Department);
             AddInclude(x => x.Position);
             AddOrderBy(x => x.FullName);
-            // ApplyPaging(empParams.PageSize * (empParams.PageNumber - 1), empParams.PageNumber);
+            ApplyPaging(empParams.PageSize * (empParams.PageNumber - 1), empParams.PageNumber);
         }
         
         public EmployeesWithRelationshipSpecifications(int id) 

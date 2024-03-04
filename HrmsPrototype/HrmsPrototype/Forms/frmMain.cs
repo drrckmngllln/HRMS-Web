@@ -1,4 +1,5 @@
 ﻿using HrmsPrototype.Forms.Settings;
+using HrmsPrototype.Forms.Transaction;
 using Krypton.Toolkit;
 using System;
 using System.Collections.Generic;
@@ -87,6 +88,15 @@ namespace HrmsPrototype.Forms
         private void btnAttendanceSetup_Click(object sender, EventArgs e)
         {
             var frm = new frmAttendanceSetup();
+            frm.TopLevel = false;
+            panelTask.Controls.Clear();
+            panelTask.Controls.Add(frm);
+            frm.Show();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            var frm = new frmEmployees();
             frm.TopLevel = false;
             panelTask.Controls.Clear();
             panelTask.Controls.Add(frm);

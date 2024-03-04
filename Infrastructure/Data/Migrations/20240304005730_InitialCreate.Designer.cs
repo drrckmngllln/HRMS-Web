@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Infrastructure.Data.Migrations
 {
     [DbContext(typeof(StoreContext))]
-    [Migration("20240229120745_EmployeeCreation")]
-    partial class EmployeeCreation
+    [Migration("20240304005730_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -103,6 +103,37 @@ namespace Infrastructure.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Positions");
+                });
+
+            modelBuilder.Entity("Core.Entities.Transactions.AttendanceEntity.Attendance", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("EmployeeId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<DateTime>("TimeIn")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("TimeInRemarks")
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("TimeOut")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("TimeOutRemarks")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("EmployeeId");
+
+                    b.ToTable("Attendances");
                 });
 
             modelBuilder.Entity("Core.Entities.Transactions.EmployeeEntity.CivilServiceEligibility", b =>
@@ -322,6 +353,9 @@ namespace Infrastructure.Data.Migrations
                     b.Property<string>("DateOfBirth")
                         .HasColumnType("TEXT");
 
+                    b.Property<int>("EmployeeNumberId")
+                        .HasColumnType("INTEGER");
+
                     b.Property<int?>("FamilyBackgroundId")
                         .HasColumnType("INTEGER");
 
@@ -329,6 +363,8 @@ namespace Infrastructure.Data.Migrations
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("EmployeeNumberId");
 
                     b.HasIndex("FamilyBackgroundId");
 
@@ -489,6 +525,17 @@ namespace Infrastructure.Data.Migrations
                     b.ToTable("WorkExperiences");
                 });
 
+            modelBuilder.Entity("Core.Entities.Transactions.AttendanceEntity.Attendance", b =>
+                {
+                    b.HasOne("Core.Entities.Transactions.EmployeeEntity.Employee", "Employee")
+                        .WithMany()
+                        .HasForeignKey("EmployeeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Employee");
+                });
+
             modelBuilder.Entity("Core.Entities.Transactions.EmployeeEntity.CivilServiceEligibility", b =>
                 {
                     b.HasOne("Core.Entities.Transactions.EmployeeEntity.Employee", "EmployeeNumber")
@@ -554,9 +601,17 @@ namespace Infrastructure.Data.Migrations
 
             modelBuilder.Entity("Core.Entities.Transactions.EmployeeEntity.NameOfChildren", b =>
                 {
+                    b.HasOne("Core.Entities.Transactions.EmployeeEntity.Employee", "EmployeeNumber")
+                        .WithMany()
+                        .HasForeignKey("EmployeeNumberId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("Core.Entities.Transactions.EmployeeEntity.FamilyBackground", null)
                         .WithMany("NameOfChildrens")
                         .HasForeignKey("FamilyBackgroundId");
+
+                    b.Navigation("EmployeeNumber");
                 });
 
             modelBuilder.Entity("Core.Entities.Transactions.EmployeeEntity.OtherInformation", b =>

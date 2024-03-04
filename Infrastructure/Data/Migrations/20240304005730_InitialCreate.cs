@@ -1,15 +1,86 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
 namespace Infrastructure.Data.Migrations
 {
     /// <inheritdoc />
-    public partial class EmployeeCreation : Migration
+    public partial class InitialCreate : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.CreateTable(
+                name: "AttendanceSetups",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Category = table.Column<int>(type: "INTEGER", nullable: false),
+                    TimeIn = table.Column<string>(type: "TEXT", nullable: true),
+                    TimeOut = table.Column<string>(type: "TEXT", nullable: true),
+                    GracePeriod = table.Column<int>(type: "INTEGER", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_AttendanceSetups", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Campuses",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Name = table.Column<string>(type: "TEXT", nullable: true),
+                    Description = table.Column<string>(type: "TEXT", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Campuses", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Departments",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Name = table.Column<string>(type: "TEXT", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Departments", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "LeaveSetups",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Type = table.Column<string>(type: "TEXT", nullable: true),
+                    Credits = table.Column<int>(type: "INTEGER", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_LeaveSetups", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Positions",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Name = table.Column<string>(type: "TEXT", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Positions", x => x.Id);
+                });
+
             migrationBuilder.CreateTable(
                 name: "Employees",
                 columns: table => new
@@ -40,6 +111,30 @@ namespace Infrastructure.Data.Migrations
                         name: "FK_Employees_Positions_PositionId",
                         column: x => x.PositionId,
                         principalTable: "Positions",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Attendances",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Date = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    TimeIn = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    TimeInRemarks = table.Column<string>(type: "TEXT", nullable: true),
+                    TimeOut = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    TimeOutRemarks = table.Column<string>(type: "TEXT", nullable: true),
+                    EmployeeId = table.Column<int>(type: "INTEGER", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Attendances", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Attendances_Employees_EmployeeId",
+                        column: x => x.EmployeeId,
+                        principalTable: "Employees",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -265,6 +360,7 @@ namespace Infrastructure.Data.Migrations
                 {
                     Id = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
+                    EmployeeNumberId = table.Column<int>(type: "INTEGER", nullable: false),
                     Fullname = table.Column<string>(type: "TEXT", nullable: true),
                     DateOfBirth = table.Column<string>(type: "TEXT", nullable: true),
                     FamilyBackgroundId = table.Column<int>(type: "INTEGER", nullable: true)
@@ -273,11 +369,22 @@ namespace Infrastructure.Data.Migrations
                 {
                     table.PrimaryKey("PK_NameOfChildrens", x => x.Id);
                     table.ForeignKey(
+                        name: "FK_NameOfChildrens_Employees_EmployeeNumberId",
+                        column: x => x.EmployeeNumberId,
+                        principalTable: "Employees",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
                         name: "FK_NameOfChildrens_FamilyBackgrounds_FamilyBackgroundId",
                         column: x => x.FamilyBackgroundId,
                         principalTable: "FamilyBackgrounds",
                         principalColumn: "Id");
                 });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Attendances_EmployeeId",
+                table: "Attendances",
+                column: "EmployeeId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_CivilServiceEligibilities_EmployeeNumberId",
@@ -310,6 +417,11 @@ namespace Infrastructure.Data.Migrations
                 column: "EmployeeNumberId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_NameOfChildrens_EmployeeNumberId",
+                table: "NameOfChildrens",
+                column: "EmployeeNumberId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_NameOfChildrens_FamilyBackgroundId",
                 table: "NameOfChildrens",
                 column: "FamilyBackgroundId");
@@ -339,6 +451,15 @@ namespace Infrastructure.Data.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
+                name: "Attendances");
+
+            migrationBuilder.DropTable(
+                name: "AttendanceSetups");
+
+            migrationBuilder.DropTable(
+                name: "Campuses");
+
+            migrationBuilder.DropTable(
                 name: "CivilServiceEligibilities");
 
             migrationBuilder.DropTable(
@@ -346,6 +467,9 @@ namespace Infrastructure.Data.Migrations
 
             migrationBuilder.DropTable(
                 name: "LearningAndDevelopments");
+
+            migrationBuilder.DropTable(
+                name: "LeaveSetups");
 
             migrationBuilder.DropTable(
                 name: "NameOfChildrens");
@@ -367,6 +491,12 @@ namespace Infrastructure.Data.Migrations
 
             migrationBuilder.DropTable(
                 name: "Employees");
+
+            migrationBuilder.DropTable(
+                name: "Departments");
+
+            migrationBuilder.DropTable(
+                name: "Positions");
         }
     }
 }
