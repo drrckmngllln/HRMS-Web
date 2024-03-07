@@ -26,6 +26,12 @@ public class PersonalDataSheetsController : BaseApiController
         return false;
     }
 
+    private async Task<int> GetEmployeeIdAsync(string employeeNumber)
+    {
+        var employee = await _unitOfWork.Repository<Employee>().ListAllAsync();
+        return employee.FirstOrDefault(x => x.EmployeeNumber == employeeNumber).Id;
+    }
+
     [HttpGet("PersonalInformation/{id}")]
     public async Task<ActionResult<PersonalInformationDto>> GetPersonalInformationAsync(int id)
     {
@@ -43,7 +49,7 @@ public class PersonalDataSheetsController : BaseApiController
     [HttpPost("PersonalInformation/create")]
     public async Task<ActionResult> AddPersonalInformationAsync(PersonalInformationDto personalInformationDto)
     {
-        if (await CheckExisting<PersonalInformation>())
+        if (!await CheckExisting<PersonalInformation>())
         {
             var item = new PersonalInformation
             {
@@ -70,11 +76,7 @@ public class PersonalDataSheetsController : BaseApiController
         return BadRequest("No duplicate entry");
     }
 
-    private async Task<int> GetEmployeeIdAsync(string employeeNumber)
-    {
-        var employee = await _unitOfWork.Repository<Employee>().ListAllAsync();
-        return employee.FirstOrDefault(x => x.EmployeeNumber == employeeNumber).Id;
-    }
+    
 
     [HttpGet("FamilyBackground/{id}")]
     public async Task<ActionResult<FamilyBackgroundDto>> GetFamilyBackgroundAsync(int id)

@@ -48,5 +48,10 @@ namespace HrmsPrototype.Forms.Transaction.Employee.PersonalDataSheet
             panelTask.Controls.Add(frm);
             frm.Show();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

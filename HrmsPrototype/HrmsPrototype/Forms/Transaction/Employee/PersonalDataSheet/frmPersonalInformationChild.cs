@@ -12,6 +12,7 @@ namespace HrmsPrototype.Forms.Transaction.Employee.PersonalDataSheet
         GenericRepository<PersonalInformation> _personalInfoRepo = new GenericRepository<PersonalInformation>();
 
         public int ID { get; set; }
+        private int employeeNumber { get; set; }
 
         private const string baseEndpoint = "personaldatasheets/personalinformation/";
 
@@ -26,6 +27,7 @@ namespace HrmsPrototype.Forms.Transaction.Employee.PersonalDataSheet
         {
             await loadPersonalInformation();
             loadGender();
+            loadCivilStatus();
         }
 
         private void loadGender()
@@ -33,11 +35,17 @@ namespace HrmsPrototype.Forms.Transaction.Employee.PersonalDataSheet
             tSex.DataSource = Enum.GetValues(typeof(Sex));
         }
 
+        private void loadCivilStatus()
+        {
+            tCivilStatus.DataSource = Enum.GetValues(typeof(CivilStatus));
+        }
+
         private async Task loadPersonalInformation()
         {
             var personalInformation = await _personalInfoRepo.GetByIdAsync(baseEndpoint + ID.ToString());
             if (personalInformation != null)
             {
+                employeeNumber = personalInformation.EmployeeNumber;
                 tSurname.Text = personalInformation.Surname;
                 tFirstName.Text = personalInformation.Firstname;
                 tMiddleName.Text = personalInformation.Middlename;
@@ -54,7 +62,13 @@ namespace HrmsPrototype.Forms.Transaction.Employee.PersonalDataSheet
                 tAgencyNumber.Text = personalInformation.AgencyEmployeeNo;
                 btnSave.Text = "Update";
             }
-            
+
+        }
+
+        private async Task<int> GetEmployeeNumber()
+        {
+            var personalInformation = await _personalInfoRepo.GetByIdAsync(baseEndpoint + ID.ToString());
+            return personalInformation.EmployeeNumber;
         }
 
         private async Task AddEditAsync()
@@ -63,6 +77,7 @@ namespace HrmsPrototype.Forms.Transaction.Employee.PersonalDataSheet
             {
                 var item = new PersonalInformation
                 {
+                    EmployeeNumber = await GetEmployeeNumber(),
                     Surname = tSurname.Text,
                     Firstname = tFirstName.Text,
                     Middlename = tMiddleName.Text,

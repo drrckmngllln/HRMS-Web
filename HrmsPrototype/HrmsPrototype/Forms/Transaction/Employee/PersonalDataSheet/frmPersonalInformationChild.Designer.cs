@@ -38,7 +38,9 @@
             this.kryptonGroupBox4 = new Krypton.Toolkit.KryptonGroupBox();
             this.tDateOfBirth = new System.Windows.Forms.TextBox();
             this.kryptonGroupBox5 = new Krypton.Toolkit.KryptonGroupBox();
+            this.tSex = new System.Windows.Forms.ComboBox();
             this.kryptonGroupBox6 = new Krypton.Toolkit.KryptonGroupBox();
+            this.tCivilStatus = new System.Windows.Forms.ComboBox();
             this.kryptonGroupBox7 = new Krypton.Toolkit.KryptonGroupBox();
             this.tHeight = new System.Windows.Forms.TextBox();
             this.kryptonGroupBox8 = new Krypton.Toolkit.KryptonGroupBox();
@@ -56,8 +58,6 @@
             this.kryptonGroupBox14 = new Krypton.Toolkit.KryptonGroupBox();
             this.tAgencyNumber = new System.Windows.Forms.TextBox();
             this.btnSave = new Krypton.Toolkit.KryptonButton();
-            this.tSex = new System.Windows.Forms.ComboBox();
-            this.tCivilStatus = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox1.Panel)).BeginInit();
             this.kryptonGroupBox1.Panel.SuspendLayout();
@@ -236,6 +236,17 @@
             this.kryptonGroupBox5.TabIndex = 44;
             this.kryptonGroupBox5.Values.Heading = "Sex";
             // 
+            // tSex
+            // 
+            this.tSex.BackColor = System.Drawing.SystemColors.Control;
+            this.tSex.Dock = System.Windows.Forms.DockStyle.Right;
+            this.tSex.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.tSex.FormattingEnabled = true;
+            this.tSex.Location = new System.Drawing.Point(13, 0);
+            this.tSex.Name = "tSex";
+            this.tSex.Size = new System.Drawing.Size(348, 21);
+            this.tSex.TabIndex = 55;
+            // 
             // kryptonGroupBox6
             // 
             this.kryptonGroupBox6.CaptionOverlap = 0D;
@@ -249,6 +260,17 @@
             this.kryptonGroupBox6.StateCommon.Back.Color1 = System.Drawing.SystemColors.Control;
             this.kryptonGroupBox6.TabIndex = 45;
             this.kryptonGroupBox6.Values.Heading = "Civil Status";
+            // 
+            // tCivilStatus
+            // 
+            this.tCivilStatus.BackColor = System.Drawing.SystemColors.Control;
+            this.tCivilStatus.Dock = System.Windows.Forms.DockStyle.Right;
+            this.tCivilStatus.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.tCivilStatus.FormattingEnabled = true;
+            this.tCivilStatus.Location = new System.Drawing.Point(13, 0);
+            this.tCivilStatus.Name = "tCivilStatus";
+            this.tCivilStatus.Size = new System.Drawing.Size(348, 21);
+            this.tCivilStatus.TabIndex = 56;
             // 
             // kryptonGroupBox7
             // 
@@ -462,28 +484,6 @@
             this.btnSave.TabIndex = 54;
             this.btnSave.Values.Text = "Save";
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
-            // 
-            // tSex
-            // 
-            this.tSex.BackColor = System.Drawing.SystemColors.Control;
-            this.tSex.Dock = System.Windows.Forms.DockStyle.Right;
-            this.tSex.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.tSex.FormattingEnabled = true;
-            this.tSex.Location = new System.Drawing.Point(13, 0);
-            this.tSex.Name = "tSex";
-            this.tSex.Size = new System.Drawing.Size(348, 21);
-            this.tSex.TabIndex = 55;
-            // 
-            // tCivilStatus
-            // 
-            this.tCivilStatus.BackColor = System.Drawing.SystemColors.Control;
-            this.tCivilStatus.Dock = System.Windows.Forms.DockStyle.Right;
-            this.tCivilStatus.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.tCivilStatus.FormattingEnabled = true;
-            this.tCivilStatus.Location = new System.Drawing.Point(13, 0);
-            this.tCivilStatus.Name = "tCivilStatus";
-            this.tCivilStatus.Size = new System.Drawing.Size(348, 21);
-            this.tCivilStatus.TabIndex = 56;
             // 
             // frmPersonalInformationChild
             // 
