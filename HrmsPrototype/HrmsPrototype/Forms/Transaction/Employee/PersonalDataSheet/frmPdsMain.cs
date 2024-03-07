@@ -42,6 +42,7 @@ namespace HrmsPrototype.Forms.Transaction.Employee.PersonalDataSheet
         private void loadPersonalInformation()
         {
             var frm = new frmPersonalInformationChild();
+            frmPersonalInformationChild.instance.ID = ID;
             frm.TopLevel = false;
             panelTask.Controls.Clear();
             panelTask.Controls.Add(frm);

@@ -4,7 +4,6 @@ public class CivilServiceEligibilityDto
 {
     public int Id { get; set; }
     public int EmployeeNumber { get; set; }
-    public int EmployeeNumberId { get; set; }
     public string Eligibility { get; set; }
     public decimal Rating { get; set; }
     public string DateOfExamination { get; set; }

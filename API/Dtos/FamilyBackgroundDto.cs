@@ -4,7 +4,6 @@ public class FamilyBackgroundDto
 {
     public int Id { get; set; }
     public int EmployeeNumber { get; set; }
-    public int EmployeeNumberId { get; set; }
     public string SpouseSurname { get; set; }
     public string SpouseFirstName { get; set; }
     public string SpouseMiddlename { get; set; }

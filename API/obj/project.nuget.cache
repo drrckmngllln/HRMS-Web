@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "A/UdFGMx+HbP8UEN7tRQ/98SY7cqQGBDprVjV4miGZyKM0E54U58VZK7C8py7QWNJwNCTmKzE0FrlXqti9CxOA==",
+  "dgSpecHash": "KFsrL0j8bkd7etijTx04VBGAHLOz/9lgZ2aNbqicOrtdjAdy2zDqWRrOjSCd09+gDhIIh+z+ph8IDjjAx2L5wQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\drrckmngllln\\Documents\\GitHub\\HRMS-Web\\API\\API.csproj",
+  "projectFilePath": "C:\\Users\\drrckmngllln\\Documents\\GitHub\\HRMS-Web\\api\\API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\drrckmngllln\\.nuget\\packages\\automapper\\13.0.1\\automapper.13.0.1.nupkg.sha512",
     "C:\\Users\\drrckmngllln\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",

@@ -6,7 +6,6 @@ public class EducationalBackgroundDto
 {
     public int Id { get; set; }
     public int EmployeeNumber { get; set; }
-    public int EmployeeNumberId { get; set; }
     public EducationalLevel Level { get; set; }
     public string NameOfSchool { get; set; }
     public string Course { get; set; }

@@ -105,8 +105,11 @@
     <Compile Include="Core\Entities\Settings\Departments.cs" />
     <Compile Include="Core\Entities\Settings\LeaveSetup.cs" />
     <Compile Include="Core\Entities\Settings\Positions.cs" />
+    <Compile Include="Core\Entities\Transactions\CivilStatus.cs" />
     <Compile Include="Core\Entities\Transactions\Employees.cs" />
     <Compile Include="Core\Entities\Transactions\EmployeeStatus.cs" />
+    <Compile Include="Core\Entities\Transactions\PersonalInformation.cs" />
+    <Compile Include="Core\Entities\Transactions\Sex.cs" />
     <Compile Include="Core\Helpers\Pagination.cs" />
     <Compile Include="Core\Notifications\Toastr.cs" />
     <Compile Include="Form1.cs">
