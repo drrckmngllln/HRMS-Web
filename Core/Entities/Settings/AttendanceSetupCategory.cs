@@ -1,12 +1,11 @@
+using System.ComponentModel.DataAnnotations;
 using System.Runtime.Serialization;
 
 namespace Core.Entities.Settings
 {
-    public enum AttendanceSetupCategory
+    public class AttendanceSetupCategory : BaseEntity
     {
-        [EnumMember(Value = "Teaching")]
-        Teaching,
-        [EnumMember(Value = "Non Teaching")]
-        NonTeaching
+        [MaxLength(100)]
+        public string Name { get; set; }        
     }
 }

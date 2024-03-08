@@ -287,24 +287,24 @@ public class PersonalDataSheetsController : BaseApiController
         return Ok(data);
     }
 
-    [HttpPost("LearningAndDevelopment/create")]
-    public async Task<ActionResult> AddLearningAndDevelopment(LearningAndDevelopmentDto learningAndDevelopmentDto)
-    {
-        var item = new LearningAndDevelopment
-        {
-            EmployeeNumberId = await GetEmployeeIdAsync(learningAndDevelopmentDto.EmployeeNumber.ToString()),
-            TitleOfLearningAndDevelopment = learningAndDevelopmentDto.TitleOfLearningAndDevelopment,
-            StartDate = learningAndDevelopmentDto.StartDate,
-            EndDate = learningAndDevelopmentDto.EndDate,
-            NumberOfHours = learningAndDevelopmentDto.NumberOfHours,
-            TypeOfLd = learningAndDevelopmentDto.TypeOfLd,
-            Conducted = learningAndDevelopmentDto.Conducted
-        };
-        _unitOfWork.Repository<LearningAndDevelopment>().Add(item);
-        await _unitOfWork.Complete();
+    // [HttpPost("LearningAndDevelopment/create")]
+    // public async Task<ActionResult> AddLearningAndDevelopment(LearningAndDevelopmentDto learningAndDevelopmentDto)
+    // {
+    //     var item = new LearningAndDevelopment
+    //     {
+    //         EmployeeNumberId = await GetEmployeeIdAsync(learningAndDevelopmentDto.EmployeeNumber.ToString()),
+    //         TitleOfLearningAndDevelopment = learningAndDevelopmentDto.TitleOfLearningAndDevelopment,
+    //         StartDate = learningAndDevelopmentDto.StartDate,
+    //         EndDate = learningAndDevelopmentDto.EndDate,
+    //         NumberOfHours = learningAndDevelopmentDto.NumberOfHours,
+    //         TypeOfLd = learningAndDevelopmentDto.TypeOfLd,
+    //         Conducted = learningAndDevelopmentDto.Conducted
+    //     };
+    //     _unitOfWork.Repository<LearningAndDevelopment>().Add(item);
+    //     await _unitOfWork.Complete();
 
-        return Ok("Learning and development added");
-    }
+    //     return Ok("Learning and development added");
+    // }
 
     [HttpGet("OtherInformation/{id}")]
     public async Task<ActionResult<IReadOnlyList<OtherInformationDto>>> GetOtherInformationAsync(int id)
@@ -314,19 +314,19 @@ public class PersonalDataSheetsController : BaseApiController
         var data = _mapper.Map<IReadOnlyList<OtherInformation>, IReadOnlyList<OtherInformationDto>>(otherInformation);
         return Ok(data);
     }
-    [HttpPost("OtherInformation/create")]
-    public async Task<ActionResult> AddOtherInformation(OtherInformationDto otherInformationDto)
-    {
-        var item = new OtherInformation
-        {
-            EmployeeNumberId = await GetEmployeeIdAsync(otherInformationDto.EmployeeNumber.ToString()),
-            SpecialSkills = otherInformationDto.SpecialSkills,
-            NonAcademicDestinction = otherInformationDto.NonAcademicDestinction,
-            Organization = otherInformationDto.Organization
-        };
-        _unitOfWork.Repository<OtherInformation>().Add(item);
-        await _unitOfWork.Complete();
-        return Ok("Other information added");
-    }
+    // [HttpPost("OtherInformation/create")]
+    // public async Task<ActionResult> AddOtherInformation(OtherInformationDto otherInformationDto)
+    // {
+    //     var item = new OtherInformation
+    //     {
+    //         EmployeeNumberId = await GetEmployeeIdAsync(otherInformationDto.EmployeeNumber.ToString()),
+    //         SpecialSkills = otherInformationDto.SpecialSkills,
+    //         NonAcademicDestinction = otherInformationDto.NonAcademicDestinction,
+    //         Organization = otherInformationDto.Organization
+    //     };
+    //     _unitOfWork.Repository<OtherInformation>().Add(item);
+    //     await _unitOfWork.Complete();
+    //     return Ok("Other information added");
+    // }
 
 }
