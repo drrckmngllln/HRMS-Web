@@ -76,7 +76,34 @@ public class PersonalDataSheetsController : BaseApiController
         return BadRequest("No duplicate entry");
     }
 
-    
+    [HttpPut("PersonalInformation/update")]
+    public async Task<ActionResult> UpdatePersonalInformation(PersonalInformationDto personalInformationDto)
+    {
+        var item = new PersonalInformation
+        {
+            Id = personalInformationDto.Id,
+            EmployeeNumberId = await GetEmployeeIdAsync(personalInformationDto.EmployeeNumber.ToString()),
+            Surname = personalInformationDto.Surname,
+            Firstname = personalInformationDto.Firstname,
+            Middlename = personalInformationDto.Middlename,
+            DateOfBirth = personalInformationDto.DateOfBirth,
+            Sex = (Sex)personalInformationDto.Sex,
+            CivilStatus = (CivilStatus)personalInformationDto.CivilStatus,
+            Height = personalInformationDto.Height,
+            BloodType = personalInformationDto.BloodType,
+            GsisIdNo = personalInformationDto.GsisIdNo,
+            PagibigIdNo = personalInformationDto.PagibigIdNo,
+            PhilhealthNo = personalInformationDto.PhilhealthNo,
+            SssNo = personalInformationDto.SssNo,
+            TinNo = personalInformationDto.TinNo,
+            AgencyEmployeeNo = personalInformationDto.AgencyEmployeeNo
+        };
+        _unitOfWork.Repository<PersonalInformation>().Update(item);
+        await _unitOfWork.Complete();
+        return Ok("Personal information updated");
+    }
+
+
 
     [HttpGet("FamilyBackground/{id}")]
     public async Task<ActionResult<FamilyBackgroundDto>> GetFamilyBackgroundAsync(int id)
@@ -153,20 +180,20 @@ public class PersonalDataSheetsController : BaseApiController
     public async Task<ActionResult> AddEducationalBackground(EducationalBackgroundDto educationalBackgroundDto)
     {
         var item = new EducationalBackground
-            {
-                EmployeeNumberId = await GetEmployeeIdAsync(educationalBackgroundDto.EmployeeNumber.ToString()),
-                Level = (EducationalLevel)educationalBackgroundDto.Level,
-                NameOfSchool = educationalBackgroundDto.NameOfSchool,
-                Course = educationalBackgroundDto.Course,
-                PeriodStart = educationalBackgroundDto.PeriodStart,
-                PeriodEnd = educationalBackgroundDto.PeriodEnd,
-                UnitsEarned = educationalBackgroundDto.UnitsEarned,
-                YearGraduated = educationalBackgroundDto.YearGraduated,
-                AcademicHonors = educationalBackgroundDto.AcademicHonors
-            };
-            _unitOfWork.Repository<EducationalBackground>().Add(item);
-            await _unitOfWork.Complete();
-            return Ok("Educational background added");
+        {
+            EmployeeNumberId = await GetEmployeeIdAsync(educationalBackgroundDto.EmployeeNumber.ToString()),
+            Level = (EducationalLevel)educationalBackgroundDto.Level,
+            NameOfSchool = educationalBackgroundDto.NameOfSchool,
+            Course = educationalBackgroundDto.Course,
+            PeriodStart = educationalBackgroundDto.PeriodStart,
+            PeriodEnd = educationalBackgroundDto.PeriodEnd,
+            UnitsEarned = educationalBackgroundDto.UnitsEarned,
+            YearGraduated = educationalBackgroundDto.YearGraduated,
+            AcademicHonors = educationalBackgroundDto.AcademicHonors
+        };
+        _unitOfWork.Repository<EducationalBackground>().Add(item);
+        await _unitOfWork.Complete();
+        return Ok("Educational background added");
     }
 
     [HttpGet("CivilServiceEligibility/{id}")]
@@ -222,7 +249,7 @@ public class PersonalDataSheetsController : BaseApiController
         };
         _unitOfWork.Repository<WorkExperience>().Add(item);
         await _unitOfWork.Complete();
-        return Ok ("Work experience added");
+        return Ok("Work experience added");
     }
 
     [HttpGet("VoluntaryWork/{id}")]

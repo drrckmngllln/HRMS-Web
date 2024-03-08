@@ -2,6 +2,7 @@
 using HrmsPrototype.Core.Notifications;
 using HrmsPrototype.Infrastructure.Repositories;
 using System;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -65,9 +66,16 @@ namespace HrmsPrototype.Forms.Transaction.Employee.PersonalDataSheet
 
         }
 
+        private async Task<int> GetPersonalInformationId(int id)
+        {
+            var personalInformation = await _personalInfoRepo.GetAllAsync(baseEndpoint + "personalinformation");
+            var personalinformationId = personalInformation.FirstOrDefault(x => x.EmployeeNumber == id);
+            return personalinformationId.Id;
+        }
+
         private async Task<int> GetEmployeeNumber()
         {
-            var personalInformation = await _personalInfoRepo.GetByIdAsync(baseEndpoint + ID.ToString());
+            var personalInformation = await _personalInfoRepo.GetByIdAsync("employees/" + ID.ToString());
             return personalInformation.EmployeeNumber;
         }
 
@@ -95,6 +103,31 @@ namespace HrmsPrototype.Forms.Transaction.Employee.PersonalDataSheet
                 };
                 await _personalInfoRepo.AddAsync(item, baseEndpoint + "create");
                 new Toastr("Success", "Personal information added");
+                await loadPersonalInformation();
+            }
+            else if (btnSave.Text == " Update")
+            {
+                var item = new PersonalInformation
+                {
+                    Id = await GetPersonalInformationId(ID),
+                    EmployeeNumber = await GetEmployeeNumber(),
+                    Surname = tSurname.Text,
+                    Firstname = tFirstName.Text,
+                    Middlename = tMiddleName.Text,
+                    DateOfBirth = tDateOfBirth.Text,
+                    Sex = (Sex)tSex.SelectedItem,
+                    CivilStatus = (CivilStatus)tCivilStatus.SelectedItem,
+                    Height = tHeight.Text,
+                    BloodType = tBloodType.Text,
+                    GsisIdNo = tGsis.Text,
+                    PagibigIdNo = tPagibig.Text,
+                    PhilhealthNo = tPhilHealth.Text,
+                    SssNo = tSss.Text,
+                    TinNo = tTin.Text,
+                    AgencyEmployeeNo = tAgencyNumber.Text
+                };
+                await _personalInfoRepo.UpdateAsync(item, baseEndpoint + "update");
+                new Toastr("Information", "Personal information updated");
                 await loadPersonalInformation();
             }
         }
