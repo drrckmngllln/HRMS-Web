@@ -1,14 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace HrmsPrototype.Core.Entities.Settings
+﻿namespace HrmsPrototype.Core.Entities.Settings
 {
-    internal class Campus
+    internal class Campus : BaseEntity
     {
-        public int Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
     }

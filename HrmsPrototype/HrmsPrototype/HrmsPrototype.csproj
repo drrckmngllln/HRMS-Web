@@ -101,6 +101,7 @@
   <ItemGroup>
     <Compile Include="Core\Entities\Settings\AttendanceSetup.cs" />
     <Compile Include="Core\Entities\Settings\AttendanceSetupCategory.cs" />
+    <Compile Include="Core\Entities\Settings\BaseEntity.cs" />
     <Compile Include="Core\Entities\Settings\Campus.cs" />
     <Compile Include="Core\Entities\Settings\Departments.cs" />
     <Compile Include="Core\Entities\Settings\LeaveSetup.cs" />
@@ -142,35 +143,23 @@
     <Compile Include="Forms\Notifications\frmToastr.Designer.cs">
       <DependentUpon>frmToastr.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Settings\frmAttendanceSetup.cs">
+    <Compile Include="Forms\Settings\frmLibraryFilesModule.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Settings\frmAttendanceSetup.Designer.cs">
-      <DependentUpon>frmAttendanceSetup.cs</DependentUpon>
+    <Compile Include="Forms\Settings\frmLibraryFilesModule.Designer.cs">
+      <DependentUpon>frmLibraryFilesModule.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Settings\frmCampus.cs">
+    <Compile Include="Forms\Settings\LibraryFilesComponent\frmLibraryFilesComponent.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Settings\frmCampus.Designer.cs">
-      <DependentUpon>frmCampus.cs</DependentUpon>
+    <Compile Include="Forms\Settings\LibraryFilesComponent\frmLibraryFilesComponent.Designer.cs">
+      <DependentUpon>frmLibraryFilesComponent.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Settings\frmDepartments.cs">
+    <Compile Include="Forms\Settings\LibraryFilesComponent\LibraryFilesAddEdit\frmDepartment.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Settings\frmDepartments.Designer.cs">
-      <DependentUpon>frmDepartments.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\Settings\frmLeaveSetup.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\Settings\frmLeaveSetup.Designer.cs">
-      <DependentUpon>frmLeaveSetup.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\Settings\frmPositions.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\Settings\frmPositions.Designer.cs">
-      <DependentUpon>frmPositions.cs</DependentUpon>
+    <Compile Include="Forms\Settings\LibraryFilesComponent\LibraryFilesAddEdit\frmDepartment.Designer.cs">
+      <DependentUpon>frmDepartment.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Transaction\Employee\frmAddEditEmployees.cs">
       <SubType>Form</SubType>
@@ -223,20 +212,14 @@
     <EmbeddedResource Include="Forms\Notifications\frmToastr.resx">
       <DependentUpon>frmToastr.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Settings\frmAttendanceSetup.resx">
-      <DependentUpon>frmAttendanceSetup.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Settings\frmLibraryFilesModule.resx">
+      <DependentUpon>frmLibraryFilesModule.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Settings\frmCampus.resx">
-      <DependentUpon>frmCampus.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Settings\LibraryFilesComponent\frmLibraryFilesComponent.resx">
+      <DependentUpon>frmLibraryFilesComponent.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Settings\frmDepartments.resx">
-      <DependentUpon>frmDepartments.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Settings\frmLeaveSetup.resx">
-      <DependentUpon>frmLeaveSetup.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Settings\frmPositions.resx">
-      <DependentUpon>frmPositions.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Settings\LibraryFilesComponent\LibraryFilesAddEdit\frmDepartment.resx">
+      <DependentUpon>frmDepartment.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Transaction\Employee\frmAddEditEmployees.resx">
       <DependentUpon>frmAddEditEmployees.cs</DependentUpon>

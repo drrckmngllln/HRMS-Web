@@ -191,9 +191,9 @@ namespace Infrastructure.Data.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("TEXT");
 
-                    b.Property<decimal>("Rating")
+                    b.Property<double>("Rating")
                         .HasMaxLength(100)
-                        .HasColumnType("TEXT");
+                        .HasColumnType("REAL");
 
                     b.HasKey("Id");
 
@@ -235,9 +235,9 @@ namespace Infrastructure.Data.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("TEXT");
 
-                    b.Property<decimal>("UnitsEarned")
+                    b.Property<double>("UnitsEarned")
                         .HasMaxLength(100)
-                        .HasColumnType("TEXT");
+                        .HasColumnType("REAL");
 
                     b.Property<DateOnly>("YearGraduated")
                         .HasMaxLength(100)
@@ -421,7 +421,7 @@ namespace Infrastructure.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("DateOfBirth")
+                    b.Property<DateOnly>("DateOfBirth")
                         .HasMaxLength(100)
                         .HasColumnType("TEXT");
 
@@ -643,9 +643,9 @@ namespace Infrastructure.Data.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("TEXT");
 
-                    b.Property<decimal>("MonthlySalary")
+                    b.Property<double>("MonthlySalary")
                         .HasMaxLength(100)
-                        .HasColumnType("TEXT");
+                        .HasColumnType("REAL");
 
                     b.Property<string>("PayGrade")
                         .HasMaxLength(100)
