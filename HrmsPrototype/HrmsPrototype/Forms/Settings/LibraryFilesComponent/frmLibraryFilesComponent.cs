@@ -1,6 +1,7 @@
 ﻿using HrmsPrototype.Core.Entities.Settings;
 using HrmsPrototype.Entities.Settings;
 using HrmsPrototype.Infrastructure.Repositories;
+using System;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -61,6 +62,11 @@ namespace HrmsPrototype.Forms.Settings.LibraryFilesComponent
         private async void frmLibraryFilesComponent_Load(object sender, System.EventArgs e)
         {
             await loadRecords();
+        }
+
+        private void dgv_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            frmLibraryFilesModule.instance.ID = Convert.ToInt32(dgv.CurrentRow.Cells["Id"].Value);
         }
     }
 }
