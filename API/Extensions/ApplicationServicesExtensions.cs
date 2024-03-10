@@ -21,6 +21,10 @@ namespace API.Extensions
 
             services.AddScoped<IEmployeeRepository, EmployeeRepository>();
 
+            services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
+
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
             services.AddDbContext<StoreContext>(opt =>

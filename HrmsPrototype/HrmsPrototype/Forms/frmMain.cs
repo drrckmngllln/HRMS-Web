@@ -1,14 +1,7 @@
 ﻿using HrmsPrototype.Forms.Settings;
+using HrmsPrototype.Forms.Transaction;
 using Krypton.Toolkit;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace HrmsPrototype.Forms
 {
@@ -29,10 +22,16 @@ namespace HrmsPrototype.Forms
             if (panelLibrary.Visible == false)
             {
                 panelLibrary.Visible = true;
+                var frm = new frmLibraryFilesModule();
+                frm.TopLevel = false;
+                panelTask.Controls.Clear();
+                panelTask.Controls.Add(frm);
+                frm.Show();
             }
             else
             {
                 panelLibrary.Visible = false;
+                panelTask.Controls.Clear();
             }
         }
 
@@ -50,43 +49,33 @@ namespace HrmsPrototype.Forms
 
         private void btnDepartments_Click(object sender, EventArgs e)
         {
-            var frm = new frmDepartments();
-            frm.TopLevel = false;
-            panelTask.Controls.Clear();
-            panelTask.Controls.Add(frm);
-            frm.Show();
+            frmLibraryFilesModule.instance.OpenDepartments();
         }
 
         private void btnPositions_Click(object sender, EventArgs e)
         {
-            var frm = new frmPositions();
-            frm.TopLevel = false;
-            panelTask.Controls.Clear();
-            panelTask.Controls.Add(frm);
-            frm.Show();
+            frmLibraryFilesModule.instance.OpenPositions();
+
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            var frm = new frmCampus();
-            frm.TopLevel = false;
-            panelTask.Controls.Clear();
-            panelTask.Controls.Add(frm);
-            frm.Show();
+            frmLibraryFilesModule.instance.OpenCampuses();
         }
 
         private void btnLeaveSetup_Click(object sender, EventArgs e)
         {
-            var frm = new frmLeaveSetup();
-            frm.TopLevel = false;
-            panelTask.Controls.Clear();
-            panelTask.Controls.Add(frm);
-            frm.Show();
+            frmLibraryFilesModule.instance.OpenLeaveSetups();
         }
 
         private void btnAttendanceSetup_Click(object sender, EventArgs e)
         {
-            var frm = new frmAttendanceSetup();
+            frmLibraryFilesModule.instance.OpenAttendanceSetups();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            var frm = new frmEmployees();
             frm.TopLevel = false;
             panelTask.Controls.Clear();
             panelTask.Controls.Add(frm);

@@ -1,14 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace HrmsPrototype.Core.Entities.Settings
+﻿namespace HrmsPrototype.Core.Entities.Settings
 {
-    internal class Positions
+    internal class Positions : BaseEntity
     {
-        public int Id { get; set; }
         public string Name { get; set; }
     }
 }

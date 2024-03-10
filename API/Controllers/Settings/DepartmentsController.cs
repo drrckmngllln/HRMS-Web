@@ -1,74 +1,52 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using AutoMapper;
 using Core.Entities.Settings;
 using Core.Interfaces;
-using Infrastructure.Data;
-using Microsoft.AspNetCore.Http.HttpResults;
+using Core.Specifications;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
 namespace API.Controllers.Settings
 {
     public class DepartmentsController : BaseApiController
     {
-        private readonly ISettingsService<Department> _departmentRepo;
+        private readonly IUnitOfWork _unitOfWork;
+        private readonly IMapper _mapper;
 
-        public DepartmentsController(ISettingsService<Department> departmentRepo)
+        public DepartmentsController(IUnitOfWork unitOfWork, IMapper mapper)
         {
-            _departmentRepo = departmentRepo;
-
+            _unitOfWork = unitOfWork;
+            _mapper = mapper;
         }
 
         [HttpGet]
-        public async Task<IReadOnlyList<Department>> GetDepartmentsAsync()
+        public async Task<IReadOnlyList<Department>> GetDepartmentsAsync([FromQuery] string search)
         {
-            return await _departmentRepo.GetAllAsync();
-        }
-
-        [HttpGet("search")]
-        public async Task<ActionResult<IReadOnlyList<Department>>> SearchDepartmentsAsync([FromQuery] string value)
-        {
-            var searchItem = await _departmentRepo.GetAllAsync();
-            var item = searchItem.Where(x => x.Name.ToLower().Contains(value)).ToList();
-            return Ok(item);
+            var spec = new DepartmentsSpecifications(search);
+            var data = await _unitOfWork.Repository<Department>().ListAsync(spec);
+            return data;
         }
 
         [HttpPost("create")]
         public async Task<ActionResult<Department>> CreateDepartmentsAsync(Department department)
         {
-            var departments = await _departmentRepo.GetAllAsync();
-            var dep = new Department
-            {
-                Name = department.Name
-            };
-            if (dep != null)
-            {
-                await _departmentRepo.AddAsync(dep);
-                return Ok(dep);
-            }
-
-            return BadRequest();
+            _unitOfWork.Repository<Department>().Add(department);
+            await _unitOfWork.Complete();
+            return NoContent();
         }
 
-        [HttpPut("update/{id}")]
+        [HttpPut("update")]
         public async Task<ActionResult<Department>> UpdateAsync(Department department)
         {
-            var dep = new Department
-            {
-                Id = department.Id,
-                Name = department.Name
-            };
-            await _departmentRepo.UpdateAsync(dep);
-            return Ok(dep);
+            _unitOfWork.Repository<Department>().Update(department);
+            await _unitOfWork.Complete();
+            return NoContent();
         }
 
         [HttpDelete("{id}")]
-        public async Task<ActionResult<Department>> DeleteAsync(int id)
+        public async Task<ActionResult<Department>> DeleteAsync(Department department)
         {
-            await _departmentRepo.DeleteAsync(id);
-            return Ok(id);
+            _unitOfWork.Repository<Department>().Delete(department);
+            await _unitOfWork.Complete();
+            return NoContent();
         }
     }
 }

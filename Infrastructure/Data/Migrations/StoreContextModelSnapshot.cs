@@ -23,21 +23,41 @@ namespace Infrastructure.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("Category")
+                    b.Property<int>("CategoryId")
                         .HasColumnType("INTEGER");
 
                     b.Property<int>("GracePeriod")
+                        .HasMaxLength(100)
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("TimeIn")
+                        .HasMaxLength(100)
                         .HasColumnType("TEXT");
 
                     b.Property<string>("TimeOut")
+                        .HasMaxLength(100)
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
 
+                    b.HasIndex("CategoryId");
+
                     b.ToTable("AttendanceSetups");
+                });
+
+            modelBuilder.Entity("Core.Entities.Settings.AttendanceSetupCategory", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Name")
+                        .HasMaxLength(100)
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("AttendanceSetupCategory");
                 });
 
             modelBuilder.Entity("Core.Entities.Settings.Campus", b =>
@@ -46,10 +66,15 @@ namespace Infrastructure.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
+                    b.Property<string>("Address")
+                        .HasMaxLength(100)
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("Description")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Name")
+                        .HasMaxLength(100)
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
@@ -64,6 +89,7 @@ namespace Infrastructure.Data.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Name")
+                        .HasMaxLength(100)
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
@@ -78,9 +104,11 @@ namespace Infrastructure.Data.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<int>("Credits")
+                        .HasMaxLength(100)
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Type")
+                        .HasMaxLength(100)
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
@@ -95,11 +123,43 @@ namespace Infrastructure.Data.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Name")
+                        .HasMaxLength(100)
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
 
                     b.ToTable("Positions");
+                });
+
+            modelBuilder.Entity("Core.Entities.Transactions.AttendanceEntity.Attendance", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("EmployeeId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<DateTime>("TimeIn")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("TimeInRemarks")
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("TimeOut")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("TimeOutRemarks")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("EmployeeId");
+
+                    b.ToTable("Attendances");
                 });
 
             modelBuilder.Entity("Core.Entities.Transactions.EmployeeEntity.CivilServiceEligibility", b =>
@@ -108,26 +168,32 @@ namespace Infrastructure.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("DateOfExamination")
+                    b.Property<DateOnly>("DateOfExamination")
+                        .HasMaxLength(100)
                         .HasColumnType("TEXT");
 
                     b.Property<string>("DateOfValidity")
+                        .HasMaxLength(100)
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Eligibility")
+                        .HasMaxLength(100)
                         .HasColumnType("TEXT");
 
                     b.Property<int>("EmployeeNumberId")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("LicenseNumber")
+                        .HasMaxLength(100)
                         .HasColumnType("TEXT");
 
                     b.Property<string>("PlaceOfExamination")
+                        .HasMaxLength(100)
                         .HasColumnType("TEXT");
 
-                    b.Property<decimal>("Rating")
-                        .HasColumnType("TEXT");
+                    b.Property<double>("Rating")
+                        .HasMaxLength(100)
+                        .HasColumnType("REAL");
 
                     b.HasKey("Id");
 
@@ -143,30 +209,38 @@ namespace Infrastructure.Data.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("AcademicHonors")
+                        .HasMaxLength(100)
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Course")
+                        .HasMaxLength(100)
                         .HasColumnType("TEXT");
 
                     b.Property<int>("EmployeeNumberId")
                         .HasColumnType("INTEGER");
 
                     b.Property<int>("Level")
+                        .HasMaxLength(100)
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("NameOfSchool")
+                        .HasMaxLength(100)
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("PeriodEnd")
+                    b.Property<DateOnly>("PeriodEnd")
+                        .HasMaxLength(100)
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("PeriodStart")
+                    b.Property<DateOnly>("PeriodStart")
+                        .HasMaxLength(100)
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("UnitsEarned")
-                        .HasColumnType("TEXT");
+                    b.Property<double>("UnitsEarned")
+                        .HasMaxLength(100)
+                        .HasColumnType("REAL");
 
-                    b.Property<string>("YearGraduated")
+                    b.Property<DateOnly>("YearGraduated")
+                        .HasMaxLength(100)
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
@@ -182,34 +256,44 @@ namespace Infrastructure.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("ContractEnd")
+                    b.Property<DateOnly>("ContractEnd")
+                        .HasMaxLength(100)
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("ContractStart")
+                    b.Property<DateOnly>("ContractStart")
+                        .HasMaxLength(100)
                         .HasColumnType("TEXT");
 
                     b.Property<int>("DepartmentId")
+                        .HasMaxLength(100)
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("EmployeeNumber")
+                        .HasMaxLength(100)
                         .HasColumnType("TEXT");
 
                     b.Property<string>("FirstName")
+                        .HasMaxLength(100)
                         .HasColumnType("TEXT");
 
                     b.Property<string>("FullName")
+                        .HasMaxLength(100)
                         .HasColumnType("TEXT");
 
                     b.Property<string>("LastName")
+                        .HasMaxLength(100)
                         .HasColumnType("TEXT");
 
                     b.Property<string>("MiddleName")
+                        .HasMaxLength(100)
                         .HasColumnType("TEXT");
 
                     b.Property<int>("PositionId")
+                        .HasMaxLength(100)
                         .HasColumnType("INTEGER");
 
                     b.Property<int>("Status")
+                        .HasMaxLength(100)
                         .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
@@ -228,45 +312,59 @@ namespace Infrastructure.Data.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("BusinessAddress")
+                        .HasMaxLength(100)
                         .HasColumnType("TEXT");
 
                     b.Property<int>("EmployeeNumberId")
+                        .HasMaxLength(100)
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("EmployerName")
+                        .HasMaxLength(100)
                         .HasColumnType("TEXT");
 
                     b.Property<string>("FatherFirstname")
+                        .HasMaxLength(100)
                         .HasColumnType("TEXT");
 
                     b.Property<string>("FatherMiddlename")
+                        .HasMaxLength(100)
                         .HasColumnType("TEXT");
 
                     b.Property<string>("FatherSurname")
+                        .HasMaxLength(100)
                         .HasColumnType("TEXT");
 
                     b.Property<string>("MotherFirstname")
+                        .HasMaxLength(100)
                         .HasColumnType("TEXT");
 
                     b.Property<string>("MotherMiddlename")
+                        .HasMaxLength(100)
                         .HasColumnType("TEXT");
 
                     b.Property<string>("MotherSurnamne")
+                        .HasMaxLength(100)
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Occupation")
+                        .HasMaxLength(100)
                         .HasColumnType("TEXT");
 
                     b.Property<string>("SpouseFirstName")
+                        .HasMaxLength(100)
                         .HasColumnType("TEXT");
 
                     b.Property<string>("SpouseMiddlename")
+                        .HasMaxLength(100)
                         .HasColumnType("TEXT");
 
                     b.Property<string>("SpouseSurname")
+                        .HasMaxLength(100)
                         .HasColumnType("TEXT");
 
                     b.Property<string>("TelephoneNumber")
+                        .HasMaxLength(100)
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
@@ -283,24 +381,31 @@ namespace Infrastructure.Data.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Conducted")
+                        .HasMaxLength(100)
                         .HasColumnType("TEXT");
 
                     b.Property<int>("EmployeeNumberId")
+                        .HasMaxLength(100)
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("EndDate")
+                    b.Property<DateOnly>("EndDate")
+                        .HasMaxLength(100)
                         .HasColumnType("TEXT");
 
                     b.Property<int>("NumberOfHours")
+                        .HasMaxLength(100)
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("StartDate")
+                    b.Property<DateOnly>("StartDate")
+                        .HasMaxLength(100)
                         .HasColumnType("TEXT");
 
                     b.Property<string>("TitleOfLearningAndDevelopment")
+                        .HasMaxLength(100)
                         .HasColumnType("TEXT");
 
                     b.Property<string>("TypeOfLd")
+                        .HasMaxLength(100)
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
@@ -316,20 +421,42 @@ namespace Infrastructure.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("DateOfBirth")
+                    b.Property<DateOnly>("DateOfBirth")
+                        .HasMaxLength(100)
                         .HasColumnType("TEXT");
 
-                    b.Property<int?>("FamilyBackgroundId")
+                    b.Property<int>("EmployeeNumberId")
+                        .HasMaxLength(100)
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Fullname")
+                        .HasMaxLength(100)
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("FamilyBackgroundId");
+                    b.HasIndex("EmployeeNumberId");
 
                     b.ToTable("NameOfChildrens");
+                });
+
+            modelBuilder.Entity("Core.Entities.Transactions.EmployeeEntity.NonAcademicDestinction", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Description")
+                        .HasMaxLength(100)
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Desctinction")
+                        .HasMaxLength(100)
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("NonAcademicDestinction");
                 });
 
             modelBuilder.Entity("Core.Entities.Transactions.EmployeeEntity.OtherInformation", b =>
@@ -339,20 +466,28 @@ namespace Infrastructure.Data.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<int>("EmployeeNumberId")
+                        .HasMaxLength(100)
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("NonAcademicDestinction")
-                        .HasColumnType("TEXT");
+                    b.Property<int>("NonAcademicDestinctionId")
+                        .HasMaxLength(100)
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("Organization")
+                        .HasMaxLength(100)
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("SpecialSkills")
-                        .HasColumnType("TEXT");
+                    b.Property<int>("SpecialSkillsId")
+                        .HasMaxLength(100)
+                        .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
 
                     b.HasIndex("EmployeeNumberId");
+
+                    b.HasIndex("NonAcademicDestinctionId");
+
+                    b.HasIndex("SpecialSkillsId");
 
                     b.ToTable("OtherInformations");
                 });
@@ -364,48 +499,63 @@ namespace Infrastructure.Data.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("AgencyEmployeeNo")
+                        .HasMaxLength(100)
                         .HasColumnType("TEXT");
 
                     b.Property<string>("BloodType")
+                        .HasMaxLength(100)
                         .HasColumnType("TEXT");
 
                     b.Property<int>("CivilStatus")
+                        .HasMaxLength(100)
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("DateOfBirth")
+                        .HasMaxLength(100)
                         .HasColumnType("TEXT");
 
                     b.Property<int>("EmployeeNumberId")
+                        .HasMaxLength(100)
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Firstname")
+                        .HasMaxLength(100)
                         .HasColumnType("TEXT");
 
                     b.Property<string>("GsisIdNo")
+                        .HasMaxLength(100)
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Height")
+                        .HasMaxLength(100)
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Middlename")
+                        .HasMaxLength(100)
                         .HasColumnType("TEXT");
 
                     b.Property<string>("PagibigIdNo")
+                        .HasMaxLength(100)
                         .HasColumnType("TEXT");
 
                     b.Property<string>("PhilhealthNo")
+                        .HasMaxLength(100)
                         .HasColumnType("TEXT");
 
                     b.Property<int>("Sex")
+                        .HasMaxLength(100)
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("SssNo")
+                        .HasMaxLength(100)
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Surname")
+                        .HasMaxLength(100)
                         .HasColumnType("TEXT");
 
                     b.Property<string>("TinNo")
+                        .HasMaxLength(100)
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
@@ -415,6 +565,25 @@ namespace Infrastructure.Data.Migrations
                     b.ToTable("PersonalInformations");
                 });
 
+            modelBuilder.Entity("Core.Entities.Transactions.EmployeeEntity.SpecialSkills", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Description")
+                        .HasMaxLength(100)
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Skills")
+                        .HasMaxLength(100)
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("SpecialSkills");
+                });
+
             modelBuilder.Entity("Core.Entities.Transactions.EmployeeEntity.VoluntaryWork", b =>
                 {
                     b.Property<int>("Id")
@@ -422,21 +591,27 @@ namespace Infrastructure.Data.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<int>("EmployeeNumberId")
+                        .HasMaxLength(100)
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("EndDate")
+                        .HasMaxLength(100)
                         .HasColumnType("TEXT");
 
                     b.Property<string>("NameAndAddressOfOrganization")
+                        .HasMaxLength(100)
                         .HasColumnType("TEXT");
 
                     b.Property<string>("NatureOfWork")
+                        .HasMaxLength(100)
                         .HasColumnType("TEXT");
 
                     b.Property<int>("NumberOfHours")
+                        .HasMaxLength(100)
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("StartDate")
+                        .HasMaxLength(100)
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
@@ -453,30 +628,39 @@ namespace Infrastructure.Data.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Department")
+                        .HasMaxLength(100)
                         .HasColumnType("TEXT");
 
                     b.Property<int>("EmployeeNumberId")
+                        .HasMaxLength(100)
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("EndDate")
+                        .HasMaxLength(100)
                         .HasColumnType("TEXT");
 
                     b.Property<string>("GovernmentService")
+                        .HasMaxLength(100)
                         .HasColumnType("TEXT");
 
-                    b.Property<decimal>("MonthlySalary")
-                        .HasColumnType("TEXT");
+                    b.Property<double>("MonthlySalary")
+                        .HasMaxLength(100)
+                        .HasColumnType("REAL");
 
                     b.Property<string>("PayGrade")
+                        .HasMaxLength(100)
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Position")
+                        .HasMaxLength(100)
                         .HasColumnType("TEXT");
 
                     b.Property<string>("StartDate")
+                        .HasMaxLength(100)
                         .HasColumnType("TEXT");
 
                     b.Property<string>("StatusOfAppointment")
+                        .HasMaxLength(100)
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
@@ -484,6 +668,28 @@ namespace Infrastructure.Data.Migrations
                     b.HasIndex("EmployeeNumberId");
 
                     b.ToTable("WorkExperiences");
+                });
+
+            modelBuilder.Entity("Core.Entities.Settings.AttendanceSetup", b =>
+                {
+                    b.HasOne("Core.Entities.Settings.AttendanceSetupCategory", "Category")
+                        .WithMany()
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Category");
+                });
+
+            modelBuilder.Entity("Core.Entities.Transactions.AttendanceEntity.Attendance", b =>
+                {
+                    b.HasOne("Core.Entities.Transactions.EmployeeEntity.Employee", "Employee")
+                        .WithMany()
+                        .HasForeignKey("EmployeeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Employee");
                 });
 
             modelBuilder.Entity("Core.Entities.Transactions.EmployeeEntity.CivilServiceEligibility", b =>
@@ -551,9 +757,13 @@ namespace Infrastructure.Data.Migrations
 
             modelBuilder.Entity("Core.Entities.Transactions.EmployeeEntity.NameOfChildren", b =>
                 {
-                    b.HasOne("Core.Entities.Transactions.EmployeeEntity.FamilyBackground", null)
-                        .WithMany("NameOfChildrens")
-                        .HasForeignKey("FamilyBackgroundId");
+                    b.HasOne("Core.Entities.Transactions.EmployeeEntity.Employee", "EmployeeNumber")
+                        .WithMany()
+                        .HasForeignKey("EmployeeNumberId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("EmployeeNumber");
                 });
 
             modelBuilder.Entity("Core.Entities.Transactions.EmployeeEntity.OtherInformation", b =>
@@ -564,7 +774,23 @@ namespace Infrastructure.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("Core.Entities.Transactions.EmployeeEntity.NonAcademicDestinction", "NonAcademicDestinction")
+                        .WithMany()
+                        .HasForeignKey("NonAcademicDestinctionId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Core.Entities.Transactions.EmployeeEntity.SpecialSkills", "SpecialSkills")
+                        .WithMany()
+                        .HasForeignKey("SpecialSkillsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.Navigation("EmployeeNumber");
+
+                    b.Navigation("NonAcademicDestinction");
+
+                    b.Navigation("SpecialSkills");
                 });
 
             modelBuilder.Entity("Core.Entities.Transactions.EmployeeEntity.PersonalInformation", b =>
@@ -598,11 +824,6 @@ namespace Infrastructure.Data.Migrations
                         .IsRequired();
 
                     b.Navigation("EmployeeNumber");
-                });
-
-            modelBuilder.Entity("Core.Entities.Transactions.EmployeeEntity.FamilyBackground", b =>
-                {
-                    b.Navigation("NameOfChildrens");
                 });
 #pragma warning restore 612, 618
         }

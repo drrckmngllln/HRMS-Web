@@ -101,10 +101,17 @@
   <ItemGroup>
     <Compile Include="Core\Entities\Settings\AttendanceSetup.cs" />
     <Compile Include="Core\Entities\Settings\AttendanceSetupCategory.cs" />
+    <Compile Include="Core\Entities\Settings\BaseEntity.cs" />
     <Compile Include="Core\Entities\Settings\Campus.cs" />
     <Compile Include="Core\Entities\Settings\Departments.cs" />
     <Compile Include="Core\Entities\Settings\LeaveSetup.cs" />
     <Compile Include="Core\Entities\Settings\Positions.cs" />
+    <Compile Include="Core\Entities\Transactions\CivilStatus.cs" />
+    <Compile Include="Core\Entities\Transactions\Employees.cs" />
+    <Compile Include="Core\Entities\Transactions\EmployeeStatus.cs" />
+    <Compile Include="Core\Entities\Transactions\PersonalInformation.cs" />
+    <Compile Include="Core\Entities\Transactions\Sex.cs" />
+    <Compile Include="Core\Helpers\Pagination.cs" />
     <Compile Include="Core\Notifications\Toastr.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
@@ -136,38 +143,58 @@
     <Compile Include="Forms\Notifications\frmToastr.Designer.cs">
       <DependentUpon>frmToastr.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Settings\frmAttendanceSetup.cs">
+    <Compile Include="Forms\Settings\frmLibraryFilesModule.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Settings\frmAttendanceSetup.Designer.cs">
-      <DependentUpon>frmAttendanceSetup.cs</DependentUpon>
+    <Compile Include="Forms\Settings\frmLibraryFilesModule.Designer.cs">
+      <DependentUpon>frmLibraryFilesModule.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Settings\frmCampus.cs">
+    <Compile Include="Forms\Settings\LibraryFilesComponent\frmLibraryFilesComponent.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Settings\frmCampus.Designer.cs">
-      <DependentUpon>frmCampus.cs</DependentUpon>
+    <Compile Include="Forms\Settings\LibraryFilesComponent\frmLibraryFilesComponent.Designer.cs">
+      <DependentUpon>frmLibraryFilesComponent.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Settings\frmDepartments.cs">
+    <Compile Include="Forms\Settings\LibraryFilesComponent\LibraryFilesAddEdit\frmDepartment.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Settings\frmDepartments.Designer.cs">
-      <DependentUpon>frmDepartments.cs</DependentUpon>
+    <Compile Include="Forms\Settings\LibraryFilesComponent\LibraryFilesAddEdit\frmDepartment.Designer.cs">
+      <DependentUpon>frmDepartment.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Settings\frmLeaveSetup.cs">
+    <Compile Include="Forms\Transaction\Employee\frmAddEditEmployees.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Settings\frmLeaveSetup.Designer.cs">
-      <DependentUpon>frmLeaveSetup.cs</DependentUpon>
+    <Compile Include="Forms\Transaction\Employee\frmAddEditEmployees.Designer.cs">
+      <DependentUpon>frmAddEditEmployees.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Settings\frmPositions.cs">
+    <Compile Include="Forms\Transaction\Employee\frmEmployeeList.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Settings\frmPositions.Designer.cs">
-      <DependentUpon>frmPositions.cs</DependentUpon>
+    <Compile Include="Forms\Transaction\Employee\frmEmployeeList.Designer.cs">
+      <DependentUpon>frmEmployeeList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Transaction\Employee\frmEmployees.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Transaction\Employee\frmEmployees.Designer.cs">
+      <DependentUpon>frmEmployees.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Transaction\Employee\PersonalDataSheet\frmPdsMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Transaction\Employee\PersonalDataSheet\frmPdsMain.Designer.cs">
+      <DependentUpon>frmPdsMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Transaction\Employee\PersonalDataSheet\frmPersonalInformationChild.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Transaction\Employee\PersonalDataSheet\frmPersonalInformationChild.Designer.cs">
+      <DependentUpon>frmPersonalInformationChild.cs</DependentUpon>
     </Compile>
     <Compile Include="Infrastructure\Interfaces\IGenericRepository.cs" />
+    <Compile Include="Infrastructure\Interfaces\IUnitOfWork.cs" />
     <Compile Include="Infrastructure\Repositories\GenericRepository.cs" />
+    <Compile Include="Infrastructure\Services\UnitOfWork.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
@@ -185,20 +212,29 @@
     <EmbeddedResource Include="Forms\Notifications\frmToastr.resx">
       <DependentUpon>frmToastr.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Settings\frmAttendanceSetup.resx">
-      <DependentUpon>frmAttendanceSetup.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Settings\frmLibraryFilesModule.resx">
+      <DependentUpon>frmLibraryFilesModule.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Settings\frmCampus.resx">
-      <DependentUpon>frmCampus.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Settings\LibraryFilesComponent\frmLibraryFilesComponent.resx">
+      <DependentUpon>frmLibraryFilesComponent.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Settings\frmDepartments.resx">
-      <DependentUpon>frmDepartments.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Settings\LibraryFilesComponent\LibraryFilesAddEdit\frmDepartment.resx">
+      <DependentUpon>frmDepartment.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Settings\frmLeaveSetup.resx">
-      <DependentUpon>frmLeaveSetup.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Transaction\Employee\frmAddEditEmployees.resx">
+      <DependentUpon>frmAddEditEmployees.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Settings\frmPositions.resx">
-      <DependentUpon>frmPositions.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Transaction\Employee\frmEmployeeList.resx">
+      <DependentUpon>frmEmployeeList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Transaction\Employee\frmEmployees.resx">
+      <DependentUpon>frmEmployees.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Transaction\Employee\PersonalDataSheet\frmPdsMain.resx">
+      <DependentUpon>frmPdsMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Transaction\Employee\PersonalDataSheet\frmPersonalInformationChild.resx">
+      <DependentUpon>frmPersonalInformationChild.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -225,7 +261,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Forms\Transaction\" />
     <Folder Include="Services\" />
   </ItemGroup>
   <ItemGroup>
@@ -242,6 +277,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\check.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\user%281%29.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

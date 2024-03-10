@@ -38,6 +38,18 @@ namespace HrmsPrototype.Infrastructure.Repositories
             return null;
         }
 
+        public async Task<T> GetByIdAsync(string id)
+        {
+            var response = await http.GetAsync(baseUrl + id);
+            if (response.IsSuccessStatusCode)
+            {
+                var content = await response.Content.ReadAsStringAsync();
+                var json = JsonConvert.DeserializeObject<T>(content);
+                return json;
+            }
+            return null;
+        }
+
         public async Task<IReadOnlyList<T>> SearchAsync(string value)
         {
             var response = await http.GetAsync(baseUrl + value);

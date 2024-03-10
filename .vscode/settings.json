@@ -1,3 +1,6 @@
 {
-    "dotnet.defaultSolution": "HrmsWeb.sln"
+    "dotnet.defaultSolution": "HrmsWeb.sln",
+    "editor.autoClosingBrackets": "always",
+    "editor.autoSurround": "languageDefined",
+    "javascript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBrackets": true
 }

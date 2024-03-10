@@ -1,14 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace HrmsPrototype.Core.Entities.Settings
+﻿namespace HrmsPrototype.Core.Entities.Settings
 {
-    internal class AttendanceSetup
+    internal class AttendanceSetup : BaseEntity
     {
-        public int Id { get; set; }
         public AttendanceSetupCategory Category { get; set; } = AttendanceSetupCategory.NonTeaching;
         public string TimeIn { get; set; }
         public string TimeOut { get; set; }
