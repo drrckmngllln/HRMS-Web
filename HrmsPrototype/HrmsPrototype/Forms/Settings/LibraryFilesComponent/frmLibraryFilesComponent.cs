@@ -57,6 +57,11 @@ namespace HrmsPrototype.Forms.Settings.LibraryFilesComponent
                 tTitle.Text = "Leave Setups";
                 await GetData<LeaveSetup>();
             }
+            if (_libraryFilesType == "AttendanceEnrollment")
+            {
+                tTitle.Text = "Attendance Enrollment";
+                await GetData<AttendanceIdentity>();
+            }
         }
 
         private async void frmLibraryFilesComponent_Load(object sender, System.EventArgs e)

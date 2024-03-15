@@ -70,16 +70,12 @@ namespace HrmsPrototype.Forms
 
         private void btnAttendanceSetup_Click(object sender, EventArgs e)
         {
-            frmLibraryFilesModule.instance.OpenAttendanceSetups();
+            frmLibraryFilesModule.instance.OpenEnrollmentIdentityAttendance();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            var frm = new frmEmployees();
-            frm.TopLevel = false;
-            panelTask.Controls.Clear();
-            panelTask.Controls.Add(frm);
-            frm.Show();
+            
         }
     }
 }

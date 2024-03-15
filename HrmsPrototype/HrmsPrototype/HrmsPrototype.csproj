@@ -33,6 +33,26 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DPFPDevNET, Version=1.6.1.0, Culture=neutral, PublicKeyToken=696774c42ee28c57, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Downloads\Digital Pesonal SDK\dll\DPFPDevNET.dll</HintPath>
+    </Reference>
+    <Reference Include="DPFPEngNET, Version=1.6.1.0, Culture=neutral, PublicKeyToken=7fe76e7adf19964b, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Downloads\Digital Pesonal SDK\dll\DPFPEngNET.dll</HintPath>
+    </Reference>
+    <Reference Include="DPFPGuiNET, Version=1.6.1.0, Culture=neutral, PublicKeyToken=d4f4a0bd9c559145, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Downloads\Digital Pesonal SDK\dll\DPFPGuiNET.dll</HintPath>
+    </Reference>
+    <Reference Include="DPFPShrNET, Version=1.6.1.0, Culture=neutral, PublicKeyToken=d902fe275a8d6cf2, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Downloads\Digital Pesonal SDK\dll\DPFPShrNET.dll</HintPath>
+    </Reference>
+    <Reference Include="DPFPVerNET, Version=1.6.1.0, Culture=neutral, PublicKeyToken=4de0a9c4dcc83984, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Downloads\Digital Pesonal SDK\dll\DPFPVerNET.dll</HintPath>
+    </Reference>
     <Reference Include="Krypton.Toolkit, Version=80.23.11.321, Culture=neutral, PublicKeyToken=a87e673e9ecb6e8e, processorArchitecture=MSIL">
       <HintPath>..\packages\Krypton.Toolkit.80.23.11.321\lib\net472\Krypton.Toolkit.dll</HintPath>
     </Reference>
@@ -99,6 +119,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Core\Entities\Settings\AttendanceIdentity.cs" />
     <Compile Include="Core\Entities\Settings\AttendanceSetup.cs" />
     <Compile Include="Core\Entities\Settings\AttendanceSetupCategory.cs" />
     <Compile Include="Core\Entities\Settings\BaseEntity.cs" />
@@ -148,6 +169,12 @@
     </Compile>
     <Compile Include="Forms\Settings\frmLibraryFilesModule.Designer.cs">
       <DependentUpon>frmLibraryFilesModule.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Settings\LibraryFilesComponent\Attendance\frmAttendanceRegister.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Settings\LibraryFilesComponent\Attendance\frmAttendanceRegister.Designer.cs">
+      <DependentUpon>frmAttendanceRegister.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Settings\LibraryFilesComponent\frmLibraryFilesComponent.cs">
       <SubType>Form</SubType>
@@ -214,6 +241,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Settings\frmLibraryFilesModule.resx">
       <DependentUpon>frmLibraryFilesModule.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Settings\LibraryFilesComponent\Attendance\frmAttendanceRegister.resx">
+      <DependentUpon>frmAttendanceRegister.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Settings\LibraryFilesComponent\frmLibraryFilesComponent.resx">
       <DependentUpon>frmLibraryFilesComponent.cs</DependentUpon>

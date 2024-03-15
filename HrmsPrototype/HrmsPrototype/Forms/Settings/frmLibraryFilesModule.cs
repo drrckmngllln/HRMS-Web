@@ -2,11 +2,13 @@
 using HrmsPrototype.Core.Notifications;
 using HrmsPrototype.Entities.Settings;
 using HrmsPrototype.Forms.Settings.LibraryFilesComponent;
+using HrmsPrototype.Forms.Settings.LibraryFilesComponent.Attendance;
 using HrmsPrototype.Forms.Settings.LibraryFilesComponent.LibraryFilesAddEdit;
 using HrmsPrototype.Infrastructure.Repositories;
 using System;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Linq;
 
 namespace HrmsPrototype.Forms.Settings
 {
@@ -46,6 +48,15 @@ namespace HrmsPrototype.Forms.Settings
             _name = name;
         }
 
+        public void OpenEnrollmentIdentityAttendance()
+        {
+            var frm = new frmAttendanceRegister();
+            frm.TopLevel = false;
+            panelTask.Controls.Clear();
+            panelTask.Controls.Add(frm);
+            frm.Show();
+        }
+
         public void OpenCampuses()
         {
             OpenComponent("Campuses");
@@ -71,6 +82,7 @@ namespace HrmsPrototype.Forms.Settings
             OpenComponent("AttendanceSetups");
         }
 
+        
         private void btnNew_Click(object sender, EventArgs e)
         {
             if (_name == "Departments")

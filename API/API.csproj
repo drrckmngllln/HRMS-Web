@@ -23,4 +23,22 @@
     <ProjectReference Include="..\Core\Core.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Reference Include="DPFPDevNET">
+      <HintPath>..\..\..\..\Downloads\Digital Pesonal SDK\dll\DPFPDevNET.dll</HintPath>
+    </Reference>
+    <Reference Include="DPFPEngNET">
+      <HintPath>..\..\..\..\Downloads\Digital Pesonal SDK\dll\DPFPEngNET.dll</HintPath>
+    </Reference>
+    <Reference Include="DPFPGuiNET">
+      <HintPath>..\..\..\..\Downloads\Digital Pesonal SDK\dll\DPFPGuiNET.dll</HintPath>
+    </Reference>
+    <Reference Include="DPFPShrNET">
+      <HintPath>..\..\..\..\Downloads\Digital Pesonal SDK\dll\DPFPShrNET.dll</HintPath>
+    </Reference>
+    <Reference Include="DPFPVerNET">
+      <HintPath>..\..\..\..\Downloads\Digital Pesonal SDK\dll\DPFPVerNET.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
 </Project>

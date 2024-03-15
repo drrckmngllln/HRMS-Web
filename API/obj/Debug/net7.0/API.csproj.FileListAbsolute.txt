@@ -218,3 +218,8 @@ C:\Users\MCNP-ISAP\Documents\GitHub\HRMS-Web\API\obj\Debug\net7.0\API.genruntime
 C:\Users\MCNP-ISAP\Documents\GitHub\HRMS-Web\API\obj\Debug\net7.0\ref\API.dll
 C:\Users\drrckmngllln\Documents\GitHub\HRMS-Web\API\bin\Debug\net7.0\AutoMapper.dll
 C:\Users\MCNP-ISAP\Documents\GitHub\HRMS-Web\API\bin\Debug\net7.0\AutoMapper.dll
+C:\Users\drrckmngllln\Documents\GitHub\HRMS-Web\API\bin\Debug\net7.0\DPFPDevNET.dll
+C:\Users\drrckmngllln\Documents\GitHub\HRMS-Web\API\bin\Debug\net7.0\DPFPEngNET.dll
+C:\Users\drrckmngllln\Documents\GitHub\HRMS-Web\API\bin\Debug\net7.0\DPFPGuiNET.dll
+C:\Users\drrckmngllln\Documents\GitHub\HRMS-Web\API\bin\Debug\net7.0\DPFPShrNET.dll
+C:\Users\drrckmngllln\Documents\GitHub\HRMS-Web\API\bin\Debug\net7.0\DPFPVerNET.dll
