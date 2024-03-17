@@ -28,6 +28,11 @@ namespace Infrastructure.Data.Repositories
             _context.Set<T>().Remove(entity);
         }
 
+        public async Task<bool> CheckExisting(T entity)
+        {
+            return await _context.Set<T>().AnyAsync();
+        }
+
         public async Task<T> GetByIdAsync(int id)
         {
             return await _context.Set<T>().FindAsync();

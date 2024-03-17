@@ -182,11 +182,29 @@
     <Compile Include="Forms\Settings\LibraryFilesComponent\frmLibraryFilesComponent.Designer.cs">
       <DependentUpon>frmLibraryFilesComponent.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Settings\LibraryFilesComponent\LibraryFilesAddEdit\frmCampuses.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Settings\LibraryFilesComponent\LibraryFilesAddEdit\frmCampuses.Designer.cs">
+      <DependentUpon>frmCampuses.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Settings\LibraryFilesComponent\LibraryFilesAddEdit\frmDepartment.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\Settings\LibraryFilesComponent\LibraryFilesAddEdit\frmDepartment.Designer.cs">
       <DependentUpon>frmDepartment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Settings\LibraryFilesComponent\LibraryFilesAddEdit\frmLeaveSetup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Settings\LibraryFilesComponent\LibraryFilesAddEdit\frmLeaveSetup.Designer.cs">
+      <DependentUpon>frmLeaveSetup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Settings\LibraryFilesComponent\LibraryFilesAddEdit\frmPositions.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Settings\LibraryFilesComponent\LibraryFilesAddEdit\frmPositions.Designer.cs">
+      <DependentUpon>frmPositions.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Transaction\Employee\frmAddEditEmployees.cs">
       <SubType>Form</SubType>
@@ -248,8 +266,17 @@
     <EmbeddedResource Include="Forms\Settings\LibraryFilesComponent\frmLibraryFilesComponent.resx">
       <DependentUpon>frmLibraryFilesComponent.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Settings\LibraryFilesComponent\LibraryFilesAddEdit\frmCampuses.resx">
+      <DependentUpon>frmCampuses.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Settings\LibraryFilesComponent\LibraryFilesAddEdit\frmDepartment.resx">
       <DependentUpon>frmDepartment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Settings\LibraryFilesComponent\LibraryFilesAddEdit\frmLeaveSetup.resx">
+      <DependentUpon>frmLeaveSetup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Settings\LibraryFilesComponent\LibraryFilesAddEdit\frmPositions.resx">
+      <DependentUpon>frmPositions.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Transaction\Employee\frmAddEditEmployees.resx">
       <DependentUpon>frmAddEditEmployees.cs</DependentUpon>

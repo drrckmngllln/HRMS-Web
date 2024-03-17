@@ -31,7 +31,7 @@
             this.panelSidebar = new System.Windows.Forms.Panel();
             this.panelMenu = new System.Windows.Forms.Panel();
             this.panelTransaction = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnEmployees = new System.Windows.Forms.Button();
             this.btnTransaction = new System.Windows.Forms.Button();
             this.panelLibrary = new System.Windows.Forms.Panel();
             this.btnUserManagement = new System.Windows.Forms.Button();
@@ -81,7 +81,7 @@
             // 
             // panelTransaction
             // 
-            this.panelTransaction.Controls.Add(this.button1);
+            this.panelTransaction.Controls.Add(this.btnEmployees);
             this.panelTransaction.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelTransaction.Location = new System.Drawing.Point(0, 366);
             this.panelTransaction.Name = "panelTransaction";
@@ -89,22 +89,22 @@
             this.panelTransaction.TabIndex = 3;
             this.panelTransaction.Visible = false;
             // 
-            // button1
+            // btnEmployees
             // 
-            this.button1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.SystemColors.Control;
-            this.button1.Location = new System.Drawing.Point(0, 0);
-            this.button1.Name = "button1";
-            this.button1.Padding = new System.Windows.Forms.Padding(55, 0, 0, 0);
-            this.button1.Size = new System.Drawing.Size(246, 35);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "Employees";
-            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnEmployees.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnEmployees.FlatAppearance.BorderSize = 0;
+            this.btnEmployees.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEmployees.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEmployees.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnEmployees.Location = new System.Drawing.Point(0, 0);
+            this.btnEmployees.Name = "btnEmployees";
+            this.btnEmployees.Padding = new System.Windows.Forms.Padding(55, 0, 0, 0);
+            this.btnEmployees.Size = new System.Drawing.Size(246, 35);
+            this.btnEmployees.TabIndex = 1;
+            this.btnEmployees.Text = "Employees";
+            this.btnEmployees.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnEmployees.UseVisualStyleBackColor = true;
+            this.btnEmployees.Click += new System.EventHandler(this.btnEmployees_Click);
             // 
             // btnTransaction
             // 
@@ -394,7 +394,7 @@
         private System.Windows.Forms.Panel panelLibrary;
         private System.Windows.Forms.Button btnDepartments;
         private System.Windows.Forms.Panel panelTransaction;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnEmployees;
         private System.Windows.Forms.Button btnTransaction;
         private System.Windows.Forms.Button btnPositions;
         private System.Windows.Forms.Button btnCampus;

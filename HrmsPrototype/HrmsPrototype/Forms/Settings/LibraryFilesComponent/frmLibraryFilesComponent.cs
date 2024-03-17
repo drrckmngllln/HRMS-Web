@@ -1,5 +1,6 @@
 ﻿using HrmsPrototype.Core.Entities.Settings;
 using HrmsPrototype.Entities.Settings;
+using HrmsPrototype.Infrastructure.Interfaces;
 using HrmsPrototype.Infrastructure.Repositories;
 using System;
 using System.Threading.Tasks;
@@ -28,6 +29,8 @@ namespace HrmsPrototype.Forms.Settings.LibraryFilesComponent
             dgv.DataSource = data;
             dgv.Columns["Id"].Visible = false;
         }
+
+
 
         private async Task loadRecords()
         {
@@ -64,6 +67,41 @@ namespace HrmsPrototype.Forms.Settings.LibraryFilesComponent
             }
         }
 
+        private async Task SearchRecords(string searchValue)
+        {
+            if (_libraryFilesType == "Campuses")
+            {
+                var repo = new GenericRepository<Campus>();
+                var search = await repo.SearchAsync(BaseEndpoint + "campuses?search=" + searchValue);
+                dgv.DataSource = search;
+            }
+            if (_libraryFilesType == "Departments")
+            {
+                var repo = new GenericRepository<Campus>();
+                var search = await repo.SearchAsync(BaseEndpoint + "departments?search=" + searchValue);
+                dgv.DataSource = search;
+            }
+            if (_libraryFilesType == "Positions")
+            {
+                var repo = new GenericRepository<Campus>();
+                var search = await repo.SearchAsync(BaseEndpoint + "positions?search=" + searchValue);
+                dgv.DataSource = search;
+            }
+            if (_libraryFilesType == "AttendanceSetups")
+            {
+                var repo = new GenericRepository<Campus>();
+                var search = await repo.SearchAsync(BaseEndpoint + "attendancesetups?search=" + searchValue);
+                dgv.DataSource = search;
+            }
+            if (_libraryFilesType == "AttendanceEnrollment")
+            {
+                var repo = new GenericRepository<Campus>();
+                var search = await repo.SearchAsync(BaseEndpoint + "attendanceenrollment?search=" + searchValue);
+                dgv.DataSource = search;
+            }
+        }
+
+
         private async void frmLibraryFilesComponent_Load(object sender, System.EventArgs e)
         {
             await loadRecords();
@@ -72,6 +110,18 @@ namespace HrmsPrototype.Forms.Settings.LibraryFilesComponent
         private void dgv_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             frmLibraryFilesModule.instance.ID = Convert.ToInt32(dgv.CurrentRow.Cells["Id"].Value);
+        }
+
+        private async void tSearch_TextChanged(object sender, EventArgs e)
+        {
+            if (tSearch.Text.Length > 3)
+            {
+                await SearchRecords(tSearch.Text);
+            }
+            else if (tSearch.Text.Length == 0)
+            {
+                await loadRecords();
+            }
         }
     }
 }

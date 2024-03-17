@@ -20,26 +20,10 @@ namespace HrmsPrototype.Infrastructure.Services
             throw new NotImplementedException();
         }
 
-        public GenericRepository<T> Repository<T>() where T : class
-        {
-
-            if (_repositories == null)
-            {
-                _repositories = new Hashtable();
-            }
-
-            var type = typeof(T).Name;
-
-            if (!_repositories.ContainsKey(type))
-            {
-                var repositoryType = typeof(GenericRepository<>);
-
-                var repositoryInstance = Activator.CreateInstance(repositoryType.MakeGenericType());
-
-                _repositories.Add(type, repositoryInstance);
-            }
-
-            return (GenericRepository<T>)_repositories[type];
-        }
+        //public Task<T> Repository<T>() where T : class
+        //{
+        //    var repo = new GenericRepository<T>();
+        //    return repo;
+        //}
     }
 }

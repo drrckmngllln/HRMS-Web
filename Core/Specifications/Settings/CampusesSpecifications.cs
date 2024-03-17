@@ -7,7 +7,7 @@ public class CampusesSpecifications : BaseSpecification<Campus>
 {
     public CampusesSpecifications(string search) 
         : base(x => 
-            (string.IsNullOrEmpty(search)) || x.Name.ToLower().Contains(search))
+            (string.IsNullOrEmpty(search)) || x.Name.ToLower().Contains(search) || x.Description.ToLower().Contains(search))
     {
         
     }

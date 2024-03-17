@@ -73,9 +73,13 @@ namespace HrmsPrototype.Forms
             frmLibraryFilesModule.instance.OpenEnrollmentIdentityAttendance();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnEmployees_Click(object sender, EventArgs e)
         {
-            
+            var frm = new frmEmployees();
+            frm.TopLevel = false;
+            panelTask.Controls.Clear();
+            panelTask.Controls.Add(frm);
+            frm.Show();
         }
     }
 }
