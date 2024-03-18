@@ -59,8 +59,9 @@
             | Krypton.Toolkit.PaletteDrawBorders.Right)));
             this.btnCancel.StateCommon.Border.Rounding = 10F;
             this.btnCancel.StateCommon.Content.ShortText.Color1 = System.Drawing.SystemColors.Control;
-            this.btnCancel.TabIndex = 5;
+            this.btnCancel.TabIndex = 3;
             this.btnCancel.Values.Text = "Cancel";
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // btnSave
             // 
@@ -77,8 +78,9 @@
             | Krypton.Toolkit.PaletteDrawBorders.Right)));
             this.btnSave.StateCommon.Border.Rounding = 10F;
             this.btnSave.StateCommon.Content.ShortText.Color1 = System.Drawing.SystemColors.Control;
-            this.btnSave.TabIndex = 4;
+            this.btnSave.TabIndex = 2;
             this.btnSave.Values.Text = "Save";
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // kryptonGroupBox1
             // 
@@ -140,7 +142,7 @@
             this.tCredit.Location = new System.Drawing.Point(0, 0);
             this.tCredit.Name = "tCredit";
             this.tCredit.Size = new System.Drawing.Size(352, 21);
-            this.tCredit.TabIndex = 0;
+            this.tCredit.TabIndex = 1;
             // 
             // frmLeaveSetup
             // 
@@ -154,6 +156,7 @@
             this.Controls.Add(this.kryptonGroupBox1);
             this.CornerRoundingRadius = 10F;
             this.FormTitleAlign = Krypton.Toolkit.PaletteRelativeAlign.Inherit;
+            this.KeyPreview = true;
             this.Name = "frmLeaveSetup";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.StateActive.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
@@ -178,6 +181,7 @@
             this.Text = "frmLeaveSetup";
             this.UseDropShadow = true;
             this.Load += new System.EventHandler(this.frmLeaveSetup_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmLeaveSetup_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox1.Panel)).EndInit();
             this.kryptonGroupBox1.Panel.ResumeLayout(false);
             this.kryptonGroupBox1.Panel.PerformLayout();

@@ -127,6 +127,7 @@
     <Compile Include="Core\Entities\Settings\Departments.cs" />
     <Compile Include="Core\Entities\Settings\LeaveSetup.cs" />
     <Compile Include="Core\Entities\Settings\Positions.cs" />
+    <Compile Include="Core\Entities\Transactions\AttendanceIdentity.cs" />
     <Compile Include="Core\Entities\Transactions\CivilStatus.cs" />
     <Compile Include="Core\Entities\Transactions\Employees.cs" />
     <Compile Include="Core\Entities\Transactions\EmployeeStatus.cs" />

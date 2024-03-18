@@ -47,6 +47,11 @@ namespace HrmsPrototype.Forms.Transaction
             frm.Show();
         }
 
+        private async Task CheckBiometricEnrollment(int employeeNumber)
+        {
+            var repo = new GenericRepository<Employees>();
+        }
+
         private void AddEditEmployee(string type)
         {
             if (type == "Add")

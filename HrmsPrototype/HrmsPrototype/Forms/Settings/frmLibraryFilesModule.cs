@@ -103,6 +103,14 @@ namespace HrmsPrototype.Forms.Settings
                 frm.ShowDialog();
                 OpenPositions();
             }
+
+            if (_name == "LeaveSetups")
+            {
+                var frm = new frmLeaveSetup("Create");
+                frm.Text = "New Leave Setup";
+                frm.ShowDialog();
+                OpenLeaveSetups();
+            }
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
@@ -130,6 +138,14 @@ namespace HrmsPrototype.Forms.Settings
                 frm.Text = "Update Position";
                 frm.ShowDialog();
                 OpenPositions();
+            }
+            if (_name == "LeaveSetups")
+            {
+                var frm = new frmLeaveSetup("Update");
+                frmLeaveSetup.instance.ID = ID;
+                frm.Text = "Update Leave Setup";
+                frm.ShowDialog();
+                OpenLeaveSetups();
             }
         }
 

@@ -39,6 +39,7 @@
             this.panelTask = new System.Windows.Forms.Panel();
             this.kryptonGroup1 = new Krypton.Toolkit.KryptonGroup();
             this.btnHome = new System.Windows.Forms.Button();
+            this.btnEnrollBiometric = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.EmployeeMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.EmployeeMenu.Panel)).BeginInit();
             this.EmployeeMenu.Panel.SuspendLayout();
@@ -67,13 +68,14 @@
             // 
             // EmployeeMenu.Panel
             // 
+            this.EmployeeMenu.Panel.Controls.Add(this.btnEnrollBiometric);
             this.EmployeeMenu.Panel.Controls.Add(this.btnAttendance);
             this.EmployeeMenu.Panel.Controls.Add(this.btnLeave);
             this.EmployeeMenu.Panel.Controls.Add(this.btnPds);
             this.EmployeeMenu.Panel.Controls.Add(this.btnDelete);
             this.EmployeeMenu.Panel.Controls.Add(this.btnUpdate);
             this.EmployeeMenu.Panel.Controls.Add(this.btnNew);
-            this.EmployeeMenu.Size = new System.Drawing.Size(293, 331);
+            this.EmployeeMenu.Size = new System.Drawing.Size(293, 384);
             this.EmployeeMenu.StateCommon.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
             this.EmployeeMenu.StateCommon.Border.DrawBorders = ((Krypton.Toolkit.PaletteDrawBorders)((((Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom) 
             | Krypton.Toolkit.PaletteDrawBorders.Left) 
@@ -219,6 +221,21 @@
             this.btnHome.UseVisualStyleBackColor = false;
             this.btnHome.Click += new System.EventHandler(this.btnHome_Click);
             // 
+            // btnEnrollBiometric
+            // 
+            this.btnEnrollBiometric.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
+            this.btnEnrollBiometric.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnEnrollBiometric.FlatAppearance.BorderSize = 0;
+            this.btnEnrollBiometric.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEnrollBiometric.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEnrollBiometric.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnEnrollBiometric.Location = new System.Drawing.Point(0, 312);
+            this.btnEnrollBiometric.Name = "btnEnrollBiometric";
+            this.btnEnrollBiometric.Size = new System.Drawing.Size(281, 52);
+            this.btnEnrollBiometric.TabIndex = 6;
+            this.btnEnrollBiometric.Text = "Enroll Biometric";
+            this.btnEnrollBiometric.UseVisualStyleBackColor = false;
+            // 
             // frmEmployees
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -259,5 +276,6 @@
         private System.Windows.Forms.Panel panelTask;
         private Krypton.Toolkit.KryptonGroup kryptonGroup1;
         private System.Windows.Forms.Button btnHome;
+        private System.Windows.Forms.Button btnEnrollBiometric;
     }
 }

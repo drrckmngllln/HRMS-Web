@@ -29,6 +29,7 @@ namespace HrmsPrototype.Forms.Settings.LibraryFilesComponent.LibraryFilesAddEdit
             {
                 var leaveSetup = await _repo.GetByIdAsync(baseEndpoint + ID);
                 tType.Text = leaveSetup.Type;
+                tCredit.Text = leaveSetup.Credits.ToString();
                 btnSave.Text = "Update";
             }
         }
@@ -39,7 +40,8 @@ namespace HrmsPrototype.Forms.Settings.LibraryFilesComponent.LibraryFilesAddEdit
             {
                 var leaveSetup = new LeaveSetup
                 {
-                    Type = tType.Text
+                    Type = tType.Text.ToString(),
+                    Credits = Convert.ToInt32(tCredit.Text),
                 };
                 await _repo.AddAsync(leaveSetup, baseEndpoint + "create");
                 new Toastr("Success", "Department added");
@@ -50,12 +52,35 @@ namespace HrmsPrototype.Forms.Settings.LibraryFilesComponent.LibraryFilesAddEdit
                 var leaveSetup = new LeaveSetup
                 {
                     Id = ID,
-                    Type = tType.Text
+                    Type = tType.Text,
+                    Credits = Convert.ToInt32(tCredit.Text),
                 };
                 await _repo.UpdateAsync(leaveSetup, baseEndpoint + "update");
                 new Toastr("Information", "Department updated");
                 Close();
             }
+        }
+
+        private async void frmLeaveSetup_KeyDown(object sender, System.Windows.Forms.KeyEventArgs e)
+        {
+            if (e.KeyCode == System.Windows.Forms.Keys.Enter)
+            {
+                await AddEdit();
+            }
+            else if (e.KeyCode == System.Windows.Forms.Keys.Escape)
+            {
+                Close();
+            }
+        }
+
+        private async void btnSave_Click(object sender, EventArgs e)
+        {
+            await AddEdit();
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }
