@@ -1,8 +1,13 @@
 ﻿using DPFP;
 using DPFP.Capture;
 using DPFP.Processing;
+using HrmsPrototype.Core.Entities.Transactions;
+using HrmsPrototype.Core.Notifications;
+using HrmsPrototype.Infrastructure.Repositories;
 using System;
 using System.Drawing;
+using System.IO;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 delegate void Function();
@@ -10,19 +15,45 @@ namespace HrmsPrototype.Forms.Settings.LibraryFilesComponent.Attendance
 {
     public partial class frmAttendanceRegister : Form, DPFP.Capture.EventHandler
     {
+
+        #region Biometric parameters
         private Capture Capturer;
         private Template Template;
         private Enrollment Enroller;
-        public frmAttendanceRegister()
+        #endregion
+
+        #region Employee parameters
+
+        private const string baseEndpoint = "employees/";
+        GenericRepository<Employees> _employeeRepo = new GenericRepository<Employees>();
+        GenericRepository<AttendanceIdentity> _attendanceIdentityRepo = new GenericRepository<AttendanceIdentity>();
+        private readonly int _id;
+
+        #endregion
+        public frmAttendanceRegister(int id)
         {
             InitializeComponent();
+            _id = id;
         }
 
-        private void frmAttendanceRegister_Load(object sender, EventArgs e)
+        private async void frmAttendanceRegister_Load(object sender, EventArgs e)
         {
+            await LoadEmployeeDetails();
+
             Init();
             Start();
         }
+
+        private async Task LoadEmployeeDetails()
+        {
+            var employee = await _employeeRepo.GetByIdAsync(baseEndpoint + _id);
+            tEmployeeNumber.Text = employee.EmployeeNumber;
+            tEmployeeName.Text = employee.FullName;
+        }
+
+
+
+        #region Registering employee biometric
 
         protected void MakeReport(string message)
         {
@@ -217,6 +248,29 @@ namespace HrmsPrototype.Forms.Settings.LibraryFilesComponent.Attendance
                 MakeReport("The quality of the fingerprint sample is good.");
             else
                 MakeReport("The quality of the fingerprint sample is poor.");
+        }
+
+        #endregion
+
+
+        private async Task SaveEmployeeBiometric()
+        {
+            var ms = new MemoryStream();
+            Template.Serialize(ms);
+            byte[] data = ms.GetBuffer();
+
+            var item = new AttendanceIdentity
+            {
+                EmployeeNumber = Convert.ToInt32(tEmployeeNumber.Text),
+                Data = data
+            };
+            await _attendanceIdentityRepo.AddAsync(item, "attendances/enroll");
+            new Toastr("Success", "Employee biometric enrolled successfully");
+        }
+
+        private async void btnSave_Click(object sender, EventArgs e)
+        {
+            await SaveEmployeeBiometric();
         }
     }
 }

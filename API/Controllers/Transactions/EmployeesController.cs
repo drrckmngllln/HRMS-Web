@@ -41,9 +41,9 @@ namespace API.Controllers.Transactions
         public async Task<ActionResult<EmployeeDto>> AddAsync(EmployeeDto entity)
         {
             var department = await _unitOfWork.Repository<Department>().ListAllAsync();
-            var depId = department.FirstOrDefault(x => x.Name == entity.Department);
+            var depId = department.SingleOrDefault(x => x.Name == entity.Department);
             var position = await _unitOfWork.Repository<Positions>().ListAllAsync();
-            var posId = position.FirstOrDefault(x => x.Name == entity.Position);
+            var posId = position.SingleOrDefault(x => x.Name == entity.Position);
 
             if (depId != null || posId != null)
             {

@@ -1,8 +1,10 @@
 using API.Dtos;
 using AutoMapper;
 using Core.Entities.Transactions.AttendanceEntity;
+using Core.Entities.Transactions.EmployeeEntity;
 using Core.Interfaces;
 using Core.Parameters;
+using Core.Specifications;
 using Core.Specifications.Transactions;
 using Microsoft.AspNetCore.Mvc;
 
@@ -29,7 +31,7 @@ namespace API.Controllers.Transactions
 
             var data = _mapper.Map<IReadOnlyList<AttendanceIdentity>, IReadOnlyList<AttendanceIdentityDto>>(attendanceIdentity);
 
-            return Ok(attendanceIdentity);
+            return Ok(data);
         }
 
         [HttpGet("{id}")]
@@ -39,15 +41,32 @@ namespace API.Controllers.Transactions
 
             var attendanceIdentity = await _unitOfWork.Repository<AttendanceIdentity>().GetEntityWithSpec(spec);
 
-            return Ok(attendanceIdentity);
+            var data = _mapper.Map<AttendanceIdentity, AttendanceIdentityDto>(attendanceIdentity);
+
+            return Ok(data);
         }
 
         [HttpPost("Enroll")]
-        public async Task<ActionResult> EnrollBiometricAsync(AttendanceIdentity attendanceIdentity)
+        public async Task<ActionResult<AttendanceIdentityDto>> EnrollBiometricAsync(AttendanceIdentityDto attendanceIdentityDto)
         {
-            _unitOfWork.Repository<AttendanceIdentity>().Add(attendanceIdentity);
+            var item = new AttendanceIdentity
+            {
+                EmployeeNumberId = await GetEmployeeAsync(attendanceIdentityDto.EmployeeNumber),
+                Data = attendanceIdentityDto.Data
+            };
+
+            _unitOfWork.Repository<AttendanceIdentity>().Add(item);
             await _unitOfWork.Complete();
-            return Ok("Employee biometric enrolled");
+            return Ok("Biometric enrolled");
+        }
+
+        private async Task<int> GetEmployeeAsync(int employeeNumber)
+        {
+            var employee = await _unitOfWork.Repository<Employee>().ListAllAsync();
+
+            var employeeId = employee.SingleOrDefault(x => x.EmployeeNumber == employeeNumber.ToString());
+
+            return employeeId.Id;
         }
     }
 }

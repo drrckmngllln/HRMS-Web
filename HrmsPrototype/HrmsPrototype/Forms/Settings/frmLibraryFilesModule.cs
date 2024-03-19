@@ -44,7 +44,7 @@ namespace HrmsPrototype.Forms.Settings
 
         public void OpenEnrollmentIdentityAttendance()
         {
-            var frm = new frmAttendanceRegister();
+            var frm = new frmAttendanceRegister(ID);
             frm.TopLevel = false;
             panelTask.Controls.Clear();
             panelTask.Controls.Add(frm);

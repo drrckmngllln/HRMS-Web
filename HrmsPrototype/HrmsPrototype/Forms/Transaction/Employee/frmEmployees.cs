@@ -1,5 +1,6 @@
 ﻿using HrmsPrototype.Core.Entities.Transactions;
 using HrmsPrototype.Core.Notifications;
+using HrmsPrototype.Forms.Settings.LibraryFilesComponent.Attendance;
 using HrmsPrototype.Forms.Transaction.Employee;
 using HrmsPrototype.Forms.Transaction.Employee.PersonalDataSheet;
 using HrmsPrototype.Infrastructure.Repositories;
@@ -128,6 +129,15 @@ namespace HrmsPrototype.Forms.Transaction
             {
                 loadPersonalDataSheet();
             }
+        }
+
+        private void btnEnrollBiometric_Click(object sender, EventArgs e)
+        {
+            var frm = new frmAttendanceRegister(ID);
+            frm.TopLevel = false;
+            panelTask.Controls.Clear();
+            panelTask.Controls.Add(frm);
+            frm.Show();
         }
     }
 }
