@@ -115,6 +115,11 @@ namespace API.Controllers.Settings
         [HttpPost("Campuses/create")]
         public async Task<ActionResult<Campus>> AddCampusesAsync(Campus campus)
         {
+            var checkExisting = await _unitOfWork.Repository<Campus>().ListAllAsync();
+            if (checkExisting.Any(x => x.Name == campus.Name))
+            {
+                return BadRequest("Campus Already Exist");
+            }
             await AddAsync(campus);
             return Ok("Campus saved");
         }
@@ -122,13 +127,35 @@ namespace API.Controllers.Settings
         [HttpPost("Departments/create")]
         public async Task<ActionResult<Department>> AddDepartmentsAsync(Department department)
         {
+            var checkExisting = await _unitOfWork.Repository<Department>().ListAllAsync();
+            if (checkExisting.Any(x => x.Name == department.Name))
+            {
+                return BadRequest("Department already exist");
+            }
             await AddAsync(department);
             return Ok("Department saved");
+        }
+
+        [HttpPost("Positions/create")]
+        public async Task<ActionResult<Positions>> AddPositionsAsync(Positions positions)
+        {
+            var checkExisting = await _unitOfWork.Repository<Department>().ListAllAsync();
+            if (checkExisting.Any(x => x.Name == positions.Name))
+            {
+                return BadRequest("Position already exists");
+            }
+            await AddAsync(positions);
+            return Ok("Position Saved");
         }
 
         [HttpPost("LeaveSetups/create")]
         public async Task<ActionResult<LeaveSetup>> AddLeaveSetupsAsync(LeaveSetup leaveSetup)
         {
+            var checkExisting = await _unitOfWork.Repository<LeaveSetup>().ListAllAsync();
+            if (checkExisting.Any(x => x.Type == leaveSetup.Type))
+            {
+                return BadRequest("Leave setup already exist");
+            }
             await AddAsync(leaveSetup);
             return Ok("Leave setup saved");
         }
@@ -136,6 +163,11 @@ namespace API.Controllers.Settings
         [HttpPost("AttendanceSetups/create")]
         public async Task<ActionResult<AttendanceSetup>> AddAttendanceSetupAsync(AttendanceSetup attendanceSetup)
         {
+            var checkExisting = await _unitOfWork.Repository<AttendanceSetup>().ListAllAsync();
+            if (checkExisting.Any(x => x.Category == attendanceSetup.Category))
+            {
+                return BadRequest("Attendance setup already exists");
+            }
             await AddAsync(attendanceSetup);
             return Ok("Attendance setup saved");
         }
@@ -152,6 +184,13 @@ namespace API.Controllers.Settings
         {
             await UpdateAsync(department);
             return Ok("Department updated");
+        }
+
+        [HttpPut("Positions/update")]
+        public async Task<ActionResult<Positions>> UpdatePositionAsync(Positions positions)
+        {
+            await UpdateAsync(positions);
+            return Ok("Position Updated");
         }
 
         [HttpPut("LeaveSetups/update")]
@@ -173,6 +212,13 @@ namespace API.Controllers.Settings
         {
             await DeleteAsync(campus);
             return Ok("Campus Deleted");
+        }
+
+        [HttpDelete("Positions/{id}")]
+        public async Task<ActionResult<Positions>> DeletePositionsAsync(Positions positions)
+        {
+            await DeleteAsync(positions);
+            return Ok("Position Deleted");
         }
 
         [HttpDelete("Departments/{id}")]

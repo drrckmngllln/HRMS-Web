@@ -8,7 +8,9 @@ namespace Core.Specifications
 
         public EmployeesWithRelationshipSpecifications(EmployeeSpecParameters empParams) 
             : base(x => 
-            (string.IsNullOrEmpty(empParams.Search) || x.FullName.ToLower().Contains(empParams.Search)) && 
+            (string.IsNullOrEmpty(empParams.Search) 
+            || x.FullName.ToLower().Contains(empParams.Search)
+            || x.EmployeeNumber.Contains(empParams.Search)) && 
             (!empParams.DepartmentId.HasValue || x.DepartmentId == empParams.DepartmentId) && 
             (!empParams.PositionId.HasValue || x.PositionId == empParams.PositionId))
         {

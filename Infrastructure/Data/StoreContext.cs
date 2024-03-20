@@ -32,6 +32,7 @@ namespace Infrastructure.Data
 
         // Attendance
         public DbSet<Attendance> Attendances { get; set; }
+        public DbSet<AttendanceIdentity> AttendanceIdentities { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

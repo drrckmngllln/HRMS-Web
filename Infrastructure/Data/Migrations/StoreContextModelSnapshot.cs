@@ -162,6 +162,25 @@ namespace Infrastructure.Data.Migrations
                     b.ToTable("Attendances");
                 });
 
+            modelBuilder.Entity("Core.Entities.Transactions.AttendanceEntity.AttendanceIdentity", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<byte[]>("Data")
+                        .HasColumnType("BLOB");
+
+                    b.Property<int>("EmployeeNumberId")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("EmployeeNumberId");
+
+                    b.ToTable("AttendanceIdentities");
+                });
+
             modelBuilder.Entity("Core.Entities.Transactions.EmployeeEntity.CivilServiceEligibility", b =>
                 {
                     b.Property<int>("Id")
@@ -690,6 +709,17 @@ namespace Infrastructure.Data.Migrations
                         .IsRequired();
 
                     b.Navigation("Employee");
+                });
+
+            modelBuilder.Entity("Core.Entities.Transactions.AttendanceEntity.AttendanceIdentity", b =>
+                {
+                    b.HasOne("Core.Entities.Transactions.EmployeeEntity.Employee", "EmployeeNumber")
+                        .WithMany()
+                        .HasForeignKey("EmployeeNumberId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("EmployeeNumber");
                 });
 
             modelBuilder.Entity("Core.Entities.Transactions.EmployeeEntity.CivilServiceEligibility", b =>

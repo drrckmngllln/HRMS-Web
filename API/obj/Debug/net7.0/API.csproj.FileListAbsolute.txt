@@ -210,7 +210,6 @@ C:\Users\MCNP-ISAP\Documents\GitHub\HRMS-Web\aPI\obj\Debug\net7.0\staticwebasset
 C:\Users\MCNP-ISAP\Documents\GitHub\HRMS-Web\aPI\obj\Debug\net7.0\staticwebassets\msbuild.buildTransitive.API.props
 C:\Users\MCNP-ISAP\Documents\GitHub\HRMS-Web\aPI\obj\Debug\net7.0\staticwebassets.pack.json
 C:\Users\MCNP-ISAP\Documents\GitHub\HRMS-Web\aPI\obj\Debug\net7.0\scopedcss\bundle\API.styles.css
-C:\Users\MCNP-ISAP\Documents\GitHub\HRMS-Web\API\obj\Debug\net7.0\API.csproj.CopyComplete
 C:\Users\MCNP-ISAP\Documents\GitHub\HRMS-Web\aPI\obj\Debug\net7.0\API.dll
 C:\Users\MCNP-ISAP\Documents\GitHub\HRMS-Web\aPI\obj\Debug\net7.0\refint\API.dll
 C:\Users\MCNP-ISAP\Documents\GitHub\HRMS-Web\aPI\obj\Debug\net7.0\API.pdb
@@ -218,3 +217,9 @@ C:\Users\MCNP-ISAP\Documents\GitHub\HRMS-Web\API\obj\Debug\net7.0\API.genruntime
 C:\Users\MCNP-ISAP\Documents\GitHub\HRMS-Web\API\obj\Debug\net7.0\ref\API.dll
 C:\Users\drrckmngllln\Documents\GitHub\HRMS-Web\API\bin\Debug\net7.0\AutoMapper.dll
 C:\Users\MCNP-ISAP\Documents\GitHub\HRMS-Web\API\bin\Debug\net7.0\AutoMapper.dll
+C:\Users\drrckmngllln\Documents\GitHub\HRMS-Web\API\bin\Debug\net7.0\DPFPDevNET.dll
+C:\Users\drrckmngllln\Documents\GitHub\HRMS-Web\API\bin\Debug\net7.0\DPFPEngNET.dll
+C:\Users\drrckmngllln\Documents\GitHub\HRMS-Web\API\bin\Debug\net7.0\DPFPGuiNET.dll
+C:\Users\drrckmngllln\Documents\GitHub\HRMS-Web\API\bin\Debug\net7.0\DPFPShrNET.dll
+C:\Users\drrckmngllln\Documents\GitHub\HRMS-Web\API\bin\Debug\net7.0\DPFPVerNET.dll
+C:\Users\MCNP-ISAP\Documents\GitHub\HRMS-Web\API\obj\Debug\net7.0\API.csproj.Up2Date

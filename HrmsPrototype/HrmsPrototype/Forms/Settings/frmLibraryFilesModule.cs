@@ -2,11 +2,13 @@
 using HrmsPrototype.Core.Notifications;
 using HrmsPrototype.Entities.Settings;
 using HrmsPrototype.Forms.Settings.LibraryFilesComponent;
+using HrmsPrototype.Forms.Settings.LibraryFilesComponent.Attendance;
 using HrmsPrototype.Forms.Settings.LibraryFilesComponent.LibraryFilesAddEdit;
 using HrmsPrototype.Infrastructure.Repositories;
 using System;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Linq;
 
 namespace HrmsPrototype.Forms.Settings
 {
@@ -30,12 +32,6 @@ namespace HrmsPrototype.Forms.Settings
 
         }
 
-        private async Task Delete<T>(T entity, string endpoint) where T : BaseEntity
-        {
-            var _repo = new GenericRepository<T>();
-            await _repo.DeleteAsync(baseEndpoint + entity);
-        }
-
         private void OpenComponent(string name)
         {
             var frm = new frmLibraryFilesComponent(name);
@@ -44,6 +40,15 @@ namespace HrmsPrototype.Forms.Settings
             panelTask.Controls.Add(frm);
             frm.Show();
             _name = name;
+        }
+
+        public void OpenEnrollmentIdentityAttendance()
+        {
+            var frm = new frmAttendanceRegister(ID);
+            frm.TopLevel = false;
+            panelTask.Controls.Clear();
+            panelTask.Controls.Add(frm);
+            frm.Show();
         }
 
         public void OpenCampuses()
@@ -71,12 +76,13 @@ namespace HrmsPrototype.Forms.Settings
             OpenComponent("AttendanceSetups");
         }
 
+
         private void btnNew_Click(object sender, EventArgs e)
         {
             if (_name == "Departments")
             {
                 var frm = new frmDepartment("Create");
-                
+
                 frm.Text = "New Department";
                 frm.ShowDialog();
                 OpenDepartments();
@@ -84,12 +90,26 @@ namespace HrmsPrototype.Forms.Settings
 
             if (_name == "Campuses")
             {
-
+                var frm = new frmCampuses("Create");
+                frm.Text = "New Campus";
+                frm.ShowDialog();
+                OpenCampuses();
             }
 
             if (_name == "Positions")
             {
+                var frm = new frmPositions("Create");
+                frm.Text = "New Position";
+                frm.ShowDialog();
+                OpenPositions();
+            }
 
+            if (_name == "LeaveSetups")
+            {
+                var frm = new frmLeaveSetup("Create");
+                frm.Text = "New Leave Setup";
+                frm.ShowDialog();
+                OpenLeaveSetups();
             }
         }
 
@@ -103,25 +123,51 @@ namespace HrmsPrototype.Forms.Settings
                 frm.ShowDialog();
                 OpenDepartments();
             }
+            if (_name == "Campuses")
+            {
+                var frm = new frmCampuses("Update");
+                frmCampuses.instance.ID = ID;
+                frm.Text = "Update Campus";
+                frm.ShowDialog();
+                OpenCampuses();
+            }
+            if (_name == "Positions")
+            {
+                var frm = new frmPositions("Update");
+                frmPositions.instance.ID = ID;
+                frm.Text = "Update Position";
+                frm.ShowDialog();
+                OpenPositions();
+            }
+            if (_name == "LeaveSetups")
+            {
+                var frm = new frmLeaveSetup("Update");
+                frmLeaveSetup.instance.ID = ID;
+                frm.Text = "Update Leave Setup";
+                frm.ShowDialog();
+                OpenLeaveSetups();
+            }
         }
 
         private async void btnDelete_Click(object sender, EventArgs e)
         {
+            
             if (_name == "Departments")
             {
-                if (MessageBox.Show("Are you sure you want to delete department?", "Warning", 
+                if (MessageBox.Show("Are you sure you want to delete department?", "Warning",
                     MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
+                    var repo = new GenericRepository<Departments>();
                     var item = new Departments
                     {
                         Id = ID,
                     };
-                    await Delete(item, "Departments/");
+                    await repo.DeleteAsync(baseEndpoint + "Departments/" + item);
                     new Toastr("Information", "Department deleted");
                     OpenDepartments();
                 }
             }
-            
+
         }
     }
 }

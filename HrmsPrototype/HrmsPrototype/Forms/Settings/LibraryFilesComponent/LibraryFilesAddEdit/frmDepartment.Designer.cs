@@ -63,9 +63,10 @@
             // 
             this.tName.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.tName.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tName.Location = new System.Drawing.Point(0, 0);
             this.tName.Name = "tName";
-            this.tName.Size = new System.Drawing.Size(352, 20);
+            this.tName.Size = new System.Drawing.Size(352, 21);
             this.tName.TabIndex = 0;
             // 
             // btnSave
@@ -118,6 +119,7 @@
             this.Controls.Add(this.kryptonGroupBox1);
             this.CornerRoundingRadius = 10F;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.KeyPreview = true;
             this.Name = "frmDepartment";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.StateActive.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
