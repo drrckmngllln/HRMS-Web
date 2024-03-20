@@ -2,8 +2,9 @@
 
 namespace HrmsPrototype.Core.Entities.Transactions
 {
-    internal class AttendanceIdentity : BaseEntity
+    internal class AttendanceIdentity
     {
+        public int Id { get; set; }
         public int EmployeeNumber { get; set; }
         public byte[] Data { get; set; }
     }

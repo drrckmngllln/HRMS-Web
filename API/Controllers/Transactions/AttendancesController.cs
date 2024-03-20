@@ -49,6 +49,7 @@ namespace API.Controllers.Transactions
         [HttpPost("Enroll")]
         public async Task<ActionResult<AttendanceIdentityDto>> EnrollBiometricAsync(AttendanceIdentityDto attendanceIdentityDto)
         {
+
             var item = new AttendanceIdentity
             {
                 EmployeeNumberId = await GetEmployeeAsync(attendanceIdentityDto.EmployeeNumber),

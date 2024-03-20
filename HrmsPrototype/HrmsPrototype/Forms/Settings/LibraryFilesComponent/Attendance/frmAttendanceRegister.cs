@@ -5,8 +5,13 @@ using HrmsPrototype.Core.Entities.Transactions;
 using HrmsPrototype.Core.Notifications;
 using HrmsPrototype.Infrastructure.Repositories;
 using System;
+using System.Data;
+using System.Data.SqlClient;
+using System.Data.SqlTypes;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.IO;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -255,10 +260,13 @@ namespace HrmsPrototype.Forms.Settings.LibraryFilesComponent.Attendance
 
         private async Task SaveEmployeeBiometric()
         {
-            var ms = new MemoryStream();
+            MemoryStream stream = new MemoryStream();
+
+            MemoryStream ms = new MemoryStream();
+            
             Template.Serialize(ms);
             byte[] data = ms.GetBuffer();
-
+            
             var item = new AttendanceIdentity
             {
                 EmployeeNumber = Convert.ToInt32(tEmployeeNumber.Text),
