@@ -11,9 +11,9 @@ namespace Core.Entities.Transactions.EmployeeEntity
         [MaxLength(100)]
         public string TitleOfLearningAndDevelopment { get; set; }
         [MaxLength(100)]
-        public DateOnly StartDate { get; set; }
+        public DateTime StartDate { get; set; }
         [MaxLength(100)]
-        public DateOnly EndDate { get; set; }
+        public DateTime EndDate { get; set; }
         [MaxLength(100)]
         public int NumberOfHours { get; set; }
         [MaxLength(100)]

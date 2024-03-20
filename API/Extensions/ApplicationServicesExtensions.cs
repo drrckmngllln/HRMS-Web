@@ -29,7 +29,7 @@ namespace API.Extensions
 
             services.AddDbContext<StoreContext>(opt =>
             {
-                opt.UseSqlite(config.GetConnectionString("constring"));
+                opt.UseSqlServer(config.GetConnectionString("sqlserver"));
             });
 
             services.AddCors(opt => 

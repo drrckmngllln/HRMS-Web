@@ -29,6 +29,9 @@ namespace API.Helpers
             //Attendances
             CreateMap<Attendance, AttendanceDto>()
                 .ForMember(m => m.Employee, o => o.MapFrom(d => d.Employee.FullName));
+
+            CreateMap<AttendanceIdentity, AttendanceIdentityDto>()
+                .ForMember(m => m.EmployeeNumber, o => o.MapFrom(d => d.EmployeeNumber.EmployeeNumber));
                 
         }
     }

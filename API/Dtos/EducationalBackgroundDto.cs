@@ -16,13 +16,13 @@ public class EducationalBackgroundDto
     [Required]
     public string Course { get; set; }
     [Required]
-    public DateOnly PeriodStart { get; set; }
+    public DateTime PeriodStart { get; set; }
     [Required]
-    public DateOnly PeriodEnd { get; set; }
+    public DateTime PeriodEnd { get; set; }
     [Required]
     public decimal UnitsEarned { get; set; }
     [Required]
-    public DateOnly YearGraduated { get; set; }
+    public DateTime YearGraduated { get; set; }
     [Required]
     public string AcademicHonors { get; set; }
 }

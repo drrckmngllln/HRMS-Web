@@ -22,7 +22,7 @@ namespace API.Controllers.Transactions
         }
 
         [HttpGet]
-        public async Task<ActionResult<IReadOnlyList<AttendanceIdentity>>>
+        public async Task<ActionResult<IReadOnlyList<AttendanceIdentityDto>>>
             GetAttendanceIdentityAsync([FromQuery] AttendanceIdentitySpecParameters parameters)
         {
             var spec = new AttendanceIdentitySpecifications(parameters);

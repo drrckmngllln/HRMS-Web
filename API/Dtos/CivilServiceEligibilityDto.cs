@@ -13,7 +13,7 @@ public class CivilServiceEligibilityDto
     [Required]
     public decimal Rating { get; set; }
     [Required]
-    public DateOnly DateOfExamination { get; set; }
+    public DateTime DateOfExamination { get; set; }
     [Required]
     public string PlaceOfExamination { get; set; }
     [Required]

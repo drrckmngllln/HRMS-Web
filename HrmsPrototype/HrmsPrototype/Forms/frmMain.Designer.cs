@@ -45,8 +45,9 @@
             this.tLogout = new System.Windows.Forms.Label();
             this.tAccessLevel = new System.Windows.Forms.Label();
             this.tUsername = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.panelTask = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panelSidebar.SuspendLayout();
             this.panelMenu.SuspendLayout();
             this.panelTransaction.SuspendLayout();
@@ -81,6 +82,7 @@
             // 
             // panelTransaction
             // 
+            this.panelTransaction.Controls.Add(this.button1);
             this.panelTransaction.Controls.Add(this.btnEmployees);
             this.panelTransaction.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelTransaction.Location = new System.Drawing.Point(0, 366);
@@ -302,15 +304,22 @@
             this.tUsername.Text = "Username";
             this.tUsername.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // pictureBox1
+            // button1
             // 
-            this.pictureBox1.Image = global::HrmsPrototype.Properties.Resources.Untitled_design;
-            this.pictureBox1.Location = new System.Drawing.Point(43, 12);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(153, 108);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
+            this.button1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.SystemColors.Control;
+            this.button1.Location = new System.Drawing.Point(0, 35);
+            this.button1.Name = "button1";
+            this.button1.Padding = new System.Windows.Forms.Padding(55, 0, 0, 0);
+            this.button1.Size = new System.Drawing.Size(246, 35);
+            this.button1.TabIndex = 2;
+            this.button1.Text = "Attendance Monitoring";
+            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // panelTask
             // 
@@ -321,6 +330,16 @@
             this.panelTask.Name = "panelTask";
             this.panelTask.Size = new System.Drawing.Size(1041, 767);
             this.panelTask.TabIndex = 1;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::HrmsPrototype.Properties.Resources.Untitled_design;
+            this.pictureBox1.Location = new System.Drawing.Point(43, 12);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(153, 108);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
             // 
             // frmMain
             // 
@@ -401,5 +420,6 @@
         private System.Windows.Forms.Button btnLeaveSetup;
         private System.Windows.Forms.Button btnAttendanceEnrollment;
         private System.Windows.Forms.Button btnUserManagement;
+        private System.Windows.Forms.Button button1;
     }
 }

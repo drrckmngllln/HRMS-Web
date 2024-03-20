@@ -17,13 +17,13 @@ namespace Core.Entities.Transactions.EmployeeEntity
         [MaxLength(100)]
         public string Course { get; set; }
         [MaxLength(100)]
-        public DateOnly PeriodStart { get; set; }
+        public DateTime PeriodStart { get; set; }
         [MaxLength(100)]
-        public DateOnly PeriodEnd { get; set; }
+        public DateTime PeriodEnd { get; set; }
         [MaxLength(100)]
         public decimal UnitsEarned { get; set; }
         [MaxLength(100)]
-        public DateOnly YearGraduated { get; set; }
+        public DateTime YearGraduated { get; set; }
         [MaxLength(100)]
         public string AcademicHonors { get; set; }
     }
