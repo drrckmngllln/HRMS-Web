@@ -29,7 +29,7 @@ namespace API.Extensions
 
             services.AddDbContext<StoreContext>(opt =>
             {
-                opt.UseSqlServer(config.GetConnectionString("sqlserver"));
+                opt.UseNpgsql(config.GetConnectionString("postgresql"));
             });
 
             services.AddCors(opt => 

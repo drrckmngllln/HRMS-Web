@@ -173,6 +173,7 @@
     <Compile Include="Core\Entities\Settings\Departments.cs" />
     <Compile Include="Core\Entities\Settings\LeaveSetup.cs" />
     <Compile Include="Core\Entities\Settings\Positions.cs" />
+    <Compile Include="Core\Entities\Transactions\Attendance.cs" />
     <Compile Include="Core\Entities\Transactions\AttendanceIdentity.cs" />
     <Compile Include="Core\Entities\Transactions\CivilStatus.cs" />
     <Compile Include="Core\Entities\Transactions\Employees.cs" />
@@ -259,6 +260,12 @@
     <Compile Include="Forms\Transaction\Employee\AttendanceMonitoring\frmAttendanceMonitoringModule.Designer.cs">
       <DependentUpon>frmAttendanceMonitoringModule.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Transaction\Employee\AttendanceMonitoring\frmEmployeeAttendanceLog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Transaction\Employee\AttendanceMonitoring\frmEmployeeAttendanceLog.Designer.cs">
+      <DependentUpon>frmEmployeeAttendanceLog.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Transaction\Employee\frmAddEditEmployees.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -333,6 +340,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Transaction\Employee\AttendanceMonitoring\frmAttendanceMonitoringModule.resx">
       <DependentUpon>frmAttendanceMonitoringModule.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Transaction\Employee\AttendanceMonitoring\frmEmployeeAttendanceLog.resx">
+      <DependentUpon>frmEmployeeAttendanceLog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Transaction\Employee\frmAddEditEmployees.resx">
       <DependentUpon>frmAddEditEmployees.cs</DependentUpon>

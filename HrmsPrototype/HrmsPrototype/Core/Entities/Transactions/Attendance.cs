@@ -1,21 +1,15 @@
-using System.ComponentModel.DataAnnotations;
+﻿using System;
 
-namespace API.Dtos
+namespace HrmsPrototype.Core.Entities.Transactions
 {
-    public class AttendanceDto
+    internal class Attendance
     {
         public int Id { get; set; }
-        [Required]
         public DateTime Date { get; set; }
-        [Required]
         public DateTime TimeIn { get; set; }
-        [Required]
         public string TimeInRemarks { get; set; }
-        [Required]
         public DateTime TimeOut { get; set; }
-        [Required]
         public string TimeOutRemarks { get; set; }
-        [Required]
         public int Employee { get; set; }
     }
 }

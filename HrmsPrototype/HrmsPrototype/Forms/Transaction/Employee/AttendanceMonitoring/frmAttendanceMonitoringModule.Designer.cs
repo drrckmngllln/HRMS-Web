@@ -35,7 +35,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.kryptonGroup1.Panel)).BeginInit();
             this.kryptonGroup1.Panel.SuspendLayout();
             this.kryptonGroup1.SuspendLayout();
-            this.panelTask.SuspendLayout();
             this.SuspendLayout();
             // 
             // kryptonGroup1
@@ -64,7 +63,6 @@
             // panelTask
             // 
             this.panelTask.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
-            this.panelTask.Controls.Add(this.label2);
             this.panelTask.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelTask.Location = new System.Drawing.Point(0, 0);
             this.panelTask.Name = "panelTask";
@@ -76,7 +74,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.SystemColors.Control;
-            this.label2.Location = new System.Drawing.Point(201, 236);
+            this.label2.Location = new System.Drawing.Point(12, 539);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(27, 25);
             this.label2.TabIndex = 0;
@@ -87,6 +85,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1194, 674);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.kryptonGroup1);
             this.Name = "frmAttendanceMonitoringModule";
             this.Text = "frmAttendanceMonitoring";
@@ -96,9 +95,8 @@
             this.kryptonGroup1.Panel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.kryptonGroup1)).EndInit();
             this.kryptonGroup1.ResumeLayout(false);
-            this.panelTask.ResumeLayout(false);
-            this.panelTask.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 

@@ -21,6 +21,7 @@ namespace API.Controllers.Transactions
             _unitOfWork = unitOfWork;
         }
 
+#region Attendance Functionality
         [HttpGet]
         public async Task<ActionResult<IReadOnlyList<AttendanceIdentityDto>>>
             GetAttendanceIdentityAsync([FromQuery] AttendanceIdentitySpecParameters parameters)
@@ -68,6 +69,54 @@ namespace API.Controllers.Transactions
             var employeeId = employee.SingleOrDefault(x => x.EmployeeNumber == employeeNumber.ToString());
 
             return employeeId.Id;
+        }
+
+#endregion
+
+        [HttpPost("create")]
+        public async Task<ActionResult<AttendanceDto>> TimeInAsync(AttendanceDto attendanceDto)
+        {
+            if (!await CheckTimeInExisting(attendanceDto.Date))
+            {
+                var item = new Attendance
+                {
+                    Date = attendanceDto.Date.ToUniversalTime(),
+                    TimeIn = attendanceDto.TimeIn,
+                    TimeInRemarks = attendanceDto.TimeInRemarks,
+                    EmployeeId = await GetEmployeeAsync(attendanceDto.Employee)
+                };
+                _unitOfWork.Repository<Attendance>().Add(item);
+                await _unitOfWork.Complete();
+                return Ok("Time in success!");
+            }
+
+            return BadRequest("Time in failed");
+        } 
+
+        [HttpPut("update")]
+        public async Task<ActionResult<AttendanceDto>> TimeOutAsync(AttendanceDto attendanceDto)
+        {
+            var item = new Attendance
+            {
+                Id = attendanceDto.Id,
+                Date = attendanceDto.Date.ToUniversalTime(),
+                TimeOut = attendanceDto.TimeOut,
+                TimeOutRemarks = attendanceDto.TimeOutRemarks,
+                EmployeeId = await GetEmployeeAsync(attendanceDto.Employee)
+            };
+            _unitOfWork.Repository<Attendance>().Update(item);
+            await _unitOfWork.Complete();
+            return Ok("Time out success");
+        }
+
+        private async Task<bool> CheckTimeInExisting(DateTime date)
+        {
+            var timeIn = await _unitOfWork.Repository<Attendance>().ListAllAsync();
+            if (timeIn.Any(x => x.Date == date))
+            {
+                return true;
+            }
+            return false;
         }
     }
 }

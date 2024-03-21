@@ -1,12 +1,13 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
+using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
 
 namespace Infrastructure.Data.Migrations
 {
     /// <inheritdoc />
-    public partial class Initial : Migration
+    public partial class initial : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -15,9 +16,9 @@ namespace Infrastructure.Data.Migrations
                 name: "AttendanceSetupCategory",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true)
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    Name = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: true)
                 },
                 constraints: table =>
                 {
@@ -28,11 +29,11 @@ namespace Infrastructure.Data.Migrations
                 name: "Campuses",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true),
-                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Address = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true)
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    Name = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: true),
+                    Description = table.Column<string>(type: "text", nullable: true),
+                    Address = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: true)
                 },
                 constraints: table =>
                 {
@@ -43,9 +44,9 @@ namespace Infrastructure.Data.Migrations
                 name: "Departments",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true)
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    Name = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: true)
                 },
                 constraints: table =>
                 {
@@ -56,10 +57,10 @@ namespace Infrastructure.Data.Migrations
                 name: "LeaveSetups",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Type = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Credits = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    Type = table.Column<string>(type: "text", nullable: true),
+                    Credits = table.Column<int>(type: "integer", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -70,10 +71,10 @@ namespace Infrastructure.Data.Migrations
                 name: "NonAcademicDestinction",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Desctinction = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true),
-                    Description = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true)
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    Desctinction = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: true),
+                    Description = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: true)
                 },
                 constraints: table =>
                 {
@@ -84,9 +85,9 @@ namespace Infrastructure.Data.Migrations
                 name: "Positions",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true)
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    Name = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: true)
                 },
                 constraints: table =>
                 {
@@ -97,10 +98,10 @@ namespace Infrastructure.Data.Migrations
                 name: "SpecialSkills",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Skills = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true),
-                    Description = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true)
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    Skills = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: true),
+                    Description = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: true)
                 },
                 constraints: table =>
                 {
@@ -111,12 +112,12 @@ namespace Infrastructure.Data.Migrations
                 name: "AttendanceSetups",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    CategoryId = table.Column<int>(type: "int", nullable: false),
-                    TimeIn = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true),
-                    TimeOut = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true),
-                    GracePeriod = table.Column<int>(type: "int", maxLength: 100, nullable: false)
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    CategoryId = table.Column<int>(type: "integer", nullable: false),
+                    TimeIn = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: true),
+                    TimeOut = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: true),
+                    GracePeriod = table.Column<int>(type: "integer", maxLength: 100, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -133,18 +134,18 @@ namespace Infrastructure.Data.Migrations
                 name: "Employees",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    EmployeeNumber = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true),
-                    LastName = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true),
-                    FirstName = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true),
-                    MiddleName = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true),
-                    FullName = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true),
-                    DepartmentId = table.Column<int>(type: "int", maxLength: 100, nullable: false),
-                    PositionId = table.Column<int>(type: "int", maxLength: 100, nullable: false),
-                    ContractStart = table.Column<DateTime>(type: "datetime2", maxLength: 100, nullable: false),
-                    ContractEnd = table.Column<DateTime>(type: "datetime2", maxLength: 100, nullable: false),
-                    Status = table.Column<int>(type: "int", maxLength: 100, nullable: false)
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    EmployeeNumber = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: true),
+                    LastName = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: true),
+                    FirstName = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: true),
+                    MiddleName = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: true),
+                    FullName = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: true),
+                    DepartmentId = table.Column<int>(type: "integer", maxLength: 100, nullable: false),
+                    PositionId = table.Column<int>(type: "integer", maxLength: 100, nullable: false),
+                    ContractStart = table.Column<DateTime>(type: "timestamp with time zone", maxLength: 100, nullable: false),
+                    ContractEnd = table.Column<DateTime>(type: "timestamp with time zone", maxLength: 100, nullable: false),
+                    Status = table.Column<int>(type: "integer", maxLength: 100, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -167,10 +168,10 @@ namespace Infrastructure.Data.Migrations
                 name: "AttendanceIdentities",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    EmployeeNumberId = table.Column<int>(type: "int", nullable: false),
-                    Data = table.Column<byte[]>(type: "varbinary(max)", nullable: true)
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    EmployeeNumberId = table.Column<int>(type: "integer", nullable: false),
+                    Data = table.Column<byte[]>(type: "bytea", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -187,14 +188,14 @@ namespace Infrastructure.Data.Migrations
                 name: "Attendances",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Date = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    TimeIn = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    TimeInRemarks = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    TimeOut = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    TimeOutRemarks = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    EmployeeId = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    Date = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    TimeIn = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    TimeInRemarks = table.Column<string>(type: "text", nullable: true),
+                    TimeOut = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    TimeOutRemarks = table.Column<string>(type: "text", nullable: true),
+                    EmployeeId = table.Column<int>(type: "integer", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -211,15 +212,15 @@ namespace Infrastructure.Data.Migrations
                 name: "CivilServiceEligibilities",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    EmployeeNumberId = table.Column<int>(type: "int", nullable: false),
-                    Eligibility = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true),
-                    Rating = table.Column<decimal>(type: "decimal(18,2)", maxLength: 100, nullable: false),
-                    DateOfExamination = table.Column<DateTime>(type: "datetime2", maxLength: 100, nullable: false),
-                    PlaceOfExamination = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true),
-                    LicenseNumber = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true),
-                    DateOfValidity = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true)
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    EmployeeNumberId = table.Column<int>(type: "integer", nullable: false),
+                    Eligibility = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: true),
+                    Rating = table.Column<decimal>(type: "numeric", maxLength: 100, nullable: false),
+                    DateOfExamination = table.Column<DateTime>(type: "timestamp with time zone", maxLength: 100, nullable: false),
+                    PlaceOfExamination = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: true),
+                    LicenseNumber = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: true),
+                    DateOfValidity = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: true)
                 },
                 constraints: table =>
                 {
@@ -236,17 +237,17 @@ namespace Infrastructure.Data.Migrations
                 name: "EducationalBackgrounds",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    EmployeeNumberId = table.Column<int>(type: "int", nullable: false),
-                    Level = table.Column<int>(type: "int", maxLength: 100, nullable: false),
-                    NameOfSchool = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true),
-                    Course = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true),
-                    PeriodStart = table.Column<DateTime>(type: "datetime2", maxLength: 100, nullable: false),
-                    PeriodEnd = table.Column<DateTime>(type: "datetime2", maxLength: 100, nullable: false),
-                    UnitsEarned = table.Column<decimal>(type: "decimal(18,2)", maxLength: 100, nullable: false),
-                    YearGraduated = table.Column<DateTime>(type: "datetime2", maxLength: 100, nullable: false),
-                    AcademicHonors = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true)
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    EmployeeNumberId = table.Column<int>(type: "integer", nullable: false),
+                    Level = table.Column<int>(type: "integer", maxLength: 100, nullable: false),
+                    NameOfSchool = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: true),
+                    Course = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: true),
+                    PeriodStart = table.Column<DateTime>(type: "timestamp with time zone", maxLength: 100, nullable: false),
+                    PeriodEnd = table.Column<DateTime>(type: "timestamp with time zone", maxLength: 100, nullable: false),
+                    UnitsEarned = table.Column<decimal>(type: "numeric", maxLength: 100, nullable: false),
+                    YearGraduated = table.Column<DateTime>(type: "timestamp with time zone", maxLength: 100, nullable: false),
+                    AcademicHonors = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: true)
                 },
                 constraints: table =>
                 {
@@ -263,22 +264,22 @@ namespace Infrastructure.Data.Migrations
                 name: "FamilyBackgrounds",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    EmployeeNumberId = table.Column<int>(type: "int", maxLength: 100, nullable: false),
-                    SpouseSurname = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true),
-                    SpouseFirstName = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true),
-                    SpouseMiddlename = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true),
-                    Occupation = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true),
-                    EmployerName = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true),
-                    BusinessAddress = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true),
-                    TelephoneNumber = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true),
-                    FatherSurname = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true),
-                    FatherFirstname = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true),
-                    FatherMiddlename = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true),
-                    MotherSurnamne = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true),
-                    MotherFirstname = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true),
-                    MotherMiddlename = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true)
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    EmployeeNumberId = table.Column<int>(type: "integer", maxLength: 100, nullable: false),
+                    SpouseSurname = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: true),
+                    SpouseFirstName = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: true),
+                    SpouseMiddlename = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: true),
+                    Occupation = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: true),
+                    EmployerName = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: true),
+                    BusinessAddress = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: true),
+                    TelephoneNumber = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: true),
+                    FatherSurname = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: true),
+                    FatherFirstname = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: true),
+                    FatherMiddlename = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: true),
+                    MotherSurnamne = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: true),
+                    MotherFirstname = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: true),
+                    MotherMiddlename = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: true)
                 },
                 constraints: table =>
                 {
@@ -295,15 +296,15 @@ namespace Infrastructure.Data.Migrations
                 name: "LearningAndDevelopments",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    EmployeeNumberId = table.Column<int>(type: "int", maxLength: 100, nullable: false),
-                    TitleOfLearningAndDevelopment = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true),
-                    StartDate = table.Column<DateTime>(type: "datetime2", maxLength: 100, nullable: false),
-                    EndDate = table.Column<DateTime>(type: "datetime2", maxLength: 100, nullable: false),
-                    NumberOfHours = table.Column<int>(type: "int", maxLength: 100, nullable: false),
-                    TypeOfLd = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true),
-                    Conducted = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true)
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    EmployeeNumberId = table.Column<int>(type: "integer", maxLength: 100, nullable: false),
+                    TitleOfLearningAndDevelopment = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: true),
+                    StartDate = table.Column<DateTime>(type: "timestamp with time zone", maxLength: 100, nullable: false),
+                    EndDate = table.Column<DateTime>(type: "timestamp with time zone", maxLength: 100, nullable: false),
+                    NumberOfHours = table.Column<int>(type: "integer", maxLength: 100, nullable: false),
+                    TypeOfLd = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: true),
+                    Conducted = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: true)
                 },
                 constraints: table =>
                 {
@@ -320,11 +321,11 @@ namespace Infrastructure.Data.Migrations
                 name: "NameOfChildrens",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    EmployeeNumberId = table.Column<int>(type: "int", maxLength: 100, nullable: false),
-                    Fullname = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true),
-                    DateOfBirth = table.Column<DateTime>(type: "datetime2", maxLength: 100, nullable: false)
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    EmployeeNumberId = table.Column<int>(type: "integer", maxLength: 100, nullable: false),
+                    Fullname = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: true),
+                    DateOfBirth = table.Column<DateTime>(type: "timestamp with time zone", maxLength: 100, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -341,12 +342,12 @@ namespace Infrastructure.Data.Migrations
                 name: "OtherInformations",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    EmployeeNumberId = table.Column<int>(type: "int", maxLength: 100, nullable: false),
-                    SpecialSkillsId = table.Column<int>(type: "int", maxLength: 100, nullable: false),
-                    NonAcademicDestinctionId = table.Column<int>(type: "int", maxLength: 100, nullable: false),
-                    Organization = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true)
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    EmployeeNumberId = table.Column<int>(type: "integer", maxLength: 100, nullable: false),
+                    SpecialSkillsId = table.Column<int>(type: "integer", maxLength: 100, nullable: false),
+                    NonAcademicDestinctionId = table.Column<int>(type: "integer", maxLength: 100, nullable: false),
+                    Organization = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: true)
                 },
                 constraints: table =>
                 {
@@ -358,7 +359,7 @@ namespace Infrastructure.Data.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_OtherInformations_NonAcademicDestinction_NonAcademicDestinctionId",
+                        name: "FK_OtherInformations_NonAcademicDestinction_NonAcademicDestinc~",
                         column: x => x.NonAcademicDestinctionId,
                         principalTable: "NonAcademicDestinction",
                         principalColumn: "Id",
@@ -375,23 +376,23 @@ namespace Infrastructure.Data.Migrations
                 name: "PersonalInformations",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    EmployeeNumberId = table.Column<int>(type: "int", maxLength: 100, nullable: false),
-                    Surname = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true),
-                    Firstname = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true),
-                    Middlename = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true),
-                    DateOfBirth = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true),
-                    Sex = table.Column<int>(type: "int", maxLength: 100, nullable: false),
-                    CivilStatus = table.Column<int>(type: "int", maxLength: 100, nullable: false),
-                    Height = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true),
-                    BloodType = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true),
-                    GsisIdNo = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true),
-                    PagibigIdNo = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true),
-                    PhilhealthNo = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true),
-                    SssNo = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true),
-                    TinNo = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true),
-                    AgencyEmployeeNo = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true)
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    EmployeeNumberId = table.Column<int>(type: "integer", maxLength: 100, nullable: false),
+                    Surname = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: true),
+                    Firstname = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: true),
+                    Middlename = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: true),
+                    DateOfBirth = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: true),
+                    Sex = table.Column<int>(type: "integer", maxLength: 100, nullable: false),
+                    CivilStatus = table.Column<int>(type: "integer", maxLength: 100, nullable: false),
+                    Height = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: true),
+                    BloodType = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: true),
+                    GsisIdNo = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: true),
+                    PagibigIdNo = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: true),
+                    PhilhealthNo = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: true),
+                    SssNo = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: true),
+                    TinNo = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: true),
+                    AgencyEmployeeNo = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: true)
                 },
                 constraints: table =>
                 {
@@ -408,14 +409,14 @@ namespace Infrastructure.Data.Migrations
                 name: "VoluntaryWorks",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    EmployeeNumberId = table.Column<int>(type: "int", maxLength: 100, nullable: false),
-                    NameAndAddressOfOrganization = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true),
-                    StartDate = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true),
-                    EndDate = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true),
-                    NumberOfHours = table.Column<int>(type: "int", maxLength: 100, nullable: false),
-                    NatureOfWork = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true)
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    EmployeeNumberId = table.Column<int>(type: "integer", maxLength: 100, nullable: false),
+                    NameAndAddressOfOrganization = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: true),
+                    StartDate = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: true),
+                    EndDate = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: true),
+                    NumberOfHours = table.Column<int>(type: "integer", maxLength: 100, nullable: false),
+                    NatureOfWork = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: true)
                 },
                 constraints: table =>
                 {
@@ -432,17 +433,17 @@ namespace Infrastructure.Data.Migrations
                 name: "WorkExperiences",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    EmployeeNumberId = table.Column<int>(type: "int", maxLength: 100, nullable: false),
-                    StartDate = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true),
-                    EndDate = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true),
-                    Position = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true),
-                    Department = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true),
-                    MonthlySalary = table.Column<decimal>(type: "decimal(18,2)", maxLength: 100, nullable: false),
-                    PayGrade = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true),
-                    StatusOfAppointment = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true),
-                    GovernmentService = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true)
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    EmployeeNumberId = table.Column<int>(type: "integer", maxLength: 100, nullable: false),
+                    StartDate = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: true),
+                    EndDate = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: true),
+                    Position = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: true),
+                    Department = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: true),
+                    MonthlySalary = table.Column<decimal>(type: "numeric", maxLength: 100, nullable: false),
+                    PayGrade = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: true),
+                    StatusOfAppointment = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: true),
+                    GovernmentService = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: true)
                 },
                 constraints: table =>
                 {

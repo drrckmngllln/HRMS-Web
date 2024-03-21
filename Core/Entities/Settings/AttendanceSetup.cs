@@ -1,4 +1,5 @@
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Core.Entities.Settings
 {
@@ -6,10 +7,10 @@ namespace Core.Entities.Settings
     {
         public AttendanceSetupCategory Category { get; set; }
         public int CategoryId { get; set; }
-        [MaxLength(100)]
-        public string TimeIn { get; set; }
-        [MaxLength(100)]
-        public string TimeOut { get; set; }
+        [Column(TypeName = "time")]
+        public DateTime TimeIn { get; set; }
+        [Column(TypeName = "time")]
+        public DateTime TimeOut { get; set; }
         [MaxLength(100)]
         public int GracePeriod { get; set; }
     }
