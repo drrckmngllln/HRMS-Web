@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Infrastructure.Data.Migrations
 {
     [DbContext(typeof(StoreContext))]
-    [Migration("20240321120949_initial")]
+    [Migration("20240322083932_initial")]
     partial class initial
     {
         /// <inheritdoc />
@@ -40,13 +40,12 @@ namespace Infrastructure.Data.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("integer");
 
-                    b.Property<string>("TimeIn")
-                        .HasMaxLength(100)
-                        .HasColumnType("character varying(100)");
+                    b.Property<DateTime>("TimeIn")
+                        .HasColumnType("timestamp with time zone");
 
-                    b.Property<string>("TimeOut")
+                    b.Property<DateTime>("TimeOut")
                         .HasMaxLength(100)
-                        .HasColumnType("character varying(100)");
+                        .HasColumnType("timestamp with time zone");
 
                     b.HasKey("Id");
 
@@ -167,13 +166,15 @@ namespace Infrastructure.Data.Migrations
                         .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("TimeInRemarks")
-                        .HasColumnType("text");
+                        .HasMaxLength(100)
+                        .HasColumnType("character varying(100)");
 
                     b.Property<DateTime>("TimeOut")
                         .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("TimeOutRemarks")
-                        .HasColumnType("text");
+                        .HasMaxLength(100)
+                        .HasColumnType("character varying(100)");
 
                     b.HasKey("Id");
 

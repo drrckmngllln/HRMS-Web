@@ -1,5 +1,6 @@
 using API.Dtos;
 using AutoMapper;
+using Core.Entities.Settings;
 using Core.Entities.Transactions.AttendanceEntity;
 using Core.Entities.Transactions.EmployeeEntity;
 
@@ -32,6 +33,9 @@ namespace API.Helpers
 
             CreateMap<AttendanceIdentity, AttendanceIdentityDto>()
                 .ForMember(m => m.EmployeeNumber, o => o.MapFrom(d => d.EmployeeNumber.EmployeeNumber));
+
+            CreateMap<AttendanceSetup, AttendanceSetupDto>()
+                .ForMember(m => m.Category, o => o.MapFrom(d => d.Category.Name));
                 
         }
     }

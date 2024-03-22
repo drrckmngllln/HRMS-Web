@@ -1,8 +1,7 @@
 ﻿namespace HrmsPrototype.Core.Entities.Settings
 {
-    internal enum AttendanceSetupCategory
+    internal class AttendanceSetupCategory : BaseEntity
     {
-        Teaching,
-        NonTeaching
+        public string Name { get; set; }
     }
 }

@@ -230,6 +230,18 @@
     <Compile Include="Forms\Settings\LibraryFilesComponent\frmLibraryFilesComponent.Designer.cs">
       <DependentUpon>frmLibraryFilesComponent.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Settings\LibraryFilesComponent\LibraryFilesAddEdit\frmAttendanceCategory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Settings\LibraryFilesComponent\LibraryFilesAddEdit\frmAttendanceCategory.Designer.cs">
+      <DependentUpon>frmAttendanceCategory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Settings\LibraryFilesComponent\LibraryFilesAddEdit\frmAttendanceSetup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Settings\LibraryFilesComponent\LibraryFilesAddEdit\frmAttendanceSetup.Designer.cs">
+      <DependentUpon>frmAttendanceSetup.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Settings\LibraryFilesComponent\LibraryFilesAddEdit\frmCampuses.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -325,6 +337,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Settings\LibraryFilesComponent\frmLibraryFilesComponent.resx">
       <DependentUpon>frmLibraryFilesComponent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Settings\LibraryFilesComponent\LibraryFilesAddEdit\frmAttendanceCategory.resx">
+      <DependentUpon>frmAttendanceCategory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Settings\LibraryFilesComponent\LibraryFilesAddEdit\frmAttendanceSetup.resx">
+      <DependentUpon>frmAttendanceSetup.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Settings\LibraryFilesComponent\LibraryFilesAddEdit\frmCampuses.resx">
       <DependentUpon>frmCampuses.cs</DependentUpon>

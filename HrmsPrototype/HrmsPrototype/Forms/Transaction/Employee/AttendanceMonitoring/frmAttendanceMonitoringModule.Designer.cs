@@ -50,8 +50,8 @@
             // 
             this.kryptonGroup1.Panel.Controls.Add(this.panelTask);
             this.kryptonGroup1.Size = new System.Drawing.Size(1170, 524);
-            this.kryptonGroup1.StateCommon.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
-            this.kryptonGroup1.StateCommon.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
+            this.kryptonGroup1.StateCommon.Back.Color1 = System.Drawing.SystemColors.ActiveBorder;
+            this.kryptonGroup1.StateCommon.Back.Color2 = System.Drawing.SystemColors.ActiveBorder;
             this.kryptonGroup1.StateCommon.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
             this.kryptonGroup1.StateCommon.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
             this.kryptonGroup1.StateCommon.Border.DrawBorders = ((Krypton.Toolkit.PaletteDrawBorders)((((Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom) 
@@ -62,7 +62,7 @@
             // 
             // panelTask
             // 
-            this.panelTask.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
+            this.panelTask.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.panelTask.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelTask.Location = new System.Drawing.Point(0, 0);
             this.panelTask.Name = "panelTask";
@@ -71,9 +71,10 @@
             // 
             // label2
             // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.SystemColors.Control;
+            this.label2.ForeColor = System.Drawing.SystemColors.ControlText;
             this.label2.Location = new System.Drawing.Point(12, 539);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(27, 25);

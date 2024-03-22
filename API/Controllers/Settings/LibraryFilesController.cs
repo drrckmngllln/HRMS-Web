@@ -1,7 +1,10 @@
 using System.Formats.Asn1;
+using API.Dtos;
+using AutoMapper;
 using Core.Entities;
 using Core.Entities.Settings;
 using Core.Interfaces;
+using Core.Parameters.SettingsParams;
 using Core.Specifications;
 using Core.Specifications.Settings;
 using Microsoft.AspNetCore.Mvc;
@@ -11,10 +14,12 @@ namespace API.Controllers.Settings
     public class LibraryFilesController : BaseApiController
     {
         private readonly IUnitOfWork _unitOfWork;
+        private readonly IMapper _mapper;
 
-        public LibraryFilesController(IUnitOfWork unitOfWork)
+        public LibraryFilesController(IUnitOfWork unitOfWork, IMapper mapper)
         {
             _unitOfWork = unitOfWork;
+            _mapper = mapper;
         }
 
         [HttpGet("Campuses")]
@@ -82,9 +87,15 @@ namespace API.Controllers.Settings
         }
 
         [HttpGet("AttendanceSetups")]
-        public async Task<ActionResult<IReadOnlyList<AttendanceSetup>>> GetAttendanceSetupsAsync([FromQuery] string search)
+        public async Task<ActionResult<IReadOnlyList<AttendanceSetupDto>>> GetAttendanceSetupsAsync([FromQuery] AttendanceSetupSpecParams parameter)
         {
-            return Ok(await _unitOfWork.Repository<AttendanceSetup>().ListAllAsync());
+            var spec = new AttendanceSetupSpecification(parameter);
+
+            var attendanceSetup = await _unitOfWork.Repository<AttendanceSetup>().ListAsync(spec);
+
+            var data = _mapper.Map<IReadOnlyList<AttendanceSetup>, IReadOnlyList<AttendanceSetupDto>>(attendanceSetup);
+            
+            return Ok(data);
         }
 
         [HttpGet("AttendanceSetups/{id}")]
@@ -93,6 +104,26 @@ namespace API.Controllers.Settings
             var spec = new AttendanceSetupSpecification(id);
 
             return Ok(await _unitOfWork.Repository<AttendanceSetup>().GetEntityWithSpec(spec));
+        }
+
+        [HttpGet("AttendanceCategory")]
+        public async Task<ActionResult<IReadOnlyList<AttendanceSetupCategory>>> GetAttendanceCategoryAsync([FromQuery] string search)
+        {
+            var spec = new AttendanceCategorySpecifications(search);
+
+            var attendanceCategory = await _unitOfWork.Repository<AttendanceSetupCategory>().ListAsync(spec);
+
+            return Ok(attendanceCategory);
+        }
+
+        [HttpGet("AttendanceCategory/{id}")]
+        public async Task<ActionResult<AttendanceSetupCategory>> GetByIdAsync(int id)
+        {
+            var spec = new AttendanceCategorySpecifications(id);
+
+            var attendanceCategory = await _unitOfWork.Repository<AttendanceSetupCategory>().GetEntityWithSpec(spec);
+
+            return Ok(attendanceCategory);
         }
 
         private async Task AddAsync<T>(T entity) where T : BaseEntity
@@ -161,15 +192,42 @@ namespace API.Controllers.Settings
         }
 
         [HttpPost("AttendanceSetups/create")]
-        public async Task<ActionResult<AttendanceSetup>> AddAttendanceSetupAsync(AttendanceSetup attendanceSetup)
+        public async Task<ActionResult<AttendanceSetup>> AddAttendanceSetupAsync(AttendanceSetupDto attendanceSetupDto)
         {
             var checkExisting = await _unitOfWork.Repository<AttendanceSetup>().ListAllAsync();
-            if (checkExisting.Any(x => x.Category == attendanceSetup.Category))
+            if (checkExisting.Any(x => x.CategoryId == Convert.ToInt32(attendanceSetupDto.Category)))
             {
                 return BadRequest("Attendance setup already exists");
             }
-            await AddAsync(attendanceSetup);
+            var item = new AttendanceSetup
+            {
+                CategoryId = Convert.ToInt32(attendanceSetupDto.Category),
+                TimeIn = attendanceSetupDto.TimeIn.ToUniversalTime(),
+                TimeOut = attendanceSetupDto.TimeOut.ToUniversalTime(),
+                GracePeriod = attendanceSetupDto.GracePeriod
+            };
+            await AddAsync(item);
             return Ok("Attendance setup saved");
+        }
+
+        private async Task<int> GetCategoryAsync(string category)
+        {
+            var categories = await _unitOfWork.Repository<AttendanceSetup>().ListAllAsync();
+            var categoryId = categories.SingleOrDefault(x => x.CategoryId == Convert.ToInt32(category));
+            return categoryId.Id;
+        }
+
+        [HttpPost("AttendanceCategory/create")]
+        public async Task<ActionResult<AttendanceSetupCategory>> AddAttendanceSetupCategoryAsync(AttendanceSetupCategory attendanceSetupCategory)
+        {
+            var checkExisting = await _unitOfWork.Repository<AttendanceSetupCategory>().ListAllAsync();
+            if (checkExisting.Any(x => x.Name == attendanceSetupCategory.Name))
+            {
+                return BadRequest("Category already exist");
+            }
+
+            await AddAsync(attendanceSetupCategory);
+            return Ok("Attendance setup category saved");
         }
 
         [HttpPut("Campuses/update")]
@@ -177,6 +235,13 @@ namespace API.Controllers.Settings
         {
             await UpdateAsync(campus);
             return Ok("Campus updated");
+        }
+
+        [HttpPut("AttendanceCategory/update")]
+        public async Task<ActionResult<AttendanceSetupCategory>> UpdateAttendanceSetupCategoryAsync(AttendanceSetupCategory attendanceSetupCategory)
+        {
+            await UpdateAsync(attendanceSetupCategory);
+            return Ok("Attendance setup category updated");
         }
 
         [HttpPut("Departments/update")]
@@ -205,6 +270,13 @@ namespace API.Controllers.Settings
         {
             await UpdateAsync(attendanceSetup);
             return Ok("Attendance setup updated");
+        }
+
+        [HttpDelete("AttendanceCategory/{id}")]
+        public async Task<ActionResult<AttendanceSetupCategory>> DeleteAttendanceCategoryAsync(AttendanceSetupCategory attendanceSetupCategory)
+        {
+            await DeleteAsync(attendanceSetupCategory);
+            return Ok("attendance category deleted");
         }
 
         [HttpDelete("Campuses/{id}")]
@@ -241,5 +313,7 @@ namespace API.Controllers.Settings
             await DeleteAsync(attendanceSetup);
             return Ok("Attendance setup Deleted");
         }
+
+        
     }
 }

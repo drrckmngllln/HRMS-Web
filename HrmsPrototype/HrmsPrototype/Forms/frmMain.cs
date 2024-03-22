@@ -71,7 +71,7 @@ namespace HrmsPrototype.Forms
 
         private void btnAttendanceSetup_Click(object sender, EventArgs e)
         {
-            frmLibraryFilesModule.instance.OpenEnrollmentIdentityAttendance();
+            frmLibraryFilesModule.instance.OpenAttendanceSetups();
         }
 
         private void btnEmployees_Click(object sender, EventArgs e)
@@ -88,6 +88,11 @@ namespace HrmsPrototype.Forms
             var frm = new frmAttendanceMonitoringModule();
             frm.Text = "Attendance Monitoring System";
             frm.ShowDialog();
+        }
+
+        private void btnAttendanceCategory_Click(object sender, EventArgs e)
+        {
+            frmLibraryFilesModule.instance.OpenAttendanceCategory();
         }
     }
 }

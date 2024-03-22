@@ -8,9 +8,6 @@ namespace HrmsPrototype.Core.Entities.Transactions
 {
     internal enum EmployeeStatus
     {
-        Applicant,
-        Employed,
-        ReEntry,
-        NotEmployed
+        Active, Inactive
     }
 }

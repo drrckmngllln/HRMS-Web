@@ -1,10 +1,13 @@
-﻿namespace HrmsPrototype.Core.Entities.Settings
+﻿using System;
+
+namespace HrmsPrototype.Core.Entities.Settings
 {
-    internal class AttendanceSetup : BaseEntity
+    internal class AttendanceSetup
     {
-        public AttendanceSetupCategory Category { get; set; } = AttendanceSetupCategory.NonTeaching;
-        public string TimeIn { get; set; }
-        public string TimeOut { get; set; }
-        public string GracePeriod { get; set; }
+        public int Id { get; set; }
+        public string Category { get; set; }
+        public DateTime TimeIn { get; set; }
+        public DateTime TimeOut { get; set; }
+        public int GracePeriod { get; set; }
     }
 }

@@ -1,13 +1,15 @@
 ﻿using System.ComponentModel;
 using Core.Entities.Settings;
+using Core.Parameters.SettingsParams;
 
 namespace Core.Specifications;
 
 public class AttendanceSetupSpecification : BaseSpecification<AttendanceSetup>
 {
-    public AttendanceSetupSpecification(string search, int? CategoryId) 
+    public AttendanceSetupSpecification(AttendanceSetupSpecParams parameter) 
         :base(x => 
-        (!CategoryId.HasValue) || x.CategoryId == CategoryId)
+        (string.IsNullOrEmpty(parameter.Search) || x.Category.Name.ToLower().Contains(parameter.Search)) &&
+        (!parameter.CategoryId.HasValue) || x.CategoryId == parameter.CategoryId)
     {
         AddInclude(x => x.Category);
     }

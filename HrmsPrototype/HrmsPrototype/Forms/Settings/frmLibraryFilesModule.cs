@@ -75,6 +75,10 @@ namespace HrmsPrototype.Forms.Settings
         {
             OpenComponent("AttendanceSetups");
         }
+        public void OpenAttendanceCategory()
+        {
+            OpenComponent("AttendanceCategory");
+        }
 
 
         private void btnNew_Click(object sender, EventArgs e)
@@ -111,6 +115,22 @@ namespace HrmsPrototype.Forms.Settings
                 frm.ShowDialog();
                 OpenLeaveSetups();
             }
+
+            if (_name == "AttendanceSetups")
+            {
+                var frm = new frmAttendanceSetup("Create");
+                frm.Text = "New Attendance Setup";
+                frm.ShowDialog();
+                OpenAttendanceSetups();
+            }
+
+            if (_name == "AttendanceCategory")
+            {
+                var frm = new frmAttendanceCategory("Create");
+                frm.Text = "New Attendance Setup Category";
+                frm.ShowDialog();
+                OpenAttendanceCategory();
+            }
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
@@ -146,6 +166,14 @@ namespace HrmsPrototype.Forms.Settings
                 frm.Text = "Update Leave Setup";
                 frm.ShowDialog();
                 OpenLeaveSetups();
+            }
+            if (_name == "AttendanceCategory")
+            {
+                var frm = new frmAttendanceCategory("Update");
+                frmAttendanceCategory.instance.ID = ID;
+                frm.Text = "Update Attendance Category";
+                frm.ShowDialog();
+                OpenAttendanceCategory();
             }
         }
 
