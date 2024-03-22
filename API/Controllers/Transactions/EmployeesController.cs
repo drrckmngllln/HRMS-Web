@@ -56,8 +56,8 @@ namespace API.Controllers.Transactions
                     FullName = entity.FullName,
                     DepartmentId = depId.Id,
                     PositionId = posId.Id,
-                    ContractStart = entity.ContractStart,
-                    ContractEnd = entity.ContractEnd,
+                    ContractStart = entity.ContractStart.ToUniversalTime(),
+                    ContractEnd = entity.ContractEnd.ToUniversalTime(),
                     Status = entity.Status
                 };
             

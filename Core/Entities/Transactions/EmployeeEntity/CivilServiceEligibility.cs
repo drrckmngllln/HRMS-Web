@@ -12,7 +12,7 @@ namespace Core.Entities.Transactions.EmployeeEntity
         [MaxLength(100)]
         public decimal Rating { get; set; }
         [MaxLength(100)]
-        public DateOnly DateOfExamination { get; set; }
+        public DateTime DateOfExamination { get; set; }
         [MaxLength(100)]
         public string PlaceOfExamination { get; set; }
         [MaxLength(100)]

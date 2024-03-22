@@ -123,8 +123,6 @@
             // 
             // kryptonGroupBox1
             // 
-            this.kryptonGroupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.kryptonGroupBox1.CaptionOverlap = 0D;
             this.kryptonGroupBox1.CornerRoundingRadius = 10F;
             this.kryptonGroupBox1.Location = new System.Drawing.Point(29, 56);
@@ -146,8 +144,6 @@
             // 
             // kryptonGroupBox2
             // 
-            this.kryptonGroupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.kryptonGroupBox2.CaptionOverlap = 0D;
             this.kryptonGroupBox2.CornerRoundingRadius = 10F;
             this.kryptonGroupBox2.Location = new System.Drawing.Point(29, 115);
@@ -183,8 +179,6 @@
             // 
             // kryptonGroupBox3
             // 
-            this.kryptonGroupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.kryptonGroupBox3.CaptionOverlap = 0D;
             this.kryptonGroupBox3.CornerRoundingRadius = 10F;
             this.kryptonGroupBox3.Location = new System.Drawing.Point(29, 174);
@@ -220,8 +214,6 @@
             // 
             // kryptonGroupBox4
             // 
-            this.kryptonGroupBox4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.kryptonGroupBox4.CaptionOverlap = 0D;
             this.kryptonGroupBox4.CornerRoundingRadius = 10F;
             this.kryptonGroupBox4.Location = new System.Drawing.Point(29, 233);
@@ -327,8 +319,6 @@
             // 
             // kryptonGroupBox8
             // 
-            this.kryptonGroupBox8.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.kryptonGroupBox8.CaptionOverlap = 0D;
             this.kryptonGroupBox8.CornerRoundingRadius = 10F;
             this.kryptonGroupBox8.Location = new System.Drawing.Point(29, 469);
@@ -377,8 +367,6 @@
             // 
             // kryptonGroupBox9
             // 
-            this.kryptonGroupBox9.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.kryptonGroupBox9.CaptionOverlap = 0D;
             this.kryptonGroupBox9.CornerRoundingRadius = 10F;
             this.kryptonGroupBox9.Location = new System.Drawing.Point(29, 410);

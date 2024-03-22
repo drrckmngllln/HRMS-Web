@@ -11,6 +11,6 @@ namespace Core.Entities.Transactions.EmployeeEntity
         [MaxLength(100)]
         public string Fullname { get; set; }
         [MaxLength(100)]
-        public DateOnly DateOfBirth { get; set; }
+        public DateTime DateOfBirth { get; set; }
     }
 }

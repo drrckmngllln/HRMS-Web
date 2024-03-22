@@ -31,10 +31,11 @@
             this.panelSidebar = new System.Windows.Forms.Panel();
             this.panelMenu = new System.Windows.Forms.Panel();
             this.panelTransaction = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
             this.btnEmployees = new System.Windows.Forms.Button();
             this.btnTransaction = new System.Windows.Forms.Button();
             this.panelLibrary = new System.Windows.Forms.Panel();
-            this.btnUserManagement = new System.Windows.Forms.Button();
+            this.btnAttendanceCategory = new System.Windows.Forms.Button();
             this.btnAttendanceEnrollment = new System.Windows.Forms.Button();
             this.btnLeaveSetup = new System.Windows.Forms.Button();
             this.btnCampus = new System.Windows.Forms.Button();
@@ -45,8 +46,8 @@
             this.tLogout = new System.Windows.Forms.Label();
             this.tAccessLevel = new System.Windows.Forms.Label();
             this.tUsername = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panelTask = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panelSidebar.SuspendLayout();
             this.panelMenu.SuspendLayout();
             this.panelTransaction.SuspendLayout();
@@ -81,6 +82,7 @@
             // 
             // panelTransaction
             // 
+            this.panelTransaction.Controls.Add(this.button1);
             this.panelTransaction.Controls.Add(this.btnEmployees);
             this.panelTransaction.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelTransaction.Location = new System.Drawing.Point(0, 366);
@@ -88,6 +90,23 @@
             this.panelTransaction.Size = new System.Drawing.Size(246, 117);
             this.panelTransaction.TabIndex = 3;
             this.panelTransaction.Visible = false;
+            // 
+            // button1
+            // 
+            this.button1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.SystemColors.Control;
+            this.button1.Location = new System.Drawing.Point(0, 35);
+            this.button1.Name = "button1";
+            this.button1.Padding = new System.Windows.Forms.Padding(55, 0, 0, 0);
+            this.button1.Size = new System.Drawing.Size(246, 35);
+            this.button1.TabIndex = 2;
+            this.button1.Text = "Attendance Monitoring";
+            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // btnEmployees
             // 
@@ -125,7 +144,7 @@
             // 
             // panelLibrary
             // 
-            this.panelLibrary.Controls.Add(this.btnUserManagement);
+            this.panelLibrary.Controls.Add(this.btnAttendanceCategory);
             this.panelLibrary.Controls.Add(this.btnAttendanceEnrollment);
             this.panelLibrary.Controls.Add(this.btnLeaveSetup);
             this.panelLibrary.Controls.Add(this.btnCampus);
@@ -138,21 +157,22 @@
             this.panelLibrary.TabIndex = 1;
             this.panelLibrary.Visible = false;
             // 
-            // btnUserManagement
+            // btnAttendanceCategory
             // 
-            this.btnUserManagement.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnUserManagement.FlatAppearance.BorderSize = 0;
-            this.btnUserManagement.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnUserManagement.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUserManagement.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnUserManagement.Location = new System.Drawing.Point(0, 175);
-            this.btnUserManagement.Name = "btnUserManagement";
-            this.btnUserManagement.Padding = new System.Windows.Forms.Padding(55, 0, 0, 0);
-            this.btnUserManagement.Size = new System.Drawing.Size(246, 35);
-            this.btnUserManagement.TabIndex = 7;
-            this.btnUserManagement.Text = "User Management";
-            this.btnUserManagement.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnUserManagement.UseVisualStyleBackColor = true;
+            this.btnAttendanceCategory.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnAttendanceCategory.FlatAppearance.BorderSize = 0;
+            this.btnAttendanceCategory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAttendanceCategory.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAttendanceCategory.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnAttendanceCategory.Location = new System.Drawing.Point(0, 175);
+            this.btnAttendanceCategory.Name = "btnAttendanceCategory";
+            this.btnAttendanceCategory.Padding = new System.Windows.Forms.Padding(55, 0, 0, 0);
+            this.btnAttendanceCategory.Size = new System.Drawing.Size(246, 35);
+            this.btnAttendanceCategory.TabIndex = 7;
+            this.btnAttendanceCategory.Text = "Attendance Category";
+            this.btnAttendanceCategory.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAttendanceCategory.UseVisualStyleBackColor = true;
+            this.btnAttendanceCategory.Click += new System.EventHandler(this.btnAttendanceCategory_Click);
             // 
             // btnAttendanceEnrollment
             // 
@@ -166,7 +186,7 @@
             this.btnAttendanceEnrollment.Padding = new System.Windows.Forms.Padding(55, 0, 0, 0);
             this.btnAttendanceEnrollment.Size = new System.Drawing.Size(246, 35);
             this.btnAttendanceEnrollment.TabIndex = 5;
-            this.btnAttendanceEnrollment.Text = "Attendance Enrollment";
+            this.btnAttendanceEnrollment.Text = "Attendance Setup";
             this.btnAttendanceEnrollment.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnAttendanceEnrollment.UseVisualStyleBackColor = true;
             this.btnAttendanceEnrollment.Click += new System.EventHandler(this.btnAttendanceSetup_Click);
@@ -302,16 +322,6 @@
             this.tUsername.Text = "Username";
             this.tUsername.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::HrmsPrototype.Properties.Resources.Untitled_design;
-            this.pictureBox1.Location = new System.Drawing.Point(43, 12);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(153, 108);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
-            // 
             // panelTask
             // 
             this.panelTask.BackgroundImage = global::HrmsPrototype.Properties.Resources.Untitled_design;
@@ -321,6 +331,16 @@
             this.panelTask.Name = "panelTask";
             this.panelTask.Size = new System.Drawing.Size(1041, 767);
             this.panelTask.TabIndex = 1;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::HrmsPrototype.Properties.Resources.Untitled_design;
+            this.pictureBox1.Location = new System.Drawing.Point(43, 12);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(153, 108);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
             // 
             // frmMain
             // 
@@ -400,6 +420,7 @@
         private System.Windows.Forms.Button btnCampus;
         private System.Windows.Forms.Button btnLeaveSetup;
         private System.Windows.Forms.Button btnAttendanceEnrollment;
-        private System.Windows.Forms.Button btnUserManagement;
+        private System.Windows.Forms.Button btnAttendanceCategory;
+        private System.Windows.Forms.Button button1;
     }
 }

@@ -24,9 +24,9 @@ namespace Core.Entities.Transactions.EmployeeEntity
         [MaxLength(100)]
         public int PositionId { get; set; }
         [MaxLength(100)]
-        public DateOnly ContractStart { get; set; }
+        public DateTime ContractStart { get; set; }
         [MaxLength(100)]
-        public DateOnly ContractEnd { get; set; }
+        public DateTime ContractEnd { get; set; }
         [MaxLength(100)]
         public EmployeeStatus Status { get; set; }
     }

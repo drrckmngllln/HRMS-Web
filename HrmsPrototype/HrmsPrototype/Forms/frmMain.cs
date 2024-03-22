@@ -1,5 +1,6 @@
 ﻿using HrmsPrototype.Forms.Settings;
 using HrmsPrototype.Forms.Transaction;
+using HrmsPrototype.Forms.Transaction.Employee.AttendanceMonitoring;
 using Krypton.Toolkit;
 using System;
 
@@ -70,7 +71,7 @@ namespace HrmsPrototype.Forms
 
         private void btnAttendanceSetup_Click(object sender, EventArgs e)
         {
-            frmLibraryFilesModule.instance.OpenEnrollmentIdentityAttendance();
+            frmLibraryFilesModule.instance.OpenAttendanceSetups();
         }
 
         private void btnEmployees_Click(object sender, EventArgs e)
@@ -80,6 +81,18 @@ namespace HrmsPrototype.Forms
             panelTask.Controls.Clear();
             panelTask.Controls.Add(frm);
             frm.Show();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            var frm = new frmAttendanceMonitoringModule();
+            frm.Text = "Attendance Monitoring System";
+            frm.ShowDialog();
+        }
+
+        private void btnAttendanceCategory_Click(object sender, EventArgs e)
+        {
+            frmLibraryFilesModule.instance.OpenAttendanceCategory();
         }
     }
 }

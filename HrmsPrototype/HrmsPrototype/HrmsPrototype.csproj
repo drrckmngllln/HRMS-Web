@@ -173,6 +173,7 @@
     <Compile Include="Core\Entities\Settings\Departments.cs" />
     <Compile Include="Core\Entities\Settings\LeaveSetup.cs" />
     <Compile Include="Core\Entities\Settings\Positions.cs" />
+    <Compile Include="Core\Entities\Transactions\Attendance.cs" />
     <Compile Include="Core\Entities\Transactions\AttendanceIdentity.cs" />
     <Compile Include="Core\Entities\Transactions\CivilStatus.cs" />
     <Compile Include="Core\Entities\Transactions\Employees.cs" />
@@ -229,6 +230,18 @@
     <Compile Include="Forms\Settings\LibraryFilesComponent\frmLibraryFilesComponent.Designer.cs">
       <DependentUpon>frmLibraryFilesComponent.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Settings\LibraryFilesComponent\LibraryFilesAddEdit\frmAttendanceCategory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Settings\LibraryFilesComponent\LibraryFilesAddEdit\frmAttendanceCategory.Designer.cs">
+      <DependentUpon>frmAttendanceCategory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Settings\LibraryFilesComponent\LibraryFilesAddEdit\frmAttendanceSetup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Settings\LibraryFilesComponent\LibraryFilesAddEdit\frmAttendanceSetup.Designer.cs">
+      <DependentUpon>frmAttendanceSetup.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Settings\LibraryFilesComponent\LibraryFilesAddEdit\frmCampuses.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -252,6 +265,18 @@
     </Compile>
     <Compile Include="Forms\Settings\LibraryFilesComponent\LibraryFilesAddEdit\frmPositions.Designer.cs">
       <DependentUpon>frmPositions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Transaction\Employee\AttendanceMonitoring\frmAttendanceMonitoringModule.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Transaction\Employee\AttendanceMonitoring\frmAttendanceMonitoringModule.Designer.cs">
+      <DependentUpon>frmAttendanceMonitoringModule.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Transaction\Employee\AttendanceMonitoring\frmEmployeeAttendanceLog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Transaction\Employee\AttendanceMonitoring\frmEmployeeAttendanceLog.Designer.cs">
+      <DependentUpon>frmEmployeeAttendanceLog.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Transaction\Employee\frmAddEditEmployees.cs">
       <SubType>Form</SubType>
@@ -313,6 +338,12 @@
     <EmbeddedResource Include="Forms\Settings\LibraryFilesComponent\frmLibraryFilesComponent.resx">
       <DependentUpon>frmLibraryFilesComponent.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Settings\LibraryFilesComponent\LibraryFilesAddEdit\frmAttendanceCategory.resx">
+      <DependentUpon>frmAttendanceCategory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Settings\LibraryFilesComponent\LibraryFilesAddEdit\frmAttendanceSetup.resx">
+      <DependentUpon>frmAttendanceSetup.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Settings\LibraryFilesComponent\LibraryFilesAddEdit\frmCampuses.resx">
       <DependentUpon>frmCampuses.cs</DependentUpon>
     </EmbeddedResource>
@@ -324,6 +355,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Settings\LibraryFilesComponent\LibraryFilesAddEdit\frmPositions.resx">
       <DependentUpon>frmPositions.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Transaction\Employee\AttendanceMonitoring\frmAttendanceMonitoringModule.resx">
+      <DependentUpon>frmAttendanceMonitoringModule.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Transaction\Employee\AttendanceMonitoring\frmEmployeeAttendanceLog.resx">
+      <DependentUpon>frmEmployeeAttendanceLog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Transaction\Employee\frmAddEditEmployees.resx">
       <DependentUpon>frmAddEditEmployees.cs</DependentUpon>
@@ -384,6 +421,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\user%281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\identification.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

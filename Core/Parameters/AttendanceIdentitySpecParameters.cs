@@ -4,7 +4,7 @@ namespace Core.Parameters
     {
         public int PageNumber { get; set; } = 1;
 
-        private int _pageSize;
+        private int _pageSize = 20;
 
         public int PageSize
         {
