@@ -8,9 +8,9 @@ namespace API.Dtos
         [Required]
         public string Category  { get; set; }
         [Required]
-        public DateTime TimeIn { get; set; }
+        public string TimeIn { get; set; }
         [Required]
-        public DateTime TimeOut { get; set; }
+        public string TimeOut { get; set; }
         [Required]
         public int GracePeriod { get; set; }
     }

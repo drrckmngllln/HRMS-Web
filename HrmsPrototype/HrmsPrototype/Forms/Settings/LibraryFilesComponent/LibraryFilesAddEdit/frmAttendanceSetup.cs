@@ -52,8 +52,8 @@ namespace HrmsPrototype.Forms.Settings.LibraryFilesComponent.LibraryFilesAddEdit
                 var item = new AttendanceSetup
                 {
                     Category = tCategory.SelectedValue.ToString(),
-                    TimeIn = DateTime.Parse(tTimeIn.Text).ToUniversalTime(),
-                    TimeOut = DateTime.Parse(tTimeOut.Text).ToUniversalTime(),
+                    TimeIn = tTimeIn.Text,
+                    TimeOut = tTimeOut.Text,
                     GracePeriod = Convert.ToInt32(tGracePeriod.Text)
                 };
                 await _repo.AddAsync(item, baseEndpoint + "create");
@@ -65,8 +65,8 @@ namespace HrmsPrototype.Forms.Settings.LibraryFilesComponent.LibraryFilesAddEdit
                 var item = new AttendanceSetup
                 {
                     Category = tCategory.SelectedValue.ToString(),
-                    TimeIn = DateTime.Parse(tTimeOut.Text).ToUniversalTime(),
-                    TimeOut = DateTime.Parse(tTimeOut.Text).ToUniversalTime(),
+                    TimeIn = tTimeOut.Text,
+                    TimeOut = tTimeOut.Text,
                     GracePeriod = Convert.ToInt32(tGracePeriod.Text)
                 };
                 await _repo.UpdateAsync(item, baseEndpoint + "update");

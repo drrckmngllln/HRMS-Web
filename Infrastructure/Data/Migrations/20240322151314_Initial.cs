@@ -7,7 +7,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Infrastructure.Data.Migrations
 {
     /// <inheritdoc />
-    public partial class initial : Migration
+    public partial class Initial : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -59,8 +59,8 @@ namespace Infrastructure.Data.Migrations
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    Type = table.Column<string>(type: "text", nullable: true),
-                    Credits = table.Column<int>(type: "integer", nullable: false)
+                    Type = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: true),
+                    Credits = table.Column<int>(type: "integer", maxLength: 100, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -115,8 +115,8 @@ namespace Infrastructure.Data.Migrations
                     Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     CategoryId = table.Column<int>(type: "integer", nullable: false),
-                    TimeIn = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
-                    TimeOut = table.Column<DateTime>(type: "timestamp with time zone", maxLength: 100, nullable: false),
+                    TimeIn = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: true),
+                    TimeOut = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: true),
                     GracePeriod = table.Column<int>(type: "integer", maxLength: 100, nullable: false)
                 },
                 constraints: table =>
@@ -191,9 +191,9 @@ namespace Infrastructure.Data.Migrations
                     Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     Date = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
-                    TimeIn = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    TimeIn = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: true),
                     TimeInRemarks = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: true),
-                    TimeOut = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    TimeOut = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: true),
                     TimeOutRemarks = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: true),
                     EmployeeId = table.Column<int>(type: "integer", nullable: false)
                 },

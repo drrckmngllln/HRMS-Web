@@ -3,6 +3,7 @@ using DPFP.Capture;
 using DPFP.Verification;
 using HrmsPrototype.Core.Entities.Settings;
 using HrmsPrototype.Infrastructure.Repositories;
+using Krypton.Toolkit;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -21,9 +22,21 @@ namespace HrmsPrototype.Forms.Transaction.Employee.AttendanceMonitoring
         public List<Template> FPTList = new List<DPFP.Template>();
         public List<string> OwnerList = new List<string>();
 
+        public int ID { get; set; }
         public frmAttendanceMonitoringModule()
         {
             InitializeComponent();
+        }
+
+        private void OpenEmployeeLog()
+        {
+            var frm = new frmEmployeeAttendanceLog();
+            frmEmployeeAttendanceLog.instance.ID = ID;
+            frm.TopLevel = false;
+            frm.Parent = panelTask;
+            panelTask.Controls.Clear();
+            panelTask.Controls.Add(frm);
+            frm.Show();
         }
 
         protected void Init()
@@ -37,7 +50,11 @@ namespace HrmsPrototype.Forms.Transaction.Employee.AttendanceMonitoring
         protected void StartCapture()
         {
             if (Capturer != null)
+            {
                 Capturer.StartCapture();
+                
+
+            }
         }
 
         private void process(DPFP.Sample Sample)
@@ -45,6 +62,7 @@ namespace HrmsPrototype.Forms.Transaction.Employee.AttendanceMonitoring
 
             FeatureSet features = ExtractFeatures(Sample, DPFP.Processing.DataPurpose.Verification);
             CompareToTemplate(features);
+
         }
 
         private void CompareToTemplate(FeatureSet featuresets)
@@ -60,6 +78,7 @@ namespace HrmsPrototype.Forms.Transaction.Employee.AttendanceMonitoring
                         if (results.Verified)
                         {
                             label2.Text = OwnerList[i].ToString();
+                            ID = Convert.ToInt32(OwnerList[i]);
                             break;
                         }
                         else if (i == FPTList.Count - 1)
@@ -72,6 +91,7 @@ namespace HrmsPrototype.Forms.Transaction.Employee.AttendanceMonitoring
                             // please wait
                             continue;
                         }
+
                     }
                 }
                 catch (Exception ex)
@@ -79,6 +99,9 @@ namespace HrmsPrototype.Forms.Transaction.Employee.AttendanceMonitoring
 
                 }
             }
+
+
+            this.Invoke(new Action(() => OpenEmployeeLog()));
         }
 
         protected DPFP.FeatureSet ExtractFeatures(DPFP.Sample Sample, DPFP.Processing.DataPurpose Purpose)
@@ -88,7 +111,9 @@ namespace HrmsPrototype.Forms.Transaction.Employee.AttendanceMonitoring
             DPFP.FeatureSet features = new DPFP.FeatureSet();
             extractor.CreateFeatureSet(Sample, Purpose, ref feedback, ref features); // TODO: return features as a result?
             if ((feedback == DPFP.Capture.CaptureFeedback.Good))
+            {
                 return features;
+            }
             else
                 return null/* TODO Change to default(_) if this is not a reference type */;
         }
@@ -113,6 +138,7 @@ namespace HrmsPrototype.Forms.Transaction.Employee.AttendanceMonitoring
                 FPTList.Add(temp);
                 OwnerList.Add(attendance.EmployeeNumber);
             }
+
         }
 
         protected void Stop()
@@ -172,6 +198,14 @@ namespace HrmsPrototype.Forms.Transaction.Employee.AttendanceMonitoring
             StartCapture();
 
             CheckForIllegalCrossThreadCalls = false;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void label2_TextChanged(object sender, EventArgs e)
+        {
         }
     }
 }

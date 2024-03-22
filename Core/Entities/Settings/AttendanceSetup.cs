@@ -7,9 +7,10 @@ namespace Core.Entities.Settings
     {
         public AttendanceSetupCategory Category { get; set; }
         public int CategoryId { get; set; }
-        public DateTime TimeIn { get; set; }
         [MaxLength(100)]
-        public DateTime TimeOut { get; set; }
+        public string TimeIn { get; set; }
+        [MaxLength(100)]
+        public string TimeOut { get; set; }
         [MaxLength(100)]
         public int GracePeriod { get; set; }
     }

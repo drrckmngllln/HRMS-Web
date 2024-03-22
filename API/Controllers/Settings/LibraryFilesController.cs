@@ -202,8 +202,8 @@ namespace API.Controllers.Settings
             var item = new AttendanceSetup
             {
                 CategoryId = Convert.ToInt32(attendanceSetupDto.Category),
-                TimeIn = attendanceSetupDto.TimeIn.ToUniversalTime(),
-                TimeOut = attendanceSetupDto.TimeOut.ToUniversalTime(),
+                TimeIn = attendanceSetupDto.TimeIn,
+                TimeOut = attendanceSetupDto.TimeOut,
                 GracePeriod = attendanceSetupDto.GracePeriod
             };
             await AddAsync(item);

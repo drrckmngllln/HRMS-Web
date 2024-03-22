@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Infrastructure.Data.Migrations
 {
     [DbContext(typeof(StoreContext))]
-    [Migration("20240322083932_initial")]
-    partial class initial
+    [Migration("20240322151314_Initial")]
+    partial class Initial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -40,12 +40,13 @@ namespace Infrastructure.Data.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("integer");
 
-                    b.Property<DateTime>("TimeIn")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.Property<DateTime>("TimeOut")
+                    b.Property<string>("TimeIn")
                         .HasMaxLength(100)
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("character varying(100)");
+
+                    b.Property<string>("TimeOut")
+                        .HasMaxLength(100)
+                        .HasColumnType("character varying(100)");
 
                     b.HasKey("Id");
 
@@ -121,10 +122,12 @@ namespace Infrastructure.Data.Migrations
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<int>("Credits")
+                        .HasMaxLength(100)
                         .HasColumnType("integer");
 
                     b.Property<string>("Type")
-                        .HasColumnType("text");
+                        .HasMaxLength(100)
+                        .HasColumnType("character varying(100)");
 
                     b.HasKey("Id");
 
@@ -162,15 +165,17 @@ namespace Infrastructure.Data.Migrations
                     b.Property<int>("EmployeeId")
                         .HasColumnType("integer");
 
-                    b.Property<DateTime>("TimeIn")
-                        .HasColumnType("timestamp with time zone");
+                    b.Property<string>("TimeIn")
+                        .HasMaxLength(100)
+                        .HasColumnType("character varying(100)");
 
                     b.Property<string>("TimeInRemarks")
                         .HasMaxLength(100)
                         .HasColumnType("character varying(100)");
 
-                    b.Property<DateTime>("TimeOut")
-                        .HasColumnType("timestamp with time zone");
+                    b.Property<string>("TimeOut")
+                        .HasMaxLength(100)
+                        .HasColumnType("character varying(100)");
 
                     b.Property<string>("TimeOutRemarks")
                         .HasMaxLength(100)

@@ -8,11 +8,11 @@ namespace API.Dtos
         [Required]
         public DateTime Date { get; set; }
         [Required]
-        public DateTime TimeIn { get; set; }
+        public string TimeIn { get; set; }
         [Required]
         public string TimeInRemarks { get; set; }
         [Required]
-        public DateTime TimeOut { get; set; }
+        public string TimeOut { get; set; }
         [Required]
         public string TimeOutRemarks { get; set; }
         [Required]

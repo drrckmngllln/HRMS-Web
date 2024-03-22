@@ -16,7 +16,12 @@
           "Microsoft.EntityFrameworkCore.SqlServer": "7.0.0",
           "Microsoft.EntityFrameworkCore.Sqlite": "7.0.0",
           "Npgsql.EntityFrameworkCore.PostgreSQL": "7.0.0",
-          "Swashbuckle.AspNetCore": "6.5.0"
+          "Swashbuckle.AspNetCore": "6.5.0",
+          "DPFPDevNET": "1.6.1.0",
+          "DPFPEngNET": "1.6.1.0",
+          "DPFPGuiNET": "1.6.1.0",
+          "DPFPShrNET": "1.6.1.0",
+          "DPFPVerNET": "1.6.1.0"
         },
         "runtime": {
           "API.dll": {}
@@ -910,6 +915,46 @@
         "runtime": {
           "Infrastructure.dll": {}
         }
+      },
+      "DPFPDevNET/1.6.1.0": {
+        "runtime": {
+          "DPFPDevNET.dll": {
+            "assemblyVersion": "1.6.1.0",
+            "fileVersion": "1.6.1.0"
+          }
+        }
+      },
+      "DPFPEngNET/1.6.1.0": {
+        "runtime": {
+          "DPFPEngNET.dll": {
+            "assemblyVersion": "1.6.1.0",
+            "fileVersion": "1.6.1.0"
+          }
+        }
+      },
+      "DPFPGuiNET/1.6.1.0": {
+        "runtime": {
+          "DPFPGuiNET.dll": {
+            "assemblyVersion": "1.6.1.0",
+            "fileVersion": "1.6.1.0"
+          }
+        }
+      },
+      "DPFPShrNET/1.6.1.0": {
+        "runtime": {
+          "DPFPShrNET.dll": {
+            "assemblyVersion": "1.6.1.0",
+            "fileVersion": "1.6.1.0"
+          }
+        }
+      },
+      "DPFPVerNET/1.6.1.0": {
+        "runtime": {
+          "DPFPVerNET.dll": {
+            "assemblyVersion": "1.6.1.0",
+            "fileVersion": "1.6.1.0"
+          }
+        }
       }
     }
   },
@@ -1514,6 +1559,31 @@
     },
     "Infrastructure/1.0.0": {
       "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "DPFPDevNET/1.6.1.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "DPFPEngNET/1.6.1.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "DPFPGuiNET/1.6.1.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "DPFPShrNET/1.6.1.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "DPFPVerNET/1.6.1.0": {
+      "type": "reference",
       "serviceable": false,
       "sha512": ""
     }
