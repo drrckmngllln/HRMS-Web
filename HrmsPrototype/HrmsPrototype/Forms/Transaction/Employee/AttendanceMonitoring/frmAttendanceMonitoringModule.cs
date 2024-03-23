@@ -212,5 +212,13 @@ namespace HrmsPrototype.Forms.Transaction.Employee.AttendanceMonitoring
         {
             tDateandTime.Text = DateTime.Now.ToString("MMMM dd, yyyy - hh:mm:ss tt");
         }
+
+        private void tClose_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Are you sure you want to close biometric attendance system?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                this.Dispose();
+            }
+        }
     }
 }

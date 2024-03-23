@@ -44,6 +44,7 @@ namespace HrmsPrototype.Forms.Transaction.Employee.AttendanceMonitoring
             tDate.Text = DateTime.Now.ToString("MMMM dd, yyyy");
 
 
+
         }
 
         private void timerAutoClose_Tick(object sender, EventArgs e)

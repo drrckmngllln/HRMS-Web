@@ -35,18 +35,7 @@ namespace API.Controllers.Transactions
             return Ok(data);
         }
 
-        [HttpGet("{id}")]
-        public async Task<ActionResult<AttendanceIdentity>> GetByIdAsync(int id)
-        {
-            var spec = new AttendanceIdentitySpecifications(id);
-
-            var attendanceIdentity = await _unitOfWork.Repository<AttendanceIdentity>().GetEntityWithSpec(spec);
-
-            var data = _mapper.Map<AttendanceIdentity, AttendanceIdentityDto>(attendanceIdentity);
-
-            return Ok(data);
-        }
-
+        
         [HttpPost("Enroll")]
         public async Task<ActionResult<AttendanceIdentityDto>> EnrollBiometricAsync(AttendanceIdentityDto attendanceIdentityDto)
         {
@@ -72,6 +61,19 @@ namespace API.Controllers.Transactions
         }
 
 #endregion
+
+        [HttpGet("{id}")]
+        public async Task<ActionResult<AttendanceIdentity>> GetByIdAsync(int id)
+        {
+            var spec = new AttendanceIdentitySpecifications(id);
+
+            var attendanceIdentity = await _unitOfWork.Repository<AttendanceIdentity>().GetEntityWithSpec(spec);
+
+            var data = _mapper.Map<AttendanceIdentity, AttendanceIdentityDto>(attendanceIdentity);
+
+            return Ok(data);
+        }
+
 
         [HttpPost("create")]
         public async Task<ActionResult<AttendanceDto>> TimeInAsync(AttendanceDto attendanceDto)
