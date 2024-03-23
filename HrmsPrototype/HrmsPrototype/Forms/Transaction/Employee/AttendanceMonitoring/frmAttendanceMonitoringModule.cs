@@ -207,5 +207,10 @@ namespace HrmsPrototype.Forms.Transaction.Employee.AttendanceMonitoring
         private void label2_TextChanged(object sender, EventArgs e)
         {
         }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            tDateandTime.Text = DateTime.Now.ToString("MMMM dd, yyyy - hh:mm:ss tt");
+        }
     }
 }

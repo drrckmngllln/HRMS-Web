@@ -425,5 +425,8 @@
   <ItemGroup>
     <None Include="Resources\identification.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\image_processing20200203-5406-1p21z99.gif" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
