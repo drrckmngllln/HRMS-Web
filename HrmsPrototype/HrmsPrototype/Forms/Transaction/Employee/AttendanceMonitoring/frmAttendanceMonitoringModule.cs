@@ -23,8 +23,12 @@ namespace HrmsPrototype.Forms.Transaction.Employee.AttendanceMonitoring
         public List<string> OwnerList = new List<string>();
 
         public int ID { get; set; }
+        public string LogStatus { get; set; }
+
+        public static frmAttendanceMonitoringModule instance;
         public frmAttendanceMonitoringModule()
         {
+            instance = this;
             InitializeComponent();
         }
 
@@ -218,6 +222,20 @@ namespace HrmsPrototype.Forms.Transaction.Employee.AttendanceMonitoring
             if (MessageBox.Show("Are you sure you want to close biometric attendance system?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 this.Dispose();
+            }
+        }
+
+        private void frmAttendanceMonitoringModule_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.F1)
+            {
+                tLogStatus.Text = "Time In";
+                LogStatus = "Time In";
+            }
+            else if (e.KeyCode == Keys.F2)
+            {
+                tLogStatus.Text = "Time Out";
+                LogStatus = "Time Out";
             }
         }
     }

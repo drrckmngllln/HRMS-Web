@@ -33,11 +33,13 @@
             this.kryptonGroup1 = new Krypton.Toolkit.KryptonGroup();
             this.panelTask = new System.Windows.Forms.Panel();
             this.kryptonGroup2 = new Krypton.Toolkit.KryptonGroup();
-            this.tDateandTime = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.tDateandTime = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.label1 = new System.Windows.Forms.Label();
             this.tClose = new System.Windows.Forms.Label();
+            this.tLogStatus = new System.Windows.Forms.Label();
+            this.kryptonGroupBox1 = new Krypton.Toolkit.KryptonGroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonGroup1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonGroup1.Panel)).BeginInit();
             this.kryptonGroup1.Panel.SuspendLayout();
@@ -47,6 +49,10 @@
             this.kryptonGroup2.Panel.SuspendLayout();
             this.kryptonGroup2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox1.Panel)).BeginInit();
+            this.kryptonGroupBox1.Panel.SuspendLayout();
+            this.kryptonGroupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // label2
@@ -77,6 +83,9 @@
             this.kryptonGroup1.Panel.Controls.Add(this.panelTask);
             this.kryptonGroup1.Size = new System.Drawing.Size(833, 650);
             this.kryptonGroup1.StateCommon.Back.Color1 = System.Drawing.SystemColors.ActiveBorder;
+            this.kryptonGroup1.StateCommon.Back.Color2 = System.Drawing.SystemColors.ActiveBorder;
+            this.kryptonGroup1.StateCommon.Border.Color1 = System.Drawing.SystemColors.ActiveBorder;
+            this.kryptonGroup1.StateCommon.Border.Color2 = System.Drawing.SystemColors.ActiveBorder;
             this.kryptonGroup1.StateCommon.Border.DrawBorders = ((Krypton.Toolkit.PaletteDrawBorders)((((Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom) 
             | Krypton.Toolkit.PaletteDrawBorders.Left) 
             | Krypton.Toolkit.PaletteDrawBorders.Right)));
@@ -112,6 +121,17 @@
             this.kryptonGroup2.StateCommon.Border.Rounding = 10F;
             this.kryptonGroup2.TabIndex = 4;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
+            this.pictureBox1.Image = global::HrmsPrototype.Properties.Resources.image_processing20200203_5406_1p21z99;
+            this.pictureBox1.Location = new System.Drawing.Point(3, 3);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(317, 303);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
+            // 
             // tDateandTime
             // 
             this.tDateandTime.AutoSize = true;
@@ -123,17 +143,6 @@
             this.tDateandTime.Size = new System.Drawing.Size(302, 25);
             this.tDateandTime.TabIndex = 1;
             this.tDateandTime.Text = "MMMM dd, yyyy - hh:mm:ss tt";
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
-            this.pictureBox1.Image = global::HrmsPrototype.Properties.Resources.image_processing20200203_5406_1p21z99;
-            this.pictureBox1.Location = new System.Drawing.Point(3, 3);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(317, 303);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
             // 
             // timer1
             // 
@@ -168,11 +177,46 @@
             this.tClose.Text = "Close";
             this.tClose.Click += new System.EventHandler(this.tClose_Click);
             // 
+            // tLogStatus
+            // 
+            this.tLogStatus.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
+            this.tLogStatus.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tLogStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tLogStatus.ForeColor = System.Drawing.SystemColors.Control;
+            this.tLogStatus.Location = new System.Drawing.Point(0, 0);
+            this.tLogStatus.Name = "tLogStatus";
+            this.tLogStatus.Size = new System.Drawing.Size(323, 41);
+            this.tLogStatus.TabIndex = 7;
+            this.tLogStatus.Text = "Time In";
+            this.tLogStatus.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // kryptonGroupBox1
+            // 
+            this.kryptonGroupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.kryptonGroupBox1.CaptionOverlap = 0D;
+            this.kryptonGroupBox1.CornerRoundingRadius = 10F;
+            this.kryptonGroupBox1.Location = new System.Drawing.Point(12, 580);
+            this.kryptonGroupBox1.Name = "kryptonGroupBox1";
+            // 
+            // kryptonGroupBox1.Panel
+            // 
+            this.kryptonGroupBox1.Panel.Controls.Add(this.tLogStatus);
+            this.kryptonGroupBox1.Size = new System.Drawing.Size(331, 67);
+            this.kryptonGroupBox1.StateCommon.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
+            this.kryptonGroupBox1.StateCommon.Border.DrawBorders = ((Krypton.Toolkit.PaletteDrawBorders)((((Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | Krypton.Toolkit.PaletteDrawBorders.Right)));
+            this.kryptonGroupBox1.StateCommon.Border.Rounding = 10F;
+            this.kryptonGroupBox1.StateCommon.Content.ShortText.Color1 = System.Drawing.SystemColors.Control;
+            this.kryptonGroupBox1.TabIndex = 8;
+            this.kryptonGroupBox1.Values.Heading = "Log Status";
+            // 
             // frmAttendanceMonitoringModule
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1194, 674);
+            this.Controls.Add(this.kryptonGroupBox1);
             this.Controls.Add(this.tClose);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.tDateandTime);
@@ -185,6 +229,7 @@
             this.Text = "frmAttendanceMonitoring";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmAttendanceMonitoringModule_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmAttendanceMonitoringModule_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.kryptonGroup1.Panel)).EndInit();
             this.kryptonGroup1.Panel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.kryptonGroup1)).EndInit();
@@ -195,6 +240,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.kryptonGroup2)).EndInit();
             this.kryptonGroup2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox1.Panel)).EndInit();
+            this.kryptonGroupBox1.Panel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox1)).EndInit();
+            this.kryptonGroupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -210,5 +259,7 @@
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label tClose;
+        private System.Windows.Forms.Label tLogStatus;
+        private Krypton.Toolkit.KryptonGroupBox kryptonGroupBox1;
     }
 }

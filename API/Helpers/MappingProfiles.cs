@@ -29,7 +29,7 @@ namespace API.Helpers
             CreateMap<OtherInformation, OtherInformationDto>();
             //Attendances
             CreateMap<Attendance, AttendanceDto>()
-                .ForMember(m => m.Employee, o => o.MapFrom(d => d.Employee.FullName));
+                .ForMember(m => m.Employee, o => o.MapFrom(d => d.Employee.EmployeeNumber));
 
             CreateMap<AttendanceIdentity, AttendanceIdentityDto>()
                 .ForMember(m => m.EmployeeNumber, o => o.MapFrom(d => d.EmployeeNumber.EmployeeNumber));

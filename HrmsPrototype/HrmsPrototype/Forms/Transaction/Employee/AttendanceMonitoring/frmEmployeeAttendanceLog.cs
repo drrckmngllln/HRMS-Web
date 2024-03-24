@@ -30,6 +30,13 @@ namespace HrmsPrototype.Forms.Transaction.Employee.AttendanceMonitoring
             await BiometricLogs();
         }
 
+        private async Task GetEmployeeLogs(string employeeNumber)
+        {
+            var employeeLogs = await _attendanceRepo.GetAllAsync(attendanceEndpoint + "EmployeeAttendance?search=" + employeeNumber);
+
+            dgv.DataSource = employeeLogs;
+            //dgv.Columns["Id"].Visible = false;
+        }
 
         private async Task BiometricLogs()
         {
@@ -43,9 +50,39 @@ namespace HrmsPrototype.Forms.Transaction.Employee.AttendanceMonitoring
             tRemarks.Text = "Static Data: On-time";
             tDate.Text = DateTime.Now.ToString("MMMM dd, yyyy");
 
+            if (frmAttendanceMonitoringModule.instance.LogStatus == "Time In")
+            {
+                var item = new Attendance
+                {
+                    Date = DateTime.Now.ToUniversalTime(),
+                    TimeIn = DateTime.Now.ToString("hh:mm:ss tt"),
+                    TimeInRemarks = "Static Data: On-time",
+                    Employee = ID
+                };
+                await _attendanceRepo.AddAsync(item, attendanceEndpoint +  "EmployeeAttendance/create");
+            }
+            else if (frmAttendanceMonitoringModule.instance.LogStatus == "Time Out")
+            {
+                var emp = await _attendanceRepo.GetAllAsync(attendanceEndpoint + "EmployeeAttendance");
+                var empId = emp.SingleOrDefault(x => x.Employee == ID);
 
+                var item = new Attendance
+                {
+                    Id = empId.Id,
+                    Date = empId.Date,
+                    TimeIn = empId.TimeIn,
+                    TimeInRemarks = empId.TimeInRemarks,
+                    TimeOut = DateTime.Now.ToString("hh:mm:ss tt"),
+                    TimeOutRemarks = "Static Data: On-time",
+                    Employee = ID
+                };
+                await _attendanceRepo.UpdateAsync(item, attendanceEndpoint + "EmployeeAttendance/update");
+            }
 
+            await GetEmployeeLogs(ID.ToString());
         }
+
+
 
         private void timerAutoClose_Tick(object sender, EventArgs e)
         {

@@ -8,7 +8,8 @@ namespace Core.Specifications.Transactions
     {
         public AttendanceIdentitySpecifications(AttendanceIdentitySpecParameters parameters) 
             : base(x => 
-            (string.IsNullOrEmpty(parameters.Search) || x.EmployeeNumber.FullName.ToLower().Contains(parameters.Search)) &&
+            (string.IsNullOrEmpty(parameters.Search) || x.EmployeeNumber.FullName.ToLower().Contains(parameters.Search) 
+            || x.EmployeeNumberId.ToString() == parameters.Search) &&
             (!parameters.EmployeeNumberId.HasValue || x.EmployeeNumberId == parameters.EmployeeNumberId))
         {
             AddInclude(x => x.EmployeeNumber);

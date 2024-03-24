@@ -60,7 +60,6 @@ namespace API.Controllers.Transactions
             return employeeId.Id;
         }
 
-#endregion
 
         [HttpGet("{id}")]
         public async Task<ActionResult<AttendanceIdentity>> GetByIdAsync(int id)
@@ -74,11 +73,26 @@ namespace API.Controllers.Transactions
             return Ok(data);
         }
 
+#endregion
 
-        [HttpPost("create")]
+        [HttpGet("EmployeeAttendance")]
+        public async Task<ActionResult<IReadOnlyList<AttendanceDto>>> 
+            GetEmployeesAttendanceAsync([FromQuery] AttendanceSpecParameters attendanceSpecParameters)
+        {
+            var spec = new AttendanceWithEmployeeSpecifications(attendanceSpecParameters);
+
+            var attendances = await _unitOfWork.Repository<Attendance>().ListAsync(spec);
+
+            var data = _mapper.Map<IReadOnlyList<Attendance>, IReadOnlyList<AttendanceDto>>(attendances);
+
+            return Ok(data);
+        }
+
+
+        [HttpPost("EmployeeAttendance/create")]
         public async Task<ActionResult<AttendanceDto>> TimeInAsync(AttendanceDto attendanceDto)
         {
-            if (!await CheckTimeInExisting(attendanceDto.Date))
+            if (!await CheckTimeInExisting(attendanceDto.Date.ToUniversalTime()))
             {
                 var item = new Attendance
                 {
@@ -95,7 +109,7 @@ namespace API.Controllers.Transactions
             return BadRequest("Time in failed");
         } 
 
-        [HttpPut("update")]
+        [HttpPut("EmployeeAttendance/update")]
         public async Task<ActionResult<AttendanceDto>> TimeOutAsync(AttendanceDto attendanceDto)
         {
             var item = new Attendance

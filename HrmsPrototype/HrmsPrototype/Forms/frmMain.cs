@@ -3,6 +3,7 @@ using HrmsPrototype.Forms.Transaction;
 using HrmsPrototype.Forms.Transaction.Employee.AttendanceMonitoring;
 using Krypton.Toolkit;
 using System;
+using System.Windows.Forms;
 
 namespace HrmsPrototype.Forms
 {
