@@ -55,9 +55,14 @@ namespace HrmsPrototype.Forms.Transaction.Employee.AttendanceMonitoring
         {
             if (Capturer != null)
             {
-                Capturer.StartCapture();
-                
+                try
+                {
+                    Capturer.StartCapture();
+                }
+                catch
+                {
 
+                }
             }
         }
 
@@ -81,13 +86,13 @@ namespace HrmsPrototype.Forms.Transaction.Employee.AttendanceMonitoring
                         Verificator.Verify(featuresets, FPTList[i], ref results);
                         if (results.Verified)
                         {
-                            label2.Text = OwnerList[i].ToString();
+                            tEmployeeId.Text = OwnerList[i].ToString();
                             ID = Convert.ToInt32(OwnerList[i]);
                             break;
                         }
                         else if (i == FPTList.Count - 1)
                         {
-                            label2.Text = "< fingerprint not found >";
+                            tEmployeeId.Text = "< fingerprint not found >";
                             break;
                         }
                         else
@@ -104,8 +109,11 @@ namespace HrmsPrototype.Forms.Transaction.Employee.AttendanceMonitoring
                 }
             }
 
-
-            this.Invoke(new Action(() => OpenEmployeeLog()));
+            if (tEmployeeId.Text != "< fingerprint not found >")
+            {
+                this.Invoke(new Action(OpenEmployeeLog));
+                employeeIdTimer.Start();
+            }
         }
 
         protected DPFP.FeatureSet ExtractFeatures(DPFP.Sample Sample, DPFP.Processing.DataPurpose Purpose)
@@ -143,6 +151,15 @@ namespace HrmsPrototype.Forms.Transaction.Employee.AttendanceMonitoring
                 OwnerList.Add(attendance.EmployeeNumber);
             }
 
+        }
+
+        private async Task initialize()
+        {
+            await LoadData();
+            Init();
+            StartCapture();
+
+            CheckForIllegalCrossThreadCalls = false;
         }
 
         protected void Stop()
@@ -197,11 +214,7 @@ namespace HrmsPrototype.Forms.Transaction.Employee.AttendanceMonitoring
 
         private async void frmAttendanceMonitoringModule_Load(object sender, EventArgs e)
         {
-            await LoadData();
-            Init();
-            StartCapture();
-
-            CheckForIllegalCrossThreadCalls = false;
+            await initialize();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -221,7 +234,7 @@ namespace HrmsPrototype.Forms.Transaction.Employee.AttendanceMonitoring
         {
             if (MessageBox.Show("Are you sure you want to close biometric attendance system?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                this.Dispose();
+                this.Close();
             }
         }
 
@@ -237,6 +250,23 @@ namespace HrmsPrototype.Forms.Transaction.Employee.AttendanceMonitoring
                 tLogStatus.Text = "Time Out";
                 LogStatus = "Time Out";
             }
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            tLogStatus.Text = "Time In";
+            LogStatus = tLogStatus.Text;
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            tLogStatus.Text = "Time Out";
+            LogStatus = tLogStatus.Text;
+        }
+
+        private void employeeIdTimer_Tick(object sender, EventArgs e)
+        {
+            tEmployeeId.Text = "...";
         }
     }
 }

@@ -40,46 +40,50 @@ namespace HrmsPrototype.Forms.Transaction.Employee.AttendanceMonitoring
 
         private async Task BiometricLogs()
         {
-            var employees = await _employeeRepo.GetAllAsync(employeeEndpoint);
-            var employeeDetail = employees.SingleOrDefault(x => x.EmployeeNumber == ID.ToString());
-
-            tEmployeeName.Text = employeeDetail.FullName;
-            tDepartment.Text = employeeDetail.Department;
-            tPosition.Text = employeeDetail.Position;
-            tTime.Text = DateTime.Now.ToString("hh:mm:ss tt");
-            tRemarks.Text = "Static Data: On-time";
-            tDate.Text = DateTime.Now.ToString("MMMM dd, yyyy");
-
-            if (frmAttendanceMonitoringModule.instance.LogStatus == "Time In")
+            if (ID != 0)
             {
-                var item = new Attendance
-                {
-                    Date = DateTime.Now.ToUniversalTime(),
-                    TimeIn = DateTime.Now.ToString("hh:mm:ss tt"),
-                    TimeInRemarks = "Static Data: On-time",
-                    Employee = ID
-                };
-                await _attendanceRepo.AddAsync(item, attendanceEndpoint +  "EmployeeAttendance/create");
-            }
-            else if (frmAttendanceMonitoringModule.instance.LogStatus == "Time Out")
-            {
-                var emp = await _attendanceRepo.GetAllAsync(attendanceEndpoint + "EmployeeAttendance");
-                var empId = emp.SingleOrDefault(x => x.Employee == ID);
+                var employees = await _employeeRepo.GetAllAsync(employeeEndpoint);
+                var employeeDetail = employees.SingleOrDefault(x => x.EmployeeNumber == ID.ToString());
 
-                var item = new Attendance
-                {
-                    Id = empId.Id,
-                    Date = empId.Date,
-                    TimeIn = empId.TimeIn,
-                    TimeInRemarks = empId.TimeInRemarks,
-                    TimeOut = DateTime.Now.ToString("hh:mm:ss tt"),
-                    TimeOutRemarks = "Static Data: On-time",
-                    Employee = ID
-                };
-                await _attendanceRepo.UpdateAsync(item, attendanceEndpoint + "EmployeeAttendance/update");
-            }
+                tEmployeeName.Text = employeeDetail.FullName;
+                tDepartment.Text = employeeDetail.Department;
+                tPosition.Text = employeeDetail.Position;
+                tTime.Text = DateTime.Now.ToString("hh:mm:ss tt");
+                tRemarks.Text = "Static Data: On-time";
+                tDate.Text = DateTime.Now.ToString("MMMM dd, yyyy");
 
-            await GetEmployeeLogs(ID.ToString());
+                if (frmAttendanceMonitoringModule.instance.LogStatus == "Time In")
+                {
+                    var item = new Attendance
+                    {
+                        Date = DateTime.Now.ToUniversalTime(),
+                        TimeIn = DateTime.Now.ToString("hh:mm:ss tt"),
+                        TimeInRemarks = "Static Data: On-time",
+                        Employee = ID
+                    };
+                    await _attendanceRepo.AddAsync(item, attendanceEndpoint + "EmployeeAttendance/create");
+                }
+                else if (frmAttendanceMonitoringModule.instance.LogStatus == "Time Out")
+                {
+                    var emp = await _attendanceRepo.GetAllAsync(attendanceEndpoint + "EmployeeAttendance");
+                    var empId = emp.SingleOrDefault(x => x.Employee == ID);
+
+                    var item = new Attendance
+                    {
+                        Id = empId.Id,
+                        Date = empId.Date,
+                        TimeIn = empId.TimeIn,
+                        TimeInRemarks = empId.TimeInRemarks,
+                        TimeOut = DateTime.Now.ToString("hh:mm:ss tt"),
+                        TimeOutRemarks = "Static Data: On-time",
+                        Employee = ID
+                    };
+                    await _attendanceRepo.UpdateAsync(item, attendanceEndpoint + "EmployeeAttendance/update");
+                }
+
+                await GetEmployeeLogs(ID.ToString());
+            }
+            
         }
 
 

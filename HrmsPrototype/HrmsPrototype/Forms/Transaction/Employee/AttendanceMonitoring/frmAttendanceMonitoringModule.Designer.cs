@@ -40,6 +40,10 @@
             this.tClose = new System.Windows.Forms.Label();
             this.tLogStatus = new System.Windows.Forms.Label();
             this.kryptonGroupBox1 = new Krypton.Toolkit.KryptonGroupBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.tEmployeeId = new System.Windows.Forms.Label();
+            this.employeeIdTimer = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.kryptonGroup1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonGroup1.Panel)).BeginInit();
             this.kryptonGroup1.Panel.SuspendLayout();
@@ -81,7 +85,7 @@
             // kryptonGroup1.Panel
             // 
             this.kryptonGroup1.Panel.Controls.Add(this.panelTask);
-            this.kryptonGroup1.Size = new System.Drawing.Size(833, 650);
+            this.kryptonGroup1.Size = new System.Drawing.Size(959, 655);
             this.kryptonGroup1.StateCommon.Back.Color1 = System.Drawing.SystemColors.ActiveBorder;
             this.kryptonGroup1.StateCommon.Back.Color2 = System.Drawing.SystemColors.ActiveBorder;
             this.kryptonGroup1.StateCommon.Border.Color1 = System.Drawing.SystemColors.ActiveBorder;
@@ -100,7 +104,7 @@
             this.panelTask.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelTask.Location = new System.Drawing.Point(0, 0);
             this.panelTask.Name = "panelTask";
-            this.panelTask.Size = new System.Drawing.Size(825, 642);
+            this.panelTask.Size = new System.Drawing.Size(951, 647);
             this.panelTask.TabIndex = 1;
             // 
             // kryptonGroup2
@@ -156,7 +160,7 @@
             this.label1.BackColor = System.Drawing.SystemColors.Control;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label1.Location = new System.Drawing.Point(75, 385);
+            this.label1.Location = new System.Drawing.Point(75, 372);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(197, 25);
             this.label1.TabIndex = 5;
@@ -170,7 +174,7 @@
             this.tClose.Cursor = System.Windows.Forms.Cursors.Hand;
             this.tClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tClose.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.tClose.Location = new System.Drawing.Point(9, 650);
+            this.tClose.Location = new System.Drawing.Point(9, 655);
             this.tClose.Name = "tClose";
             this.tClose.Size = new System.Drawing.Size(38, 15);
             this.tClose.TabIndex = 6;
@@ -195,7 +199,7 @@
             this.kryptonGroupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.kryptonGroupBox1.CaptionOverlap = 0D;
             this.kryptonGroupBox1.CornerRoundingRadius = 10F;
-            this.kryptonGroupBox1.Location = new System.Drawing.Point(12, 580);
+            this.kryptonGroupBox1.Location = new System.Drawing.Point(12, 585);
             this.kryptonGroupBox1.Name = "kryptonGroupBox1";
             // 
             // kryptonGroupBox1.Panel
@@ -211,11 +215,51 @@
             this.kryptonGroupBox1.TabIndex = 8;
             this.kryptonGroupBox1.Values.Heading = "Log Status";
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(19, 535);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(97, 39);
+            this.button1.TabIndex = 9;
+            this.button1.Text = "Time In";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(122, 535);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(97, 39);
+            this.button2.TabIndex = 10;
+            this.button2.Text = "Time Out";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // tEmployeeId
+            // 
+            this.tEmployeeId.BackColor = System.Drawing.SystemColors.Control;
+            this.tEmployeeId.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tEmployeeId.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.tEmployeeId.Location = new System.Drawing.Point(12, 397);
+            this.tEmployeeId.Name = "tEmployeeId";
+            this.tEmployeeId.Size = new System.Drawing.Size(327, 25);
+            this.tEmployeeId.TabIndex = 11;
+            this.tEmployeeId.Text = "...";
+            this.tEmployeeId.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // employeeIdTimer
+            // 
+            this.employeeIdTimer.Interval = 5000;
+            this.employeeIdTimer.Tick += new System.EventHandler(this.employeeIdTimer_Tick);
+            // 
             // frmAttendanceMonitoringModule
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1194, 674);
+            this.ClientSize = new System.Drawing.Size(1320, 679);
+            this.Controls.Add(this.tEmployeeId);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.kryptonGroupBox1);
             this.Controls.Add(this.tClose);
             this.Controls.Add(this.label1);
@@ -261,5 +305,9 @@
         private System.Windows.Forms.Label tClose;
         private System.Windows.Forms.Label tLogStatus;
         private Krypton.Toolkit.KryptonGroupBox kryptonGroupBox1;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Label tEmployeeId;
+        private System.Windows.Forms.Timer employeeIdTimer;
     }
 }

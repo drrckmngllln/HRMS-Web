@@ -92,7 +92,7 @@ namespace API.Controllers.Transactions
         [HttpPost("EmployeeAttendance/create")]
         public async Task<ActionResult<AttendanceDto>> TimeInAsync(AttendanceDto attendanceDto)
         {
-            if (!await CheckTimeInExisting(attendanceDto.Date.ToUniversalTime()))
+            if (!await CheckTimeInExisting(attendanceDto.Date.Date, attendanceDto.Employee))
             {
                 var item = new Attendance
                 {
@@ -116,6 +116,8 @@ namespace API.Controllers.Transactions
             {
                 Id = attendanceDto.Id,
                 Date = attendanceDto.Date.ToUniversalTime(),
+                TimeIn = attendanceDto.TimeIn,
+                TimeInRemarks = attendanceDto.TimeInRemarks,
                 TimeOut = attendanceDto.TimeOut,
                 TimeOutRemarks = attendanceDto.TimeOutRemarks,
                 EmployeeId = await GetEmployeeAsync(attendanceDto.Employee)
@@ -125,10 +127,13 @@ namespace API.Controllers.Transactions
             return Ok("Time out success");
         }
 
-        private async Task<bool> CheckTimeInExisting(DateTime date)
+        private async Task<bool> CheckTimeInExisting(DateTime date, int employeeNumber)
         {
-            var timeIn = await _unitOfWork.Repository<Attendance>().ListAllAsync();
-            if (timeIn.Any(x => x.Date == date))
+            var attendances = await _unitOfWork.Repository<Attendance>().ListAllAsync();
+            var timeIn = _mapper.Map<IReadOnlyList<Attendance>, IReadOnlyList<AttendanceDto>>(attendances);
+            var timeInSelector = timeIn.Where(x => x.Date.Date == date.Date && x.Employee == employeeNumber).ToList();
+
+            if (timeInSelector.Count > 0)
             {
                 return true;
             }
